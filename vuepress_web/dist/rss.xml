@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <atom:link href="https://github.com/oscarlucas22/rss.xml" rel="self" type="application/rss+xml"/>
+    <title>LucasBlog</title>
+    <link>https://github.com/oscarlucas22/</link>
+    <description>Tu página de confianza</description>
+    <language>en-US</language>
+    <pubDate>Sat, 08 Oct 2022 11:58:57 GMT</pubDate>
+    <lastBuildDate>Sat, 08 Oct 2022 11:58:57 GMT</lastBuildDate>
+    <generator>@mr-hope/vuepress-plugin-feed</generator>
+    <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>Guia</category>
+    <item>
+      <title>Guides</title>
+      <link>https://github.com/oscarlucas22/guide/</link>
+      <guid>https://github.com/oscarlucas22/guide/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Guides</source>
+      <category>Guia</category>
+      <content:encoded><![CDATA[<h1 id="guides"> Guides</h1>
+<ul>
+<li>
+<p><a href="./SO.html">Sistemas Operativos</a></p>
+</li>
+<li>
+<p><a href="./juegos.html">Info de juegos</a></p>
+</li>
+<li>
+<p><a href="./pokemon.html">Info de pokemon</a></p>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Sistemas Operativos</title>
+      <link>https://github.com/oscarlucas22/guide/SO/</link>
+      <guid>https://github.com/oscarlucas22/guide/SO/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Sistemas Operativos</source>
+      <content:encoded><![CDATA[<h2 id="sistemas-operativos"> Sistemas Operativos</h2>
+<p><strong>Debian</strong>
+<em>Debian es un sistema operativo basado en Linux adecuado para un amplio rango de dispositivos incluyendo portátiles, ordenadores de escritorio y servidores. Proporcionamos una configuración predeterminada razonable para cada paquete así como actualizaciones de seguridad con regularidad durante su ciclo de vida</em></p>
+<p><strong>Windows</strong>
+<em>Windows es un sistema operativo, es decir, un programa de software que admite funciones básicas, como la administración de archivos y la ejecución de aplicaciones, y que usa dispositivos periféricos, como la impresora, el monitor, el teclado y el mouse.</em></p>
+<p><strong>Red Hat</strong>
+<em>Red Hat® Enterprise Linux® es la plataforma empresarial Linux líder en el mundo. Se trata de un sistema operativo (SO) open source. Es lo que permite ampliar las aplicaciones actuales e implementar tecnologías nuevas en equipos sin sistema operativo, entornos virtuales, contenedores y todo tipo de entornos de nube.</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Info juegos</title>
+      <link>https://github.com/oscarlucas22/guide/juegos/</link>
+      <guid>https://github.com/oscarlucas22/guide/juegos/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Info juegos</source>
+      <content:encoded><![CDATA[<h2 id="juegos-mas-vendidos-en-julio-2022"> Juegos más vendidos en julio 2022</h2>
+<p><strong>PS5</strong></p>
+<ol>
+<li>F1 22</li>
+<li>GRAN TURISMO 7</li>
+<li>HORIZON FORBIDDEN WEST</li>
+<li>KLONOA PHANTASY REVERIE SERIES</li>
+<li>MADISON</li>
+<li>FAR CRY 6</li>
+<li>GRAND THEFT AUTO V</li>
+<li>BACK 4 BLOOD</li>
+<li>ELDEN RING</li>
+<li>FIFA 22</li>
+</ol>
+<p><strong>PS4</strong></p>
+<ol>
+<li>F1 22</li>
+<li>GRAND THEFT AUTO V</li>
+<li>FALLOUT 76</li>
+<li>CALL OF DUTY: BLACK OPS 4</li>
+<li>FIFA 22</li>
+<li>RED DEAD REDEMPTION 2</li>
+<li>MINECRAFT</li>
+<li>TEENAGE MUTANT NINJA TURTLES: SHREDDER’S REVENGE</li>
+<li>THE LAST OF US PART II</li>
+<li>NBA 2K22</li>
+</ol>
+<p><strong>Nintendo SWITCH</strong></p>
+<ol>
+<li>XENOBLADE CHRONICLES 3</li>
+<li>NINTENDO SWITCH SPORTS</li>
+<li>LIVE A LIVE</li>
+<li>POKEMON LEGENDS: ARCEUS</li>
+<li>MARIO STRIKERS: BATTLE LEAGUE FOOTBALL</li>
+<li>MINECRAFT: NINTENDO SWITCH EDITION</li>
+<li>MARIO KART 8 DELUXE</li>
+<li>ANIMAL CROSSING: NEW HORIZONS</li>
+<li>KIRBY AND THE FORGOTTEN LAND</li>
+<li>TEENAGE MUTANT NINJA TURTLES: SHREDDER’S REVENGE</li>
+</ol>
+<p><strong>PC</strong></p>
+<ol>
+<li>THE SIMS 4</li>
+<li>CALL OF DUTY: BLACK OPS III</li>
+<li>F1 22</li>
+<li>CALL OF DUTY: GHOSTS</li>
+<li>FIFA 22</li>
+<li>CALL OF DUTY: BLACK OPS II</li>
+<li>ELDEN RING</li>
+<li>DUNGEONS &amp; DRAGONS : DAGGERDALE</li>
+<li>CALL OF DUTY: BLACK OPS</li>
+<li>MINECRAFT</li>
+</ol>
+<h2 id="los-videojuegos-mas-caros-de-la-historia"> Los videojuegos más caros de la historia</h2>
+<table>
+<thead>
+<tr>
+<th>Juego</th>
+<th>Ventas</th>
+<th>Presupuesto en desarrollo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red Dead Redemption</td>
+<td>45 millones</td>
+<td>119 millones</td>
+</tr>
+<tr>
+<td>Shadow of the Tomb Raider</td>
+<td>4 millones</td>
+<td>113 millones</td>
+</tr>
+<tr>
+<td>Grand Theft Auto IV</td>
+<td>13 millones</td>
+<td>120 millones</td>
+</tr>
+<tr>
+<td>Cyberpunk 2077</td>
+<td>20 millones</td>
+<td>121 millones</td>
+</tr>
+<tr>
+<td>Grand Theft Auto V</td>
+<td>120 millones</td>
+<td>265 millones</td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Info Pokemon</title>
+      <link>https://github.com/oscarlucas22/guide/pokemon/</link>
+      <guid>https://github.com/oscarlucas22/guide/pokemon/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Info Pokemon</source>
+      <content:encoded><![CDATA[<h2 id="torterra"> Torterra</h2>
+<p><strong>Hablaremos del pokemon Torterra.</strong></p>
+<p><em><strong>Características:</strong></em></p>
+<p>Especie <code>Continente</code></p>
+<p>Tipo <code>planta</code> <code>tierra</code></p>
+<p>Habilidad <code>Espesura</code></p>
+<p>Hab. oculta <code>Caparazón</code></p>
+<p>Peso <code>310.0 kg</code></p>
+<p>Altura <code>2.2 m</code></p>
+<p><img src="./../images/torterra.jpg" alt="Imagen"></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Introducción a la página</title>
+      <link>https://github.com/oscarlucas22/intro/</link>
+      <guid>https://github.com/oscarlucas22/intro/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Introducción a la página</source>
+      <content:encoded><![CDATA[<h1 id="introduccion-a-la-pagina"> Introducción a la página</h1>
+<p>En esta página podras encontrar mucha variedad de cosas.</p>
+<ul>
+<li>Definiciones de sistemas operativos</li>
+<li>Información de pokemon</li>
+<li>Información de juegos</li>
+</ul>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

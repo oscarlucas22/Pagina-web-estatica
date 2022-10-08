@@ -1,0 +1,24 @@
+{
+  "name": "vuepress_web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:build": "vuepress build .",
+    "dev:clean-dev": "vuepress dev . --no-cache",
+    "docs:dev": "vuepress dev .",
+    "docs:eject-theme": "vuepress eject-hope .",
+    "start": "vuepress dev .",
+    "serve": "vuepress dev .",
+    "build": "vuepress build .",
+    "deploy": "sh ./deploy.sh",
+    "docs:deploy": "sh ./deploy.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.9.7"
+  }
+}

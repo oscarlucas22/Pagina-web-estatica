@@ -1,0 +1,13 @@
+import Vue from "vue";
+import type { NavBarConfigItem } from "@theme/utils/navbar";
+declare const _default: import("vue/types/vue").ExtendedVue<Vue, {
+    open: boolean;
+}, {
+    setOpen(value: boolean): void;
+    isLastItemOfArray(item: NavBarConfigItem, array: NavBarConfigItem[]): boolean;
+}, {
+    dropdownAriaLabel: string;
+}, {
+    item: NavBarConfigItem;
+}>;
+export default _default;

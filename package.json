@@ -1,0 +1,16 @@
+{
+  "name": "vuepress_web",
+  "version": "1.0.0",
+  "description": "Un sitio web",
+  "license": "MIT",
+  "scripts": {
+    "docs:build": "vuepress build vuepress_web",
+    "docs:clean-dev": "vuepress dev vuepress_web --no-cache",
+    "docs:dev": "vuepress dev vuepress_web",
+    "docs:eject-theme": "vuepress eject-hope vuepress_web"
+  },
+  "devDependencies": {
+    "vuepress": "^1.9.7",
+    "vuepress-theme-hope": "^1.30.0"
+  }
+}
