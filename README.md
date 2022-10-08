@@ -1,6 +1,6 @@
 # Pagina-web-estatica
 
-### Despliegue de nuestro sitio webPermalink
+## Despliegue de nuestro sitio web
 
 Una vez generada nuestra página podemos desplegarla en nuestro servidor en producción. Podemos tener un servidor web propio (que administramos nosotros), o utilizar servicios de hosting para implantar nuestras páginas.
 
@@ -12,7 +12,7 @@ Una vez generada nuestra página podemos desplegarla en nuestro servidor en prod
 
 
 
-### Entrega
+## Entrega
 
 1. Selecciona una combinación entre generador de páginas estáticas y servicio donde desplegar la página web. Escribe tu propuesta en redmine, cada propuesta debe ser original.
 2. Configura el generador para cambiar el nombre de tu página, el tema o estilo de la página,… Entrega una captura de pantalla, donde se vea la página web funcionando en local, con las modificaciones realizadas.
@@ -21,4 +21,6 @@ Una vez generada nuestra página podemos desplegarla en nuestro servidor en prod
 5. Realiza un script bash que te permita automatizar la generación de la página (integración continua) y el despliegue automático de la página en el entorno de producción, después de realizar un cambio de la página en el entorno de desarrollo.
 
 
-link página estática: https://lucas-blog.onrender.com
+## link página estática
+
+https://lucas-blog.onrender.com
