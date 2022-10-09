@@ -6,8 +6,8 @@
     <link>https://github.com/oscarlucas22/</link>
     <description>Tu página de confianza</description>
     <language>en-US</language>
-    <pubDate>Sat, 08 Oct 2022 11:58:57 GMT</pubDate>
-    <lastBuildDate>Sat, 08 Oct 2022 11:58:57 GMT</lastBuildDate>
+    <pubDate>Sun, 09 Oct 2022 17:10:54 GMT</pubDate>
+    <lastBuildDate>Sun, 09 Oct 2022 17:10:54 GMT</lastBuildDate>
     <generator>@mr-hope/vuepress-plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Guia</category>
@@ -17,6 +17,7 @@
       <guid>https://github.com/oscarlucas22/guide/</guid>
       <source url="https://github.com/oscarlucas22/rss.xml">Guides</source>
       <category>Guia</category>
+      <pubDate>Sat, 08 Oct 2022 12:32:22 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="guides"> Guides</h1>
 <ul>
 <li>
@@ -36,6 +37,7 @@
       <link>https://github.com/oscarlucas22/guide/SO/</link>
       <guid>https://github.com/oscarlucas22/guide/SO/</guid>
       <source url="https://github.com/oscarlucas22/rss.xml">Sistemas Operativos</source>
+      <pubDate>Sat, 08 Oct 2022 12:32:22 GMT</pubDate>
       <content:encoded><![CDATA[<h2 id="sistemas-operativos"> Sistemas Operativos</h2>
 <p><strong>Debian</strong>
 <em>Debian es un sistema operativo basado en Linux adecuado para un amplio rango de dispositivos incluyendo portátiles, ordenadores de escritorio y servidores. Proporcionamos una configuración predeterminada razonable para cada paquete así como actualizaciones de seguridad con regularidad durante su ciclo de vida</em></p>
@@ -50,6 +52,7 @@
       <link>https://github.com/oscarlucas22/guide/juegos/</link>
       <guid>https://github.com/oscarlucas22/guide/juegos/</guid>
       <source url="https://github.com/oscarlucas22/rss.xml">Info juegos</source>
+      <pubDate>Sat, 08 Oct 2022 12:32:22 GMT</pubDate>
       <content:encoded><![CDATA[<h2 id="juegos-mas-vendidos-en-julio-2022"> Juegos más vendidos en julio 2022</h2>
 <p><strong>PS5</strong></p>
 <ol>
@@ -147,6 +150,7 @@
       <link>https://github.com/oscarlucas22/guide/pokemon/</link>
       <guid>https://github.com/oscarlucas22/guide/pokemon/</guid>
       <source url="https://github.com/oscarlucas22/rss.xml">Info Pokemon</source>
+      <pubDate>Sat, 08 Oct 2022 12:32:22 GMT</pubDate>
       <content:encoded><![CDATA[<h2 id="torterra"> Torterra</h2>
 <p><strong>Hablaremos del pokemon Torterra.</strong></p>
 <p><em><strong>Características:</strong></em></p>
@@ -164,6 +168,7 @@
       <link>https://github.com/oscarlucas22/intro/</link>
       <guid>https://github.com/oscarlucas22/intro/</guid>
       <source url="https://github.com/oscarlucas22/rss.xml">Introducción a la página</source>
+      <pubDate>Sat, 08 Oct 2022 12:32:22 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="introduccion-a-la-pagina"> Introducción a la página</h1>
 <p>En esta página podras encontrar mucha variedad de cosas.</p>
 <ul>
