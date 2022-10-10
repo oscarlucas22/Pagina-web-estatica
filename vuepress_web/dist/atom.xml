@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-10-10T11:10:30.373Z</updated>
+  <updated>2022-10-10T11:20:39.776Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -15,10 +15,28 @@
     <name>Óscar Lucas</name>
   </contributor>
   <entry>
+    <title type="html">Prueba</title>
+    <id>https://github.com/oscarlucas22/guide/prueba/</id>
+    <link href="https://github.com/oscarlucas22/guide/prueba/"/>
+    <updated>2022-10-10T11:10:32.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="prueba-introduccion-a-la-implantacion-de-aplicaciones-web"> Prueba: Introducción a la implantación de aplicaciones web</h2>
+<p>Óscar Lucas Leo</p>
+<p><img src="./../images/private.png" alt="Imagen"></p>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <published>2022-10-10T11:10:32.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
     <title type="html">Guides</title>
     <id>https://github.com/oscarlucas22/guide/</id>
     <link href="https://github.com/oscarlucas22/guide/"/>
-    <updated>2022-10-08T12:32:22.000Z</updated>
+    <updated>2022-10-10T11:10:32.000Z</updated>
     <content type="html"><![CDATA[<h1 id="guides"> Guides</h1>
 <ul>
 <li>
@@ -217,23 +235,6 @@
       <name>Óscar Lucas</name>
     </contributor>
     <published>2022-10-08T12:32:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Prueba</title>
-    <id>https://github.com/oscarlucas22/guide/prueba/</id>
-    <link href="https://github.com/oscarlucas22/guide/prueba/"/>
-    <updated>2022-10-10T11:10:30.398Z</updated>
-    <content type="html"><![CDATA[<h2 id="prueba-introduccion-a-la-implantacion-de-aplicaciones-web"> Prueba: Introducción a la implantación de aplicaciones web</h2>
-<p>Óscar Lucas Leo</p>
-<p><img src="./../images/private.png" alt="Imagen"></p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
 </feed>
