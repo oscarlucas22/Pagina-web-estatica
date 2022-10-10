@@ -10,3 +10,5 @@ category: Guia
 - [Info de juegos](juegos.md)
 
 - [Info de pokemon](pokemon.md)
+
+- [Prueba](prueba.md)
