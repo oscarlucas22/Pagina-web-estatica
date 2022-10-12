@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-10-12T11:41:01.881Z</updated>
+  <updated>2022-10-12T11:46:18.938Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -15,30 +15,10 @@
     <name>Óscar Lucas</name>
   </contributor>
   <entry>
-    <title type="html">Guía</title>
-    <id>https://github.com/oscarlucas22/guide/</id>
-    <link href="https://github.com/oscarlucas22/guide/"/>
-    <updated>2022-10-10T11:10:32.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="guia"> Guía</h1>
-<ul>
-<li><a href="./guiaSAD.html">Seguridad Infotmática</a></li>
-</ul>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <category term="Guia" scheme=""/>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-08T12:32:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
     <title type="html">¿Qué diferencia hay entre exploit, vulnerabilidad y payload?</title>
     <id>https://github.com/oscarlucas22/guide/diferencias/</id>
     <link href="https://github.com/oscarlucas22/guide/diferencias/"/>
-    <updated>2022-10-12T11:41:01.903Z</updated>
+    <updated>2022-10-12T11:41:04.000Z</updated>
     <content type="html"><![CDATA[<h1 id="¿que-diferencia-hay-entre-exploit-vulnerabilidad-y-payload"> ¿Qué diferencia hay entre exploit, vulnerabilidad y payload?</h1>
 <p><img src="https://img.freepik.com/vector-premium/banner-tecnologia-digital-seguridad-abstracta_43778-429.jpg?w=900" alt="Banner"></p>
 <p>En seguridad informática es muy habitual confundir estos tres conceptos, y por ello vamos a ver que es un exploit, una vulnerabilidad y un payload. Un exploit tiene como objetivo comprometer, romper y explotar vulnerabilidades de los sistemas.</p>
@@ -127,16 +107,17 @@ Son controles de seguridad que se configuran incorrectamente o se dejan inseguro
     <contributor>
       <name>Óscar Lucas</name>
     </contributor>
+    <published>2022-10-12T11:41:04.000Z</published>
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
   <entry>
     <title type="html">Guía SAD</title>
     <id>https://github.com/oscarlucas22/guide/guiaSAD/</id>
     <link href="https://github.com/oscarlucas22/guide/guiaSAD/"/>
-    <updated>2022-10-12T11:41:01.904Z</updated>
+    <updated>2022-10-12T11:41:04.000Z</updated>
     <content type="html"><![CDATA[<h1 id="guia-sad"> Guía SAD</h1>
 <ul>
-<li><a href="./diferencias.html">Diferencia hay entre exploit, vulnerabilidad y payload</a></li>
+<li><a href="./diferencias.html">Diferencia entre exploit, vulnerabilidad y payload</a></li>
 </ul>
 ]]></content>
     <author>
@@ -146,6 +127,27 @@ Son controles de seguridad que se configuran incorrectamente o se dejan inseguro
     <contributor>
       <name>Óscar Lucas</name>
     </contributor>
+    <published>2022-10-12T11:41:04.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">Guía</title>
+    <id>https://github.com/oscarlucas22/guide/</id>
+    <link href="https://github.com/oscarlucas22/guide/"/>
+    <updated>2022-10-12T11:41:04.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="guia"> Guía</h1>
+<ul>
+<li><a href="./guiaSAD.html">Seguridad Infotmática</a></li>
+</ul>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <category term="Guia" scheme=""/>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <published>2022-10-08T12:32:22.000Z</published>
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
 </feed>
