@@ -3,7 +3,7 @@ blog: true
 home: true
 icon: home
 title: Blog Home
-heroImage: /L.png
+heroImage: /rosquilla.png
 heroText: LucasBlog
 tagline: You can put your slogan here
 heroFullScreen: true

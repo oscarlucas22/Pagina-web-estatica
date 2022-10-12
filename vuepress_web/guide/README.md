@@ -3,12 +3,6 @@ icon: creative
 category: Guia
 ---
 
-# Guides
+# Guía
 
-- [Sistemas Operativos](SO.md)
-
-- [Info de juegos](juegos.md)
-
-- [Info de pokemon](pokemon.md)
-
-- [Prueba](prueba.md)
+- [Seguridad Infotmática](guiaSAD.md)

@@ -16,7 +16,7 @@ export default hope.config({
     nav: [
       { text: "Blog Home", link: "/", icon: "home" },
       {
-        text: "Guide",
+        text: "Guía",
         icon: "creative",
         link: "/guide/",
       },
