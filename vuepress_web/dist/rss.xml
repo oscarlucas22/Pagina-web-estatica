@@ -6,11 +6,41 @@
     <link>https://github.com/oscarlucas22/</link>
     <description>Tu página de confianza</description>
     <language>en-US</language>
-    <pubDate>Wed, 12 Oct 2022 11:46:18 GMT</pubDate>
-    <lastBuildDate>Wed, 12 Oct 2022 11:46:18 GMT</lastBuildDate>
+    <pubDate>Thu, 13 Oct 2022 20:49:20 GMT</pubDate>
+    <lastBuildDate>Thu, 13 Oct 2022 20:49:20 GMT</lastBuildDate>
     <generator>@mr-hope/vuepress-plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Guia</category>
+    <item>
+      <title>Guía SAD</title>
+      <link>https://github.com/oscarlucas22/guide/guiaSAD/</link>
+      <guid>https://github.com/oscarlucas22/guide/guiaSAD/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Guía SAD</source>
+      <category>Guia</category>
+      <pubDate>Wed, 12 Oct 2022 11:41:04 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="guia-sad"> Guía SAD</h1>
+<ul>
+<li>
+<p><a href="./diferencias.html">Diferencia entre exploit, vulnerabilidad y payload</a></p>
+</li>
+<li>
+<p><a href="./instalacion.html">Instalación Nessus</a></p>
+</li>
+<li>
+<p><a href="./configuracion.html">Configuración inicial y uso de Nessus</a></p>
+</li>
+<li>
+<p><a href="./monitorizacion.html">Monitorización continua de Nessus</a></p>
+</li>
+<li>
+<p><a href="./notificaciones.html">Alertas correo en Nessus</a></p>
+</li>
+<li>
+<p><a href="./analisis.html">Análisis de Vulnerabilidades Nessus</a></p>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
     <item>
       <title>¿Qué diferencia hay entre exploit, vulnerabilidad y payload?</title>
       <link>https://github.com/oscarlucas22/guide/diferencias/</link>
@@ -102,19 +132,6 @@ Son controles de seguridad que se configuran incorrectamente o se dejan inseguro
       <enclosure url="https://img.freepik.com/vector-premium/banner-tecnologia-digital-seguridad-abstracta_43778-429.jpg?w=900" type="image/"/>
     </item>
     <item>
-      <title>Guía SAD</title>
-      <link>https://github.com/oscarlucas22/guide/guiaSAD/</link>
-      <guid>https://github.com/oscarlucas22/guide/guiaSAD/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">Guía SAD</source>
-      <category>Guia</category>
-      <pubDate>Wed, 12 Oct 2022 11:41:04 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="guia-sad"> Guía SAD</h1>
-<ul>
-<li><a href="./diferencias.html">Diferencia entre exploit, vulnerabilidad y payload</a></li>
-</ul>
-]]></content:encoded>
-    </item>
-    <item>
       <title>Guía</title>
       <link>https://github.com/oscarlucas22/guide/</link>
       <guid>https://github.com/oscarlucas22/guide/</guid>
@@ -123,8 +140,302 @@ Son controles de seguridad que se configuran incorrectamente o se dejan inseguro
       <pubDate>Sat, 08 Oct 2022 12:32:22 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="guia"> Guía</h1>
 <ul>
-<li><a href="./guiaSAD.html">Seguridad Infotmática</a></li>
+<li>
+<p><a href="./guiaSAD.html">Seguridad Infotmática</a></p>
+</li>
+<li>
+<p><a href="./makefile.html">Compilación de un programa en C utilizando un Mekafile</a></p>
+</li>
 </ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Análisis de Vulnerabilidades Nessus</title>
+      <link>https://github.com/oscarlucas22/guide/analisis/</link>
+      <guid>https://github.com/oscarlucas22/guide/analisis/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Análisis de Vulnerabilidades Nessus</source>
+      <content:encoded><![CDATA[<h1 id="analisis-de-vulnerabilidades-nessus"> Análisis de Vulnerabilidades Nessus</h1>
+<p>Este es el paso que debemos completar antes de hacer la parte de explotación. Pero antes debemos saber que es lo que tenemos que explotar para no estar lanzando códigos maliciosos a lo loco.</p>
+<p>Un análisis de vulnerabilidad nos va ha permitir identificar cuales servicios de los cuales nosotros ya enumeramos, son vulnerables a algún tipo de ataque.</p>
+<p>En primero lugar haremos un escaneo si no tenemos ninguno, y lo lanzaremos. Cuando esto concluya podemos observar las diferentes categorías de las vulnerabilidades.</p>
+<p>Aqui podemos observar como un resumen de las cantidades de vulnerabilidades dependiendo del nivel que encontremos</p>
+<p><img src="./../images/SAD/1.png" alt="image"></p>
+<p><strong>Nota:</strong> Esto es bueno que sea revisado ya que una vulnerabilidad de información por ejemplo puede ayudar a comprometer un equipo porque puede obtener un cierto dato y posiblemente sirva para atacar vulnerabilidades mayores o simplemente para descubrir elementos que me permitan encontrar fallos dentro este sistema, aplicaciones que estén corriendo...</p>
+<p>Para ver los detaller pincharemos en &quot;Vulnerabilities&quot;, y aqui empieza ya cada uno de los detalles dependiendo de su naturaleza</p>
+<p><img src="./../images/SAD/2.png" alt="image"></p>
+<p>Podemos ir viendo cada uno:</p>
+<p><img src="./../images/SAD/3.png" alt="image"></p>
+<p>Como vemos nos da una pequeña descripción de cual es la vulnerabilidad, una solición, ciertas referencias e información relevante a CVE que es la vulnerabilidad que fue descubierta y publicada en algún momento</p>
+<p>Este tipo de herramientas son útiles porque nos ayudan a no solamente entender cual es el problema sino tambien a aportarte una posible remediación</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Configuración inicial y uso de Nessus</title>
+      <link>https://github.com/oscarlucas22/guide/configuracion/</link>
+      <guid>https://github.com/oscarlucas22/guide/configuracion/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Configuración inicial y uso de Nessus</source>
+      <content:encoded><![CDATA[<h1 id="configuracion-inicial-y-uso-de-nessus"> Configuración inicial y uso de Nessus</h1>
+<p><font color="#00FF00"><strong>Paso 1</strong></font> Damos clic en &quot;New Scan&quot; y seleccionamos el tipo de escaneo a usar, como vemos las opciones son variadas:</p>
+<p><img src="./../images/SAD/menu.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 2</strong></font></p>
+<p>Las opciones de escaneo que nos ofrece Nessus son:</p>
+<p><strong>Host Discovery</strong>
+Ejecuta un escaneo sencillo para descubrir hosts activos y puertos abiertos</p>
+<p><strong>Basic Network Scan</strong>
+Hace un análisis completo del sistema necesario para cualquier host seleccionado, es ideal para analizar vulnerabilidades internas</p>
+<p><strong>Advanced Scan</strong>
+Este análisis permite personalizar la configuración del escaneo</p>
+<p><strong>Advanced Dynamic Scan</strong>
+Permite configurar filtros de complementos dinámicos sin tener que hacerlo de forma manual</p>
+<p><strong>Malware Scan</strong>
+Como su nombre lo indica, busca malware en sistemas Windows y Unix</p>
+<p><strong>Mobile Device Scan</strong>
+Permite realizar análisis a dispositivos móviles usando Microsoft Exchange o un MDM</p>
+<p><strong>Web Application Tests</strong>
+Es funcional para buscar vulnerabilidades web publicadas y no publicadas o desconocidas</p>
+<p><strong>Credentialed Patch Audit</strong>
+Ejecuta una auditoría de parches con credenciales</p>
+<p><strong>Intel AMT Security Bypass</strong>
+Se encarga de realizar comprobaciones remotas y locales para CVE-2017-5689</p>
+<p><strong>Spectre and Meltdown</strong>
+Se encarga de llevar a cabo verificaciones remotas y locales para CVE-2017-5753, CVE-2017-5715 y CVE-2017-5754</p>
+<p><strong>WannaCry Ransomeware</strong>
+Busca el famoso ransomware WannaCry</p>
+<p><strong>Ripple20 Remote Scan</strong>
+Ubica equipos que ejecutan la pila Treck en la red</p>
+<p><strong>Zerologon Remote Scan</strong>
+Detecta la vulnerabilidad de elevación de privilegios (Zerologon) propia de Microsoft Netlogon</p>
+<p><strong>Solarigate</strong>
+Permite encontrar vulnerabilidades de SolarWinds Solorigate usando comprobaciones remotas y locales</p>
+<p><strong>ProxyLogon</strong>
+MS Exchange: ejecuta comprobaciones remotas y locales para detectar vulnerabilidades de Microsoft Exchange Server</p>
+<p><strong>PrintNightmare</strong>
+Hace análisis y verificaciones locales para CVE-2021-34527, es una vulnerabilidad PrintNightmare Windows Print Spooler</p>
+<p><strong>Active Directory Starter Scan</strong>
+Busca configuraciones incorrectas en Active Directory</p>
+<p><strong>Log4Shell</strong>
+Puede detectar la vulnerabilidad Log4Shell en Apache Log4j</p>
+<p><strong>Compliance</strong>
+Hace una auditoría de la infraestructura de la nube y audita la configuración de servicios en la nube de terceros</p>
+<p><strong>Internal PCI Network Scan</strong>
+Lleva a cabo un análisis de vulnerabilidad PCI DSS interno</p>
+<p><strong>MDM Config Audit</strong>
+Audita la configuración de los administradores de dispositivos móviles MDM</p>
+<p><strong>Offline Config Audit</strong>
+Hace una auditoria de la configuración de los dispositivos de red locales</p>
+<p><strong>Policy Compliance Auditing</strong>
+Lleva a cabo una auditoria de las configuraciones del sistema tomando como base una línea de base existente</p>
+<p><strong>SCAP and OVAL Auditing</strong>
+Analiza sistemas de auditoría a través de definiciones SCAP y OVAL</p>
+<p>Podemos ver como las opciones son variadas y funcionales.</p>
+<p>Damos clic en &quot;Basic Network Scan&quot; para un escaneo básico e ingresamos los detalles del escaneo con la IP objetivo:</p>
+<p><img src="./../images/SAD/paso2.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 3</strong></font> Damos clic en el icono &quot;Launch&quot; para iniciar el escaneo en el equipo de destino:</p>
+<p><img src="./../images/SAD/paso3.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 4</strong></font> Esperamos que el escaneo sea realizado, al finalizar pulsamos sobre el objetivo para ver las vulnerabilidades encontradas:</p>
+<p><img src="./../images/SAD/paso4.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 5</strong></font> Cada una estará dividida por colores en base a su nivel de riesgo indicando la cantidad y al lado podemos ver una representación de estas, damos clic sobre alguna sección para ver más específicamente las vulnerabilidades detectadas:</p>
+<p><img src="./../images/SAD/paso5.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 6</strong></font> Es posible ver un resumen de todas las vulnerabilidades de ese tipo y damos clic en algún elemento para tener acceso a detalles más completos:</p>
+<p><img src="./../images/SAD/paso6.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 7</strong></font> Es posible guardar un reporte del análisis ejecutado, para ello damos clic en &quot;Report&quot;:</p>
+<p><img src="./../images/SAD/paso7.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 8</strong></font> Se abrirá la siguiente ventana donde seleccionamos el formato y detalles a usar:</p>
+<p><img src="./../images/SAD/paso8.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 9</strong></font> Damos clic en &quot;Generate Report&quot; y después de creado lo abrimos o guardamos:</p>
+<p><img src="./../images/SAD/paso9.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 10</strong></font> Este reporte contendrá todo el resultado generado por Nessus y navegamos por las diferentes paginas para ver los resultados:</p>
+<p><img src="./../images/SAD/paso10.png" alt="image"></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Compilación de un programa en C utilizando un Mekafile</title>
+      <link>https://github.com/oscarlucas22/guide/makefile/</link>
+      <guid>https://github.com/oscarlucas22/guide/makefile/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Compilación de un programa en C utilizando un Mekafile</source>
+      <content:encoded><![CDATA[<h1 id="compilacion-de-un-programa-en-c-utilizando-un-mekafile"> Compilación de un programa en C utilizando un Mekafile</h1>
+<p>Aqui dejo la url de la web de <a href="https://packages.debian.org/bullseye/ffmpeg" target="_blank" rel="noopener noreferrer">Debian<i>Content not supported</i></a> donde se encuentra la compilación del paquete ffmpeg.</p>
+<p><font color="#FFFF00"><strong>Paso 1</strong></font> Descarga del código fuente</p>
+<p>Primero instalaremos dpkg-dev</p>
+<div><pre><code>sudo apt install dpkg-dev
+</code></pre>
+</div><p>Despues instalaremos ffmpeg con el comando <code>apt source</code></p>
+<div><pre><code>apt source ffmpeg
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 2</strong></font> Instalación dependencias</p>
+<p>Para instalar las dependencias utilizaremos el comando <code>apt build-dep</code></p>
+<div><pre><code>sudo apt build-dep ffmpeg
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 3</strong></font> Compilación del paquete</p>
+<p>Para poder compilar el paquete nos moveremos a la carpeta descomprimida</p>
+<div><pre><code>cd ffmpeg-4.3.4/
+
+./configure
+</code></pre>
+</div><p><img src="./../images/ASO/ls.png" alt="image"></p>
+<p>Y despues de esto ejecutaremos el comando <code>make</code></p>
+<div><pre><code>make
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 4</strong></font> Instalación del paquete</p>
+<p>Una vez ya este compilado ejecutaremos:</p>
+<div><pre><code>sudo make install
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 5</strong></font> Comprobación de instalación</p>
+<p>Para comprobar que se ha instalado ejecutamos:</p>
+<div><pre><code>ffmpeg -version
+</code></pre>
+</div><p><img src="./../images/ASO/version.png" alt="image"></p>
+<p><font color="#FFFF00"><strong>Paso 6</strong></font> Desinstalación del paquete</p>
+<p>Para poder desinstalar el paquete debemos ejecutar:</p>
+<div><pre><code>cd ffmpeg-4.3.4
+
+sudo make uninstall
+</code></pre>
+</div><p><img src="./../images/ASO/uninstall.png" alt="image"></p>
+<p>Y con esto ya estaría desinstalado</p>
+<h2 id="creacion-de-un-paquet-deb"> Creación de un paquet .deb</h2>
+<p>Para crear un paquete .deb sigue los siguientes pasos</p>
+<div><pre><code>sudo apt update
+sudo apt install dpkg-dev
+apt source ffmpeg
+sudo apt build-dep ffmpeg
+</code></pre>
+</div><p>Despues de esto nos moveremos a la carpeta descomprimida</p>
+<div><pre><code>cd ffmpeg-4.3.4
+dpkg-buildpackage -rfakeroot -b -uc -us
+</code></pre>
+</div><p>Funciones de <code>dpkg-buildpackage</code>:</p>
+<ul>
+<li><strong>-rfakeroot</strong>: Crea un entorno fakeroot que simula privilegios de root (para evitar problemas de propiedad y permisos).</li>
+<li><strong>-b</strong>: Construye el binario.</li>
+<li><strong>-uc</strong>: No firma el changelog.</li>
+<li><strong>-us</strong>: No firma el source.</li>
+</ul>
+<p>Comprobamos que el archivo .deb se ha generado en la carpeta superior</p>
+<div><pre><code>ls .. | grep &quot;^ffmpeg.*deb$&quot;
+</code></pre>
+</div><p>Para instalarlo utilizaremos <code>dpkg</code>, pero también podemos utilizar <code>apt install</code></p>
+<p>Antes de instalarlo debemos instalar las dependencias que necesita (libavdevice58)</p>
+<div><pre><code>sudo apt install libavdevice58
+</code></pre>
+</div><p>Y despues de esto ya podriamos instalarlo</p>
+<div><pre><code>cd ..
+
+sudo dpkg -i ffmpeg_4.3.4-0+deb11u1_amd64.deb
+</code></pre>
+</div>]]></content:encoded>
+    </item>
+    <item>
+      <title>Instalación Nessus</title>
+      <link>https://github.com/oscarlucas22/guide/instalacion/</link>
+      <guid>https://github.com/oscarlucas22/guide/instalacion/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Instalación Nessus</source>
+      <content:encoded><![CDATA[<h1 id="instalacion-nessus"> Instalación Nessus</h1>
+<h2 id="instalacion-en-debian-11"> Instalación en Debian 11</h2>
+<p><font color="#00FF00"><strong>Paso 1</strong></font> Descargue el paquete Deb de Nessus Scanner</p>
+<p>Tenable ofrece el escáner Nessus a través del binario Deb, que el usuario debe descargar de su sitio web oficial para instalarlo. Por lo tanto, visite la página de descarga de Nessus y desplácese hasta encontrar el sistema operativo Debian Linux y descárguelo.</p>
+<p><a href="https://www.tenable.com/downloads/nessus?loginAttempted=true" target="_blank" rel="noopener noreferrer">Página de descarga<i>Content not supported</i></a></p>
+<p><font color="#00FF00"><strong>Paso 2</strong></font> Comando para instalar Nessus en Debian 11</p>
+<p>Ya hemos descargado el binario de Debian para configurar Nessus en Linux, ahora todo lo que descarguemos del navegador va a la carpeta Descargas, así que cambie a eso primero.</p>
+<div><pre><code>cd Descargas
+</code></pre>
+</div><p>Ahora, use el paquete APT para instalar el archivo.</p>
+<div><pre><code>sudo apt install ./Nessus-10.3.0-debian9_amd64.deb
+</code></pre>
+</div><p><font color="#00FF00"><strong>Paso 3</strong></font> Habilitar e iniciar los servicios del escáner</p>
+<p>Una vez que se complete la instalación, habilitemos su servicio para que se ejecute automáticamente con el arranque de Debian 11 y también comencemos lo mismo para la sesión actual.</p>
+<div><pre><code>sudo systemctl enable --now nessusd
+</code></pre>
+</div><p>Para comprobar el estado, escriba</p>
+<div><pre><code>sudo systemctl status nessusd
+</code></pre>
+</div><p><img src="./../images/SAD/nessusd.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 4</strong></font> Permitir el puerto de Nessus a través del firewall</p>
+<p>Nessus se ejecuta en el puerto número 8834, por lo tanto, para acceder a su interfaz web de forma remota mediante el navegador, debemos abrir este puerto en nuestro firewall Debian 11.</p>
+<div><pre><code>sudo apt-get install ufw
+sudo ufw enable
+sudo ufw allow 8834
+</code></pre>
+</div><p><font color="#00FF00"><strong>Paso 5</strong></font> Acceder a la interfaz web</p>
+<p>Ahora, abra un navegador en un sistema que pueda acceder a la dirección IP del servidor donde instaló la instancia del escáner Nessus. Y señale eso junto con un número de puerto.</p>
+<div><pre><code>https://server-ip-address:8834
+</code></pre>
+</div><p>Reemplace la dirección IP del servidor con la IP real de su Debian 11.</p>
+<p><strong>Nota:</strong> Si obtiene un error de certificado SSL, haga clic en el botón Avanzado y continúe de manera insegura.</p>
+<p><font color="#00FF00"><strong>Paso 6</strong></font> Elija cómo desea implementar Nessus: configuración en Debian 11</p>
+<p>La página web inicial de Nessus le pedirá que seleccione el producto que desea instalar. Aquí, la primera opción de producto que obtiene es de uso gratuito, mientras que el resto se paga, pero está disponible con un período de prueba.</p>
+<ul>
+<li><strong>Nessus Essentials:</strong> la versión gratuita para educadores, estudiantes y aficionados</li>
+<li><strong>Nessus Professional:</strong> la solución de evaluación de vulnerabilidades estándar de la industria de los profesionales de la seguridad.</li>
+<li><strong>Nessus Manager:</strong> la solución empresarial para administrar Nessus Agent a escala.</li>
+<li><strong>Escáner administrado:</strong> vincule su escáner a otra solución de Tenable, como Tenable.io y Tenable. Carolina del Sur.</li>
+</ul>
+<p><font color="#00FF00"><strong>Paso 7</strong></font> Obtenga el código de activación</p>
+<p>Ingrese su dirección de correo electrónico y otros detalles para obtener el código de activación, de modo que podamos activar el producto para usarlo más. La mejor manera de obtener el código es visitar la página de registro, registrarse para obtener una versión profesional o gratuita para obtener una de activación.</p>
+<p>Después de eso, haga clic en el botón Omitir y agregue el código que recibió en su correo electrónico.</p>
+<p><img src="https://www.how2shout.com/linux/wp-content/uploads/2021/07/Get-the-NEssus-activation-code.png" alt="image"></p>
+<p>Una forma alternativa de activar Nessus mediante la línea de comandos (<strong>opcional</strong>).</p>
+<div><pre><code>sudo -i
+export PATH=$PATH:/opt/nessus/sbin/ 
+source ~/.bashrc
+service nessusd stop 
+/opt/nessus/sbin/nessuscli fix --reset 
+/opt/nessus/sbin/nessuscli fetch --register ACTIVATION-CODE-HERE 
+/opt/nessus/sbin/nessusd -R 
+service nessusd start
+</code></pre>
+</div><p><font color="#00FF00"><strong>Paso 8</strong></font> Crear usuario</p>
+<p>Cuando el sistema le pida que cree un usuario Nessus Admin, créelo configurando un nombre de usuario y la contraseña correspondiente. Después de eso, tendrá el Nessus funcionando en su sistema.</p>
+<p><img src="./../images/SAD/Nessus-user.png" alt="image"></p>
+<p><font color="#00FF00"><strong>Paso 9</strong></font> Agregue el comando NessusCLI a la ruta del sistema</p>
+<p>De forma predeterminada, para acceder a la línea de comandos de Nessus, debemos definir la ruta completa para la herramienta nessuscli en la terminal de nuestro sistema Debian 11. Para eliminar esto, solo necesitamos agregar su carpeta de herramientas CLI a la ruta de nuestro sistema. Conozca más sobre su línea de comando en la <a href="https://docs.tenable.com/nessus/Content/NessusCLI.htm" target="_blank" rel="noopener noreferrer">página oficial de Doc<i>Content not supported</i></a>.</p>
+<p>Ejecute el siguiente comando en la terminal Debian 11:</p>
+<div><pre><code>sudo -i
+export PATH=$PATH:/opt/nessus/sbin/
+source ~/.bashrc
+
+nessuscli help
+</code></pre>
+</div><p><font color="#00FF00"><strong>Paso 10</strong></font> Desinstale Nessus de Debian 11 o 10 (<strong>opcional</strong>)</p>
+<p>Si ya no desea el escáner de vulnerabilidades Nessus en su Debian 11 o 10, use el comando bewloc para eliminarlo.</p>
+<div><pre><code>sudo systemctl stop nessusd
+
+sudo apt remove nessus </code></pre>
+</div>]]></content:encoded>
+    </item>
+    <item>
+      <title>Monitorización continua de Nessus</title>
+      <link>https://github.com/oscarlucas22/guide/monitorizacion/</link>
+      <guid>https://github.com/oscarlucas22/guide/monitorizacion/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Monitorización continua de Nessus</source>
+      <content:encoded><![CDATA[<h1 id="monitorizacion-continua-de-nessus"> Monitorización continua de Nessus</h1>
+<p><a href="https://www.tenable.com/" target="_blank" rel="noopener noreferrer">Tenable<i>Content not supported</i></a> ha publicado una nueva versión del escáner de vulnerabilidades Nessus. La versión actual es la 5.2 y posee una nueva funcionalidad llamada <a href="https://www.tenable.com/blog/continuous-monitoring-at-home-with-nessus" target="_blank" rel="noopener noreferrer">“Continuous Monitoring”<i>Content not supported</i></a> que permite a los usuarios con licenciamiento “HomeFeed” realizar un monitoreo continuo sobre sus redes.</p>
+<p>Nessus es una herramienta desarrollada para realizar escaneos de seguridad sobre diversos sistemas operativos y aplicaciones. Uno de sus grandes fuertes son los plugins desarrollados para evaluar vulnerabilidades específicas y auditar el nivel de seguridad de los sistemas. La nueva funcionalidad permite a aquellos usuarios registrados con HomeFeed, programar escaneos de seguridad para que se realicen sobre la red hogareña. De esta manera, ahora es posible enviar a través de correo electrónico y de forma periódica los informes generados con esta herramienta.</p>
+<p>Anteriormente, el monitoreo continuo estaba limitado solo a la versión de <a href="https://store.tenable.com/?main_page=index&amp;cPath=1%C2%A0" target="_blank" rel="noopener noreferrer">ProfessionalFeed<i>Content not supported</i></a> y <a href="https://www.tenable.com/products/tenable-sc" target="_blank" rel="noopener noreferrer">SecurityCenter<i>Content not supported</i></a>. Otro punto interesante, es que la nueva característica permite filtrar los informes con aquellos datos que el usuario desea obtener. Un ejemplo de esto es el envío del resumen de las aplicaciones y servicios que tengan más impacto en la red del usuario y de esa manera focalizar el informe sólo sobre los parámetros de interés para el usuario. Asimismo, el correo recibido contiene un resumen con la información más crítica:</p>
+<p><img src="https://www.welivesecurity.com/wp-content/uploads/es-la/2013/06/Resume-informe-correo-electrónico.png" alt="image"></p>
+<p>Además, es posible configurar otro tipo de parámetros tales como informar cuando un sistema se encuentra sin los últimos parches aplicados o notificar cuando ciertos sistemas posean vulnerabilidades críticas o explotables, entre otras alternativas. Otra característica de la nueva versión de Nessus es la amplia gama de parámetros que pueden establecerse a la hora de configurar un nuevo escaneo programado. En la siguiente captura pueden visualizarse alguno de ellos:</p>
+<p><img src="https://www.welivesecurity.com/wp-content/uploads/es-la/2013/06/Parámetros-establecidos.png" alt="image"></p>
+<p>Los resultados pueden agruparse por sistema objetivo (host) o criticidad en las vulnerabilidades encontradas, similar a las versiones anteriores. Posee una visualización muy cómoda, resaltando con diferentes colores las vulnerabilidades de criticad alta, media, baja e informacional:</p>
+<p><img src="https://www.welivesecurity.com/wp-content/uploads/es-la/2013/06/Resultados-del-scanning.png" alt="image"></p>
+<p>Finalmente, la opción para exportar los informes en diferentes formatos complementa la herramienta. Entre los formatos más populares se encuentran HTML, PDF y CSV:</p>
+<p><img src="https://www.welivesecurity.com/wp-content/uploads/es-la/2013/06/Exportar-resultados.png" alt="image"></p>
+<p>Además, la interfaz gráfica migró a HTML5, lo que brinda fluidez y diferencias a nivel de estética. Claramente la evolución de este tipo de herramientas permite realizar análisis más puntuales sobre los sistemas que se desea evaluar su estado de seguridad. Asimismo, permite ser más proactivo a la hora de <a href="https://www.welivesecurity.com/la-es/2012/02/03/eset-security-services-seguridad-gestionarse/" target="_blank" rel="noopener noreferrer">gestionar la seguridad<i>Content not supported</i></a>. Siempre recordamos que debemos recorrer un camino donde se pueda estar preparados para enfrentar eventos adversos y anticiparse a posibles ataques.</p>
+]]></content:encoded>
+      <enclosure url="https://www.welivesecurity.com/wp-content/uploads/es-la/2013/06/Resume-informe-correo-electr%C3%B3nico.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Alertas de correos en Nessus</title>
+      <link>https://github.com/oscarlucas22/guide/notificaciones/</link>
+      <guid>https://github.com/oscarlucas22/guide/notificaciones/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Alertas de correos en Nessus</source>
+      <content:encoded><![CDATA[<h1 id="alertas-de-correos-en-nessus"> Alertas de correos en Nessus</h1>
+<p>En este apartado explicaremos cómo crear notificaciones por correo electrónico en Nessus.</p>
+<p>Una vez haya configurado la configuración del servidor SMTP, puede crear un escaneo o editar un escaneo existente para agregar esas notificaciones.</p>
+<p><img src="./../images/SAD/SMTP.png" alt="image"></p>
+<p>Le daremos a &quot;New Scan&quot; y le daremos a &quot;Basic Network Scan&quot; (si no tenemos escaneado nada) y nos saldrá una opción de &quot;Notifications&quot;</p>
+<p><img src="./../images/SAD/New Scan.png" alt="image"></p>
+<p><img src="./../images/SAD/notifi.png" alt="image"></p>
+<p>Aqui colocaremos el mail al que queremos que nos llegue, luego puede adjuntar un informe en el formato CSV o PDF (tenga en cuenta el tamaño máximo del archivo adjunto), también puede agregar filtros adicionales para varios CD y filtros adicionales. Una vez que se complete el escaneo, recibirá una notificación por correo electrónico de que el escaneo ha terminado junto con el informe adjunto</p>
 ]]></content:encoded>
     </item>
   </channel>
