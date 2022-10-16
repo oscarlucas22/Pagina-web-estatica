@@ -1,4 +1,4 @@
-# Instalación Nessus
+# Instalación Nessus y Conf. Inicial
 
 ## Instalación en Debian 11
 

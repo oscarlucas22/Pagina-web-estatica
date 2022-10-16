@@ -1,4 +1,4 @@
-# Configuración inicial y uso de Nessus
+# Configuración y uso de Nessus
 
 <font color="#00FF00">**Paso 1**</font> Damos clic en "New Scan" y seleccionamos el tipo de escaneo a usar, como vemos las opciones son variadas:
 
