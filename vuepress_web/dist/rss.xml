@@ -6,11 +6,203 @@
     <link>https://github.com/oscarlucas22/</link>
     <description>Tu página de confianza</description>
     <language>en-US</language>
-    <pubDate>Mon, 24 Oct 2022 18:41:07 GMT</pubDate>
-    <lastBuildDate>Mon, 24 Oct 2022 18:41:07 GMT</lastBuildDate>
+    <pubDate>Mon, 24 Oct 2022 18:50:19 GMT</pubDate>
+    <lastBuildDate>Mon, 24 Oct 2022 18:50:19 GMT</lastBuildDate>
     <generator>@mr-hope/vuepress-plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Guia</category>
+    <item>
+      <title>Instalación de MongoDB en Debian 11 Bullseye</title>
+      <link>https://github.com/oscarlucas22/guide/mongo/</link>
+      <guid>https://github.com/oscarlucas22/guide/mongo/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Instalación de MongoDB en Debian 11 Bullseye</source>
+      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h1>
+<p>Para la instalación de MongoDB, el repositorio oficial de MongoDB está disponible para Debian 11 Bullseye, por lo que podemos usar el mismo.</p>
+<ol>
+<li>Agregue el repositorio MongoDB en Debian 11</li>
+</ol>
+<p>Como sabemos, los paquetes de MongoDB no están disponibles para instalar directamente desde el repositorio base de Debian 11, por lo que debemos agregar el oficial que ofrecen los desarrolladores de esta base de datos NoSQL.</p>
+<div><pre><code>echo &quot;deb http://repo.mongodb.org/apt/debian bullseye/mongodb-org/5.0 main&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+</code></pre>
+</div><ol start="2">
+<li>Integrar la clave GPG de MongoDB</li>
+</ol>
+<p>Para asegurarnos de que los paquetes que recibiremos para instalar esta base de datos en nuestro Linux provengan de una fuente auténtica. Agregue la clave firmada GPG por los desarrolladores del servidor de base de datos.</p>
+<div><pre><code>curl -sSL https://www.mongodb.org/static/pgp/server-5.0.asc  -o mongoserver.asc
+</code></pre>
+</div><p>Importamos <em>mongoserver.asc</em></p>
+<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --import ./mongoserver.asc
+</code></pre>
+</div><p>Exportamos <em>mongoserver_key.gpg</em></p>
+<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --export &gt; ./mongoserver_key.gpg
+</code></pre>
+</div><p>Movemos <em>mongoserver_key.gpg</em> a <em>trusted.gpg.d</em></p>
+<div><pre><code>sudo mv mongoserver_key.gpg /etc/apt/trusted.gpg.d/
+</code></pre>
+</div><ol start="3">
+<li>Ejecute la actualización del sistema</li>
+</ol>
+<p>En su terminal de comando Debian 11 o 10, ejecute el comando de actualización del sistema para asegurarse de que todos los paquetes existentes estén actualizados.</p>
+<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+</div><ol start="4">
+<li>Comando para instalar MongoDB en Debian 11 o 10</li>
+</ol>
+<p>Eso es todo. Ya hemos configurado lo que necesitamos para instalar “herramientas de base de datos, mongosh, herramientas adicionales, mongos; servidor de base de datos y shell” en nuestro Debian 11 o 10 Linux.</p>
+<p>Por lo tanto, simplemente ejecute un comando simple:</p>
+<div><pre><code>sudo apt install mongodb-org
+</code></pre>
+</div><ol start="5">
+<li>Iniciar y habilitar el servicio MongoDB</li>
+</ol>
+<p>Una vez completada la instalación, habilitemos y también iniciemos el servicio del servidor de base de datos, para que no necesitemos ejecutarlo una y otra vez con el arranque del sistema.</p>
+<div><pre><code>sudo systemctl enable --now mongod
+</code></pre>
+</div><p>Comprobamos con el comando <em>systemctl</em> si esta activo mongod</p>
+<div><pre><code>sudo systemctl status mongod
+</code></pre>
+</div><p>![image]</p>
+<ol start="6">
+<li>Comprueba la versión instalada</li>
+</ol>
+<p>Para confirmar qué versión está instalada exactamente en su sistema, ejecute:</p>
+<div><pre><code>mongod --version
+</code></pre>
+</div><p>![image]</p>
+<p>Para obtener la línea de comando de mongo, simplemente escriba:</p>
+<div><pre><code>mongo
+</code></pre>
+</div><p>Desinstalar o Eliminar</p>
+<p>Bueno, aquellos que ya no están interesados ​​en MongoDB y no lo necesitan, pueden eliminarlo usando el siguiente comando:</p>
+<div><pre><code>sudo apt remove mongodb-org
+</code></pre>
+</div><p>¡Gracias!</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Instalación de MySQL en Debian 11 Bullseye</title>
+      <link>https://github.com/oscarlucas22/guide/mysql/</link>
+      <guid>https://github.com/oscarlucas22/guide/mysql/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Instalación de MySQL en Debian 11 Bullseye</source>
+      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="instalacion-de-mysql-en-debian-11-bullseye"> Instalación de MySQL en Debian 11 Bullseye</h1>
+<p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener una maquina Debian 11 actualizada</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener un usuario con privilegios de sudo</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener acceso a internet</p>
+<p>Antes de comenzar con la instalción actualizaremos nuestra maquina</p>
+<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+</div><p>E instalamos las herramientas</p>
+<div><pre><code>sudo apt install -y gnupg wget
+</code></pre>
+</div><p>Despues de esto empezaremos ya con la instalación de MySQL.</p>
+<h2 id="configuracion-del-repositorio-de-mysql-para-debian-11-bullseye"> Configuración del repositorio de MySQL para Debian 11 Bullseye</h2>
+<p>Vamos a ver cómo configurar el repositorio oficial de MySQL Server para Debian 11.</p>
+<p>Para no tener que registrarse en la pagina de mysql aqui os dejo el <a href="https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb" target="_blank" rel="noopener noreferrer">enlace de descarga<i>Content not supported</i></a></p>
+<p>Una vez ya con el paquete descargado procedemos con la instalación:</p>
+<div><pre><code>cd Descargas &amp;&amp; sudo dpkg -i mysql-apt-config_0.8.22-1_all.deb
+</code></pre>
+</div><p>Al instalarse este paquete se lanzará un pequeño configurador en modo consola que nos mostrará las características que ofrece por defecto el nuevo repositorio:</p>
+<p><img src="./../images/mysql/3.png" alt="image"></p>
+<p>La primera opción nos muestra la versión de MySQL que se va a instalar, por defecto MySQL Server 8.0, aunque sería posible cambiarla por MySQL Cluster 8.0.</p>
+<p>Por defecto, la segunda opción nos informa de que está activado el repositorio de herramientas y conectores, que es lo deseable, aunque podríamos desactivarlo.</p>
+<p>Y, finalmente, la tercera opción ofrece un repositorio de software en pruebas, experimental, etc. que, con buen criterio, está desactivado inicialmente (aunque se puede activar).</p>
+<p>Para salir del configurador seleccionaremos <em>Ok</em> y el instalador configurará el repositorio con los valores seleccionados.</p>
+<p>Debemos actualizar la información de los repositorios para que se incluyan las nuevas listas de paquetes disponibles:</p>
+<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+</div><h2 id="instalar-mysql-en-debian-11"> Instalar MySQL en Debian 11</h2>
+<p>Ahora comenzaremos con la instalación de MySQL en Debian 11:</p>
+<div><pre><code>sudo apt install -y mysql-server
+</code></pre>
+</div><p>Una vez descargados este paquete y sus dependencias, durante la instalación de los mismos, se nos solicitará la contraseña del usuario administrador root de MySQL:</p>
+<p><img src="./../images/mysql/5.png" alt="image"></p>
+<p>Si dejamos la contraseña en blanco se usará la autenticación por sockets de Unix, es decir, sólo el usuario root de Debian 11 o usuarios privilegiados con sudo podrán conectar como usuario root de MySQL. En cambio, si creamos una contraseña se usará el típico sistema de usuario/contraseña para acceder como root a MySQL Server. Depende de tus necesidades o gustos elegir uno u otro sistema.</p>
+<p>Este instalador también nos advierte de la disponibilidad del nuevo plugin mejorado de autenticación, que tiene la desventaja de no ser compatible con conectores y clientes antiguos:</p>
+<p><img src="./../images/mysql/6.png" alt="image"></p>
+<p>Terminada esta pequeña configuración inicial, la instalación termina creando un nuevo servicio en Debian 11, el servicio mysql.service o simplemente mysql, que queda en ejecución y habilitado para su inicio automático.</p>
+<p>Podemos comprobar en cualquier momento el estado de dicho servicio con el comando <code>systemctl</code>:</p>
+<div><pre><code>systemctl status mysql
+</code></pre>
+</div><p><img src="./../images/mysql/12.png" alt="image"></p>
+<p>También disponemos del cliente de consola mysql que podemos utilizar para conectar al servicio con el usuario root, si elegimos el acceso por sockets de Unix:</p>
+<div><pre><code>sudo mysql
+</code></pre>
+</div><p>O especificando usuario y contraseña:</p>
+<div><pre><code>mysql -u root -p
+</code></pre>
+</div><p><img src="./../images/mysql/8.png" alt="image"></p>
+<h3 id="crear-un-usuario-administrador-propio"> Crear un usuario administrador propio</h3>
+<p>Es posible que necesites un usuario administrador de MySQL Server con acceso mediante contraseña para conectar al servicio desde aplicaciones, gestores, clientes gráficos, conexiones remotas, etc. dejando al usuario root con acceso únicamente local.</p>
+<p>Esto es fácil de hacer desde el cliente mysql, en el que creamos un usuario con contraseña:</p>
+<div><pre><code>&gt; create user lucas identified by 'contraseña'; 
+</code></pre>
+</div><p>Y a continuación aplicamos permisos sobre todas las bases de datos y modificación de permisos de otros usuarios:</p>
+<div><pre><code>&gt; grant all privileges on *.* to lucas with grant option;
+</code></pre>
+</div><p>Refrescamos la tabla de permisos:</p>
+<div><pre><code>&gt; flush privileges;
+</code></pre>
+</div><p>Y cerramos la conexión:</p>
+<div><pre><code>&gt; exit
+</code></pre>
+</div><p><img src="./../images/mysql/10.png" alt="image"></p>
+<p>Y con esto ya tendríamos todo listo.</p>
+<p>Y así podremos acceder a nuestro usuario ya creado</p>
+<p><img src="./../images/mysql/11.png" alt="image"></p>
+<p>¡Gracias!</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Nessus</title>
+      <link>https://github.com/oscarlucas22/guide/nessus/</link>
+      <guid>https://github.com/oscarlucas22/guide/nessus/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Nessus</source>
+      <category>Guia</category>
+      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="nessus"> Nessus</h1>
+<ul>
+<li>
+<p><a href="./instalacion.html">Instalación y configuración inicial Nessus</a></p>
+</li>
+<li>
+<p><a href="./configuracion.html">Configuración y uso de Nessus</a></p>
+</li>
+<li>
+<p><a href="./monitorizacion.html">Monitorización continua de Nessus</a></p>
+</li>
+<li>
+<p><a href="./notificaciones.html">Alertas correo en Nessus</a></p>
+</li>
+<li>
+<p><a href="./analisis.html">Análisis de Vulnerabilidades Nessus</a></p>
+</li>
+<li>
+<p><a href="./parcheo.html">Demo Parcheo</a></p>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Instalación de Oracle en Debian 11 Bullseye</title>
+      <link>https://github.com/oscarlucas22/guide/oracle/</link>
+      <guid>https://github.com/oscarlucas22/guide/oracle/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Instalación de Oracle en Debian 11 Bullseye</source>
+      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="instalacion-de-oracle-en-debian-11-bullseye"> Instalación de Oracle en Debian 11 Bullseye</h1>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Instalación de PostgreSQL en Debian 11 Bullseye</title>
+      <link>https://github.com/oscarlucas22/guide/postgresql/</link>
+      <guid>https://github.com/oscarlucas22/guide/postgresql/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Instalación de PostgreSQL en Debian 11 Bullseye</source>
+      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="instalacion-de-postgresql-en-debian-11-bullseye"> Instalación de PostgreSQL en Debian 11 Bullseye</h1>
+]]></content:encoded>
+    </item>
     <item>
       <title>Hydra en Debian 11</title>
       <link>https://github.com/oscarlucas22/guide/hydra/</link>
@@ -463,193 +655,6 @@ Son controles de seguridad que se configuran incorrectamente o se dejan inseguro
 <p><a href="./mongo.html">Instalación de MongoDB en Debian 11 Bullseye</a></p>
 </li>
 </ul>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Instalación de MongoDB en Debian 11 Bullseye</title>
-      <link>https://github.com/oscarlucas22/guide/mongo/</link>
-      <guid>https://github.com/oscarlucas22/guide/mongo/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">Instalación de MongoDB en Debian 11 Bullseye</source>
-      <content:encoded><![CDATA[<h1 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h1>
-<p>Para la instalación de MongoDB, el repositorio oficial de MongoDB está disponible para Debian 11 Bullseye, por lo que podemos usar el mismo.</p>
-<ol>
-<li>Agregue el repositorio MongoDB en Debian 11</li>
-</ol>
-<p>Como sabemos, los paquetes de MongoDB no están disponibles para instalar directamente desde el repositorio base de Debian 11, por lo que debemos agregar el oficial que ofrecen los desarrolladores de esta base de datos NoSQL.</p>
-<div><pre><code>echo &quot;deb http://repo.mongodb.org/apt/debian bullseye/mongodb-org/5.0 main&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-</code></pre>
-</div><ol start="2">
-<li>Integrar la clave GPG de MongoDB</li>
-</ol>
-<p>Para asegurarnos de que los paquetes que recibiremos para instalar esta base de datos en nuestro Linux provengan de una fuente auténtica. Agregue la clave firmada GPG por los desarrolladores del servidor de base de datos.</p>
-<div><pre><code>curl -sSL https://www.mongodb.org/static/pgp/server-5.0.asc  -o mongoserver.asc
-</code></pre>
-</div><p>Importamos <em>mongoserver.asc</em></p>
-<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --import ./mongoserver.asc
-</code></pre>
-</div><p>Exportamos <em>mongoserver_key.gpg</em></p>
-<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --export &gt; ./mongoserver_key.gpg
-</code></pre>
-</div><p>Movemos <em>mongoserver_key.gpg</em> a <em>trusted.gpg.d</em></p>
-<div><pre><code>sudo mv mongoserver_key.gpg /etc/apt/trusted.gpg.d/
-</code></pre>
-</div><ol start="3">
-<li>Ejecute la actualización del sistema</li>
-</ol>
-<p>En su terminal de comando Debian 11 o 10, ejecute el comando de actualización del sistema para asegurarse de que todos los paquetes existentes estén actualizados.</p>
-<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
-</code></pre>
-</div><ol start="4">
-<li>Comando para instalar MongoDB en Debian 11 o 10</li>
-</ol>
-<p>Eso es todo. Ya hemos configurado lo que necesitamos para instalar “herramientas de base de datos, mongosh, herramientas adicionales, mongos; servidor de base de datos y shell” en nuestro Debian 11 o 10 Linux.</p>
-<p>Por lo tanto, simplemente ejecute un comando simple:</p>
-<div><pre><code>sudo apt install mongodb-org
-</code></pre>
-</div><ol start="5">
-<li>Iniciar y habilitar el servicio MongoDB</li>
-</ol>
-<p>Una vez completada la instalación, habilitemos y también iniciemos el servicio del servidor de base de datos, para que no necesitemos ejecutarlo una y otra vez con el arranque del sistema.</p>
-<div><pre><code>sudo systemctl enable --now mongod
-</code></pre>
-</div><p>Comprobamos con el comando <em>systemctl</em> si esta activo mongod</p>
-<div><pre><code>sudo systemctl status mongod
-</code></pre>
-</div><p>![image]</p>
-<ol start="6">
-<li>Comprueba la versión instalada</li>
-</ol>
-<p>Para confirmar qué versión está instalada exactamente en su sistema, ejecute:</p>
-<div><pre><code>mongod --version
-</code></pre>
-</div><p>![image]</p>
-<p>Para obtener la línea de comando de mongo, simplemente escriba:</p>
-<div><pre><code>mongo
-</code></pre>
-</div><p>Desinstalar o Eliminar</p>
-<p>Bueno, aquellos que ya no están interesados ​​en MongoDB y no lo necesitan, pueden eliminarlo usando el siguiente comando:</p>
-<div><pre><code>sudo apt remove mongodb-org
-</code></pre>
-</div><p>¡Gracias!</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Instalación de MySQL en Debian 11 Bullseye</title>
-      <link>https://github.com/oscarlucas22/guide/mysql/</link>
-      <guid>https://github.com/oscarlucas22/guide/mysql/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">Instalación de MySQL en Debian 11 Bullseye</source>
-      <content:encoded><![CDATA[<h1 id="instalacion-de-mysql-en-debian-11-bullseye"> Instalación de MySQL en Debian 11 Bullseye</h1>
-<p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
-<p><input type="checkbox" name="vehicle" value="Bike"> Tener una maquina Debian 11 actualizada</p>
-<p><input type="checkbox" name="vehicle" value="Bike"> Tener un usuario con privilegios de sudo</p>
-<p><input type="checkbox" name="vehicle" value="Bike"> Tener acceso a internet</p>
-<p>Antes de comenzar con la instalción actualizaremos nuestra maquina</p>
-<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
-</code></pre>
-</div><p>E instalamos las herramientas</p>
-<div><pre><code>sudo apt install -y gnupg wget
-</code></pre>
-</div><p>Despues de esto empezaremos ya con la instalación de MySQL.</p>
-<h2 id="configuracion-del-repositorio-de-mysql-para-debian-11-bullseye"> Configuración del repositorio de MySQL para Debian 11 Bullseye</h2>
-<p>Vamos a ver cómo configurar el repositorio oficial de MySQL Server para Debian 11.</p>
-<p>Para no tener que registrarse en la pagina de mysql aqui os dejo el <a href="https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb" target="_blank" rel="noopener noreferrer">enlace de descarga<i>Content not supported</i></a></p>
-<p>Una vez ya con el paquete descargado procedemos con la instalación:</p>
-<div><pre><code>cd Descargas &amp;&amp; sudo dpkg -i mysql-apt-config_0.8.22-1_all.deb
-</code></pre>
-</div><p>Al instalarse este paquete se lanzará un pequeño configurador en modo consola que nos mostrará las características que ofrece por defecto el nuevo repositorio:</p>
-<p><img src="./../images/mysql/3.png" alt="image"></p>
-<p>La primera opción nos muestra la versión de MySQL que se va a instalar, por defecto MySQL Server 8.0, aunque sería posible cambiarla por MySQL Cluster 8.0.</p>
-<p>Por defecto, la segunda opción nos informa de que está activado el repositorio de herramientas y conectores, que es lo deseable, aunque podríamos desactivarlo.</p>
-<p>Y, finalmente, la tercera opción ofrece un repositorio de software en pruebas, experimental, etc. que, con buen criterio, está desactivado inicialmente (aunque se puede activar).</p>
-<p>Para salir del configurador seleccionaremos <em>Ok</em> y el instalador configurará el repositorio con los valores seleccionados.</p>
-<p>Debemos actualizar la información de los repositorios para que se incluyan las nuevas listas de paquetes disponibles:</p>
-<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
-</code></pre>
-</div><h2 id="instalar-mysql-en-debian-11"> Instalar MySQL en Debian 11</h2>
-<p>Ahora comenzaremos con la instalación de MySQL en Debian 11:</p>
-<div><pre><code>sudo apt install -y mysql-server
-</code></pre>
-</div><p>Una vez descargados este paquete y sus dependencias, durante la instalación de los mismos, se nos solicitará la contraseña del usuario administrador root de MySQL:</p>
-<p><img src="./../images/mysql/5.png" alt="image"></p>
-<p>Si dejamos la contraseña en blanco se usará la autenticación por sockets de Unix, es decir, sólo el usuario root de Debian 11 o usuarios privilegiados con sudo podrán conectar como usuario root de MySQL. En cambio, si creamos una contraseña se usará el típico sistema de usuario/contraseña para acceder como root a MySQL Server. Depende de tus necesidades o gustos elegir uno u otro sistema.</p>
-<p>Este instalador también nos advierte de la disponibilidad del nuevo plugin mejorado de autenticación, que tiene la desventaja de no ser compatible con conectores y clientes antiguos:</p>
-<p><img src="./../images/mysql/6.png" alt="image"></p>
-<p>Terminada esta pequeña configuración inicial, la instalación termina creando un nuevo servicio en Debian 11, el servicio mysql.service o simplemente mysql, que queda en ejecución y habilitado para su inicio automático.</p>
-<p>Podemos comprobar en cualquier momento el estado de dicho servicio con el comando <code>systemctl</code>:</p>
-<div><pre><code>systemctl status mysql
-</code></pre>
-</div><p><img src="./../images/mysql/12.png" alt="image"></p>
-<p>También disponemos del cliente de consola mysql que podemos utilizar para conectar al servicio con el usuario root, si elegimos el acceso por sockets de Unix:</p>
-<div><pre><code>sudo mysql
-</code></pre>
-</div><p>O especificando usuario y contraseña:</p>
-<div><pre><code>mysql -u root -p
-</code></pre>
-</div><p><img src="./../images/mysql/8.png" alt="image"></p>
-<h3 id="crear-un-usuario-administrador-propio"> Crear un usuario administrador propio</h3>
-<p>Es posible que necesites un usuario administrador de MySQL Server con acceso mediante contraseña para conectar al servicio desde aplicaciones, gestores, clientes gráficos, conexiones remotas, etc. dejando al usuario root con acceso únicamente local.</p>
-<p>Esto es fácil de hacer desde el cliente mysql, en el que creamos un usuario con contraseña:</p>
-<div><pre><code>&gt; create user *nombre-user* identified by *contraseña*; 
-</code></pre>
-</div><p>Y a continuación aplicamos permisos sobre todas las bases de datos y modificación de permisos de otros usuarios:</p>
-<div><pre><code>&gt; grant all privileges on *.* to *nombre-user* with grant option;
-</code></pre>
-</div><p>Refrescamos la tabla de permisos:</p>
-<div><pre><code>&gt; flush privileges;
-</code></pre>
-</div><p>Y cerramos la conexión:</p>
-<div><pre><code>&gt; exit
-</code></pre>
-</div><p><img src="./../images/mysql/10.png" alt="image"></p>
-<p>Y con esto ya tendríamos todo listo.</p>
-<p>Y así podremos acceder a nuestro usuario ya creado</p>
-<p><img src="./../images/mysql/11.png" alt="image"></p>
-<p>¡Gracias!</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Nessus</title>
-      <link>https://github.com/oscarlucas22/guide/nessus/</link>
-      <guid>https://github.com/oscarlucas22/guide/nessus/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">Nessus</source>
-      <category>Guia</category>
-      <content:encoded><![CDATA[<h1 id="nessus"> Nessus</h1>
-<ul>
-<li>
-<p><a href="./instalacion.html">Instalación y configuración inicial Nessus</a></p>
-</li>
-<li>
-<p><a href="./configuracion.html">Configuración y uso de Nessus</a></p>
-</li>
-<li>
-<p><a href="./monitorizacion.html">Monitorización continua de Nessus</a></p>
-</li>
-<li>
-<p><a href="./notificaciones.html">Alertas correo en Nessus</a></p>
-</li>
-<li>
-<p><a href="./analisis.html">Análisis de Vulnerabilidades Nessus</a></p>
-</li>
-<li>
-<p><a href="./parcheo.html">Demo Parcheo</a></p>
-</li>
-</ul>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Instalación de Oracle en Debian 11 Bullseye</title>
-      <link>https://github.com/oscarlucas22/guide/oracle/</link>
-      <guid>https://github.com/oscarlucas22/guide/oracle/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">Instalación de Oracle en Debian 11 Bullseye</source>
-      <content:encoded><![CDATA[<h1 id="instalacion-de-oracle-en-debian-11-bullseye"> Instalación de Oracle en Debian 11 Bullseye</h1>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Instalación de PostgreSQL en Debian 11 Bullseye</title>
-      <link>https://github.com/oscarlucas22/guide/postgresql/</link>
-      <guid>https://github.com/oscarlucas22/guide/postgresql/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">Instalación de PostgreSQL en Debian 11 Bullseye</source>
-      <content:encoded><![CDATA[<h1 id="instalacion-de-postgresql-en-debian-11-bullseye"> Instalación de PostgreSQL en Debian 11 Bullseye</h1>
 ]]></content:encoded>
     </item>
   </channel>

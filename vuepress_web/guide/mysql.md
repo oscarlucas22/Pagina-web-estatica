@@ -85,11 +85,11 @@ Es posible que necesites un usuario administrador de MySQL Server con acceso med
 
 Esto es fácil de hacer desde el cliente mysql, en el que creamos un usuario con contraseña:
 
-    > create user *nombre-user* identified by *contraseña*; 
+    > create user lucas identified by 'contraseña'; 
 
 Y a continuación aplicamos permisos sobre todas las bases de datos y modificación de permisos de otros usuarios:
 
-    > grant all privileges on *.* to *nombre-user* with grant option;
+    > grant all privileges on *.* to lucas with grant option;
 
 Refrescamos la tabla de permisos:
     
