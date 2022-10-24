@@ -1,0 +1,1 @@
+# Instalación de Oracle en Debian 11 Bullseye

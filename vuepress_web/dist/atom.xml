@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-10-16T09:10:59.664Z</updated>
+  <updated>2022-10-24T18:41:07.072Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -15,10 +15,98 @@
     <name>Óscar Lucas</name>
   </contributor>
   <entry>
+    <title type="html">Hydra en Debian 11</title>
+    <id>https://github.com/oscarlucas22/guide/hydra/</id>
+    <link href="https://github.com/oscarlucas22/guide/hydra/"/>
+    <updated>2022-10-16T09:11:02.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="hydra-en-debian-11"> Hydra en Debian 11</h1>
+<h2 id="instalacion-de-hydra-en-debian-11"> Instalación de Hydra en Debian 11</h2>
+<p><strong>Instale hydra usando apt</strong></p>
+<p>Actualice la base de datos apt con apt-get usando el siguiente comando.</p>
+<div><pre><code>sudo apt update
+</code></pre>
+</div><p>Después de actualizar la base de datos apt, podemos instalar hydra usando apt-get ejecutando el siguiente comando:</p>
+<div><pre><code>sudo apt -y install hydra
+</code></pre>
+</div><p>Esto tardará un poco</p>
+<p><strong>Cómo desinstalar Hydra en Debian 11</strong></p>
+<p>Para desinstalar solo el paquete hydra podemos usar el siguiente comando:</p>
+<div><pre><code>sudo apt-get remove hydra
+</code></pre>
+</div><p><em>Desinstalar hydra y sus dependencias</em></p>
+<p>Para desinstalar Hydra y sus dependencias que Debian 11 ya no necesita, podemos usar el siguiente comando:</p>
+<div><pre><code>sudo apt-get -y autoremove hydra
+</code></pre>
+</div><p><em>Eliminar configuraciones y datos de hydra</em></p>
+<p>Para eliminar la configuración y los datos de Hydra de Debian 11, podemos usar el siguiente comando:</p>
+<div><pre><code>sudo apt-get -y purge hydra
+</code></pre>
+</div><p><em>Eliminar la configuración, los datos y todas sus dependencias de Hydra</em></p>
+<p>Podemos usar el siguiente comando para eliminar las configuraciones de hidra, los datos y todas sus dependencias, podemos usar el siguiente comando:</p>
+<div><pre><code>sudo apt-get -y autoremove --purge hydra
+</code></pre>
+</div><h2 id="ataque-de-diccionarios-usando-hydra"> Ataque de diccionarios usando Hydra</h2>
+<p>Para descifrar las contraseñas a traves de un diccionario ejecutaremos el siguiente comando:</p>
+<p>Pero antes crearemos un fichero donde guardaremos las contraseñas</p>
+<p>Aqui dejo un fichero el cual contiene 10000 contraseñas más comunes por los usuarios que podemos utilizar a la hora de ejecutar este comando</p>
+<p><a href="https://dl.dropbox.com/s/x2pdf13f65c2obm/passwd.txt" download="">passwd.txt</a></p>
+<p>Eso lo que hará es si la contraseña que queremos averiguar esta dentro del fichero nos mostrará cual es, en cambio si no esta no nos mostrará ninguna</p>
+<div><pre><code>hydra -l &quot;nombre del user atacado&quot; -P &quot;ruta del fichero de passwd&quot; ssh
+</code></pre>
+</div><ul>
+<li><strong>-l</strong>: login del user</li>
+<li><strong>-P</strong>: password</li>
+</ul>
+<p><img src="./../images/hydra/1.png" alt="image"></p>
+<h2 id="ataque-de-fuerza-bruta-usando-hydra"> Ataque de fuerza bruta usando Hydra</h2>
+<h2 id="generacion-de-diccionario-usando-hydra"> Generación de diccionario usando Hydra</h2>
+<h2 id="ataque-a-linux-usando-hydra"> Ataque a Linux usando Hydra</h2>
+<h2 id="ataque-a-windows-usando-hydra"> Ataque a Windows usando Hydra</h2>
+<h2 id="ataque-a-apache-usando-hydra"> Ataque a Apache usando Hydra</h2>
+<h2 id="ataque-a-mysql-usando-hydra"> Ataque a MySQL usando Hydra</h2>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <published>2022-10-16T09:11:02.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">Análisis de Vulnerabilidades Nessus</title>
+    <id>https://github.com/oscarlucas22/guide/analisis/</id>
+    <link href="https://github.com/oscarlucas22/guide/analisis/"/>
+    <updated>2022-10-13T20:49:22.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="analisis-de-vulnerabilidades-nessus"> Análisis de Vulnerabilidades Nessus</h1>
+<p>Este es el paso que debemos completar antes de hacer la parte de explotación. Pero antes debemos saber que es lo que tenemos que explotar para no estar lanzando códigos maliciosos a lo loco.</p>
+<p>Un análisis de vulnerabilidad nos va ha permitir identificar cuales servicios de los cuales nosotros ya enumeramos, son vulnerables a algún tipo de ataque.</p>
+<p>En primero lugar haremos un escaneo si no tenemos ninguno, y lo lanzaremos. Cuando esto concluya podemos observar las diferentes categorías de las vulnerabilidades.</p>
+<p>Aqui podemos observar como un resumen de las cantidades de vulnerabilidades dependiendo del nivel que encontremos</p>
+<p><img src="./../images/SAD/1.png" alt="image"></p>
+<p><strong>Nota:</strong> Esto es bueno que sea revisado ya que una vulnerabilidad de información por ejemplo puede ayudar a comprometer un equipo porque puede obtener un cierto dato y posiblemente sirva para atacar vulnerabilidades mayores o simplemente para descubrir elementos que me permitan encontrar fallos dentro este sistema, aplicaciones que estén corriendo...</p>
+<p>Para ver los detaller pincharemos en &quot;Vulnerabilities&quot;, y aqui empieza ya cada uno de los detalles dependiendo de su naturaleza</p>
+<p><img src="./../images/SAD/2.png" alt="image"></p>
+<p>Podemos ir viendo cada uno:</p>
+<p><img src="./../images/SAD/3.png" alt="image"></p>
+<p>Como vemos nos da una pequeña descripción de cual es la vulnerabilidad, una solición, ciertas referencias e información relevante a CVE que es la vulnerabilidad que fue descubierta y publicada en algún momento</p>
+<p>Este tipo de herramientas son útiles porque nos ayudan a no solamente entender cual es el problema sino tambien a aportarte una posible remediación</p>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <published>2022-10-13T20:49:22.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
     <title type="html">Configuración y uso de Nessus</title>
     <id>https://github.com/oscarlucas22/guide/configuracion/</id>
     <link href="https://github.com/oscarlucas22/guide/configuracion/"/>
-    <updated>2022-10-13T20:49:22.000Z</updated>
+    <updated>2022-10-16T09:11:02.000Z</updated>
     <content type="html"><![CDATA[<h1 id="configuracion-y-uso-de-nessus"> Configuración y uso de Nessus</h1>
 <p><font color="#00FF00"><strong>Paso 1</strong></font> Damos clic en &quot;New Scan&quot; y seleccionamos el tipo de escaneo a usar, como vemos las opciones son variadas:</p>
 <p><img src="./../images/SAD/menu.png" alt="image"></p>
@@ -102,91 +190,10 @@ Analiza sistemas de auditoría a través de definiciones SCAP y OVAL</p>
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
   <entry>
-    <title type="html">Análisis de Vulnerabilidades Nessus</title>
-    <id>https://github.com/oscarlucas22/guide/analisis/</id>
-    <link href="https://github.com/oscarlucas22/guide/analisis/"/>
-    <updated>2022-10-13T20:49:22.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="analisis-de-vulnerabilidades-nessus"> Análisis de Vulnerabilidades Nessus</h1>
-<p>Este es el paso que debemos completar antes de hacer la parte de explotación. Pero antes debemos saber que es lo que tenemos que explotar para no estar lanzando códigos maliciosos a lo loco.</p>
-<p>Un análisis de vulnerabilidad nos va ha permitir identificar cuales servicios de los cuales nosotros ya enumeramos, son vulnerables a algún tipo de ataque.</p>
-<p>En primero lugar haremos un escaneo si no tenemos ninguno, y lo lanzaremos. Cuando esto concluya podemos observar las diferentes categorías de las vulnerabilidades.</p>
-<p>Aqui podemos observar como un resumen de las cantidades de vulnerabilidades dependiendo del nivel que encontremos</p>
-<p><img src="./../images/SAD/1.png" alt="image"></p>
-<p><strong>Nota:</strong> Esto es bueno que sea revisado ya que una vulnerabilidad de información por ejemplo puede ayudar a comprometer un equipo porque puede obtener un cierto dato y posiblemente sirva para atacar vulnerabilidades mayores o simplemente para descubrir elementos que me permitan encontrar fallos dentro este sistema, aplicaciones que estén corriendo...</p>
-<p>Para ver los detaller pincharemos en &quot;Vulnerabilities&quot;, y aqui empieza ya cada uno de los detalles dependiendo de su naturaleza</p>
-<p><img src="./../images/SAD/2.png" alt="image"></p>
-<p>Podemos ir viendo cada uno:</p>
-<p><img src="./../images/SAD/3.png" alt="image"></p>
-<p>Como vemos nos da una pequeña descripción de cual es la vulnerabilidad, una solición, ciertas referencias e información relevante a CVE que es la vulnerabilidad que fue descubierta y publicada en algún momento</p>
-<p>Este tipo de herramientas son útiles porque nos ayudan a no solamente entender cual es el problema sino tambien a aportarte una posible remediación</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-13T20:49:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Compilación de un programa en C utilizando un Mekafile</title>
-    <id>https://github.com/oscarlucas22/guide/makefile/</id>
-    <link href="https://github.com/oscarlucas22/guide/makefile/"/>
-    <updated>2022-10-13T20:49:22.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="compilacion-de-un-programa-en-c-utilizando-un-mekafile"> Compilación de un programa en C utilizando un Mekafile</h1>
-<p>Aqui dejo la url de la web de <a href="https://packages.debian.org/bullseye/imagination" target="_blank" rel="noopener noreferrer">Debian<i>Content not supported</i></a> donde se encuentra la compilación del paquete imagination.</p>
-<p><font color="#FFFF00"><strong>Paso 1</strong></font> Descarga del código fuente</p>
-<p>Primero instalaremos dpkg-dev</p>
-<div><pre><code>sudo apt install dpkg-dev
-</code></pre>
-</div><p>Despues instalaremos imagination con el comando <code>apt source</code></p>
-<div><pre><code>apt source imagination
-</code></pre>
-</div><p><img src="./../images/ASO/1-ASO.png" alt="image"></p>
-<p><img src="./../images/ASO/2-ASO.png" alt="image"></p>
-<p><font color="#FFFF00"><strong>Paso 2</strong></font> Instalación dependencias</p>
-<p>Para instalar las dependencias utilizaremos el comando <code>apt build-dep</code></p>
-<div><pre><code>sudo apt build-dep imagination
-</code></pre>
-</div><p><font color="#FFFF00"><strong>Paso 3</strong></font> Compilación del paquete</p>
-<p>Para poder compilar el paquete nos moveremos a la carpeta descomprimida</p>
-<div><pre><code>cd imagination-3.6/
-
-./configure
-</code></pre>
-</div><p><img src="./../images/ASO/3-ASO.png" alt="image"></p>
-<p><img src="./../images/ASO/4-ASO.png" alt="image"></p>
-<p>Y despues de esto ejecutaremos el comando <code>make</code></p>
-<div><pre><code>make
-</code></pre>
-</div><p><font color="#FFFF00"><strong>Paso 4</strong></font> Instalación del paquete</p>
-<p>Una vez ya este compilado ejecutaremos:</p>
-<div><pre><code>sudo make install
-</code></pre>
-</div><p>Y con esto ya tendriamos instalado el paquete</p>
-<p><font color="#FFFF00"><strong>Paso 5</strong></font> Desinstalación del paquete</p>
-<p>Para poder desinstalar el paquete debemos ejecutar:</p>
-<div><pre><code>cd imagination-3.6/
-
-sudo make uninstall
-</code></pre>
-</div><p>Y con esto ya estaría desinstalado</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-13T20:49:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
     <title type="html">Instalación Nessus y Conf. Inicial</title>
     <id>https://github.com/oscarlucas22/guide/instalacion/</id>
     <link href="https://github.com/oscarlucas22/guide/instalacion/"/>
-    <updated>2022-10-13T20:49:22.000Z</updated>
+    <updated>2022-10-16T09:11:02.000Z</updated>
     <content type="html"><![CDATA[<h1 id="instalacion-nessus-y-conf-inicial"> Instalación Nessus y Conf. Inicial</h1>
 <h2 id="instalacion-en-debian-11"> Instalación en Debian 11</h2>
 <p><font color="#00FF00"><strong>Paso 1</strong></font> Descargue el paquete Deb de Nessus Scanner</p>
@@ -259,6 +266,59 @@ nessuscli help
 
 sudo apt remove nessus </code></pre>
 </div>]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <published>2022-10-13T20:49:22.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">Compilación de un programa en C utilizando un Mekafile</title>
+    <id>https://github.com/oscarlucas22/guide/makefile/</id>
+    <link href="https://github.com/oscarlucas22/guide/makefile/"/>
+    <updated>2022-10-16T09:11:02.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="compilacion-de-un-programa-en-c-utilizando-un-mekafile"> Compilación de un programa en C utilizando un Mekafile</h1>
+<p>Aqui dejo la url de la web de <a href="https://packages.debian.org/bullseye/imagination" target="_blank" rel="noopener noreferrer">Debian<i>Content not supported</i></a> donde se encuentra la compilación del paquete imagination.</p>
+<p><font color="#FFFF00"><strong>Paso 1</strong></font> Descarga del código fuente</p>
+<p>Primero instalaremos dpkg-dev</p>
+<div><pre><code>sudo apt install dpkg-dev
+</code></pre>
+</div><p>Despues instalaremos imagination con el comando <code>apt source</code></p>
+<div><pre><code>apt source imagination
+</code></pre>
+</div><p><img src="./../images/ASO/1-ASO.png" alt="image"></p>
+<p><img src="./../images/ASO/2-ASO.png" alt="image"></p>
+<p><font color="#FFFF00"><strong>Paso 2</strong></font> Instalación dependencias</p>
+<p>Para instalar las dependencias utilizaremos el comando <code>apt build-dep</code></p>
+<div><pre><code>sudo apt build-dep imagination
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 3</strong></font> Compilación del paquete</p>
+<p>Para poder compilar el paquete nos moveremos a la carpeta descomprimida</p>
+<div><pre><code>cd imagination-3.6/
+
+./configure
+</code></pre>
+</div><p><img src="./../images/ASO/3-ASO.png" alt="image"></p>
+<p><img src="./../images/ASO/4-ASO.png" alt="image"></p>
+<p>Y despues de esto ejecutaremos el comando <code>make</code></p>
+<div><pre><code>make
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 4</strong></font> Instalación del paquete</p>
+<p>Una vez ya este compilado ejecutaremos:</p>
+<div><pre><code>sudo make install
+</code></pre>
+</div><p>Y con esto ya tendriamos instalado el paquete</p>
+<p><font color="#FFFF00"><strong>Paso 5</strong></font> Desinstalación del paquete</p>
+<p>Para poder desinstalar el paquete debemos ejecutar:</p>
+<div><pre><code>cd imagination-3.6/
+
+sudo make uninstall
+</code></pre>
+</div><p>Y con esto ya estaría desinstalado</p>
+]]></content>
     <author>
       <name>Óscar Lucas</name>
     </author>
@@ -425,19 +485,10 @@ Son controles de seguridad que se configuran incorrectamente o se dejan inseguro
 <p><a href="./diferencias.html">Diferencia entre exploit, vulnerabilidad y payload</a></p>
 </li>
 <li>
-<p><a href="./instalacion.html">Instalación Nessus</a></p>
+<p><a href="./nessus.html">Nessus</a></p>
 </li>
 <li>
-<p><a href="./configuracion.html">Configuración inicial y uso de Nessus</a></p>
-</li>
-<li>
-<p><a href="./monitorizacion.html">Monitorización continua de Nessus</a></p>
-</li>
-<li>
-<p><a href="./notificaciones.html">Alertas correo en Nessus</a></p>
-</li>
-<li>
-<p><a href="./analisis.html">Análisis de Vulnerabilidades Nessus</a></p>
+<p><a href="./hydra.html">Hydra</a></p>
 </li>
 </ul>
 ]]></content>
@@ -455,10 +506,24 @@ Son controles de seguridad que se configuran incorrectamente o se dejan inseguro
     <title type="html">Guía</title>
     <id>https://github.com/oscarlucas22/guide/</id>
     <link href="https://github.com/oscarlucas22/guide/"/>
-    <updated>2022-10-13T20:49:22.000Z</updated>
+    <updated>2022-10-16T09:11:02.000Z</updated>
     <content type="html"><![CDATA[<h1 id="guia"> Guía</h1>
 <ul>
-<li><a href="./makefile.html">Compilación de un programa en C utilizando un Mekafile</a></li>
+<li>
+<p><a href="./makefile.html">Compilación de un programa en C utilizando un Mekafile</a></p>
+</li>
+<li>
+<p><a href="./mysql.html">Instalación de MySQL en Debian 11 Bullseye</a></p>
+</li>
+<li>
+<p><a href="./postgresql.html">Instalación de PostgreSQL en Debian 11 Bullseye</a></p>
+</li>
+<li>
+<p><a href="./oracle.html">Instalación de Oracle en Debian 11 Bullseye</a></p>
+</li>
+<li>
+<p><a href="./mongo.html">Instalación de MongoDB en Debian 11 Bullseye</a></p>
+</li>
 </ul>
 ]]></content>
     <author>
@@ -472,42 +537,218 @@ Son controles de seguridad que se configuran incorrectamente o se dejan inseguro
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
   <entry>
-    <title type="html">John The Ripper</title>
-    <id>https://github.com/oscarlucas22/guide/john/</id>
-    <link href="https://github.com/oscarlucas22/guide/john/"/>
-    <updated>2022-10-16T09:10:59.701Z</updated>
-    <content type="html"><![CDATA[<h1 id="john-the-ripper"> John The Ripper</h1>
-<p><font color="#00FF00"><strong>Paso 0</strong></font> Instalación</p>
-<p>Para instalar John the Ripper ejecutaremos el siguiente comando</p>
-<div><pre><code>apt install john
+    <title type="html">Instalación de MongoDB en Debian 11 Bullseye</title>
+    <id>https://github.com/oscarlucas22/guide/mongo/</id>
+    <link href="https://github.com/oscarlucas22/guide/mongo/"/>
+    <updated>2022-10-24T18:41:07.104Z</updated>
+    <content type="html"><![CDATA[<h1 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h1>
+<p>Para la instalación de MongoDB, el repositorio oficial de MongoDB está disponible para Debian 11 Bullseye, por lo que podemos usar el mismo.</p>
+<ol>
+<li>Agregue el repositorio MongoDB en Debian 11</li>
+</ol>
+<p>Como sabemos, los paquetes de MongoDB no están disponibles para instalar directamente desde el repositorio base de Debian 11, por lo que debemos agregar el oficial que ofrecen los desarrolladores de esta base de datos NoSQL.</p>
+<div><pre><code>echo &quot;deb http://repo.mongodb.org/apt/debian bullseye/mongodb-org/5.0 main&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
 </code></pre>
-</div><p><img src="./../images/john/instalacion.png" alt="image"></p>
-<p>lo primero que deberemos de hacer es comprobar que funciona correctamente en nuestro sistema, para ello lanzaremos el siguiente comando:</p>
-<div><pre><code>john --test
+</div><ol start="2">
+<li>Integrar la clave GPG de MongoDB</li>
+</ol>
+<p>Para asegurarnos de que los paquetes que recibiremos para instalar esta base de datos en nuestro Linux provengan de una fuente auténtica. Agregue la clave firmada GPG por los desarrolladores del servidor de base de datos.</p>
+<div><pre><code>curl -sSL https://www.mongodb.org/static/pgp/server-5.0.asc  -o mongoserver.asc
 </code></pre>
-</div><p><img src="./../images/john/test.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 1</strong></font> Crackeo de contraseña de usuario en linux por fuerza bruta</p>
-<p>Una vez instalada y testeada la herramienta podemos empezar por un caso real, por ejemplo, cargar directamente el archivo <code>/etc/shadow</code> y probar a descifrar contraseñas. Pero, para este caso de ejemplo, vamos a crear un fichero con la clave de un usuario muy simple para hacer de forma rápida esta prueba.</p>
-<p>Para realizar la prueba vamos a crear un fichero de texto en el directorio que deseemos e incluiremos en el mismo el siguiente contenido:</p>
-<p>echo user:AZl.zWwxIh15Q &gt; password.txt</p>
-<p><img src="./../images/john/cat.png" alt="image"></p>
-<p>Ahora ejecutaremos john sobre el fichero que acabamos de crear:</p>
-<div><pre><code>sudo john password.txt
+</div><p>Importamos <em>mongoserver.asc</em></p>
+<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --import ./mongoserver.asc
 </code></pre>
-</div><p><img src="./../images/john/passwd.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 2</strong></font> Crackeo de contraseña de usuario en linux por ataque de diccionario</p>
-<p>Crearemos un diccionario para realizar el ataque, en nuestro caso hemos hecho un diccionario muy simple que incluye el siguiente contenido:</p>
-<div><pre><code>cat diccionario.list
+</div><p>Exportamos <em>mongoserver_key.gpg</em></p>
+<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --export &gt; ./mongoserver_key.gpg
 </code></pre>
-</div><p><img src="./../images/john/diccionario.png" alt="image"></p>
-<p>Ahora ejecutaremos john de nuevo con la opción --wordlist para indicarle que utilice el diccionario que acabamos de crear, quedando el comando de la siguiente forma:</p>
-<div><pre><code>john --wordlist=diccionario.lst password.txt 
+</div><p>Movemos <em>mongoserver_key.gpg</em> a <em>trusted.gpg.d</em></p>
+<div><pre><code>sudo mv mongoserver_key.gpg /etc/apt/trusted.gpg.d/
 </code></pre>
-</div><p>Y al igual que en el anterior caso, pasado un tiempo nos encontrará la contraseña del fichero que podremos ver con el comando:</p>
-<div><pre><code>john --show password.txt
+</div><ol start="3">
+<li>Ejecute la actualización del sistema</li>
+</ol>
+<p>En su terminal de comando Debian 11 o 10, ejecute el comando de actualización del sistema para asegurarse de que todos los paquetes existentes estén actualizados.</p>
+<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
 </code></pre>
-</div><p><img src="./../images/john/passwd.png" alt="image"></p>
-<p>Y esto es todo, como hemos visto John es una herramienta muy potente y que puede resultar muy útil en según que casos.</p>
+</div><ol start="4">
+<li>Comando para instalar MongoDB en Debian 11 o 10</li>
+</ol>
+<p>Eso es todo. Ya hemos configurado lo que necesitamos para instalar “herramientas de base de datos, mongosh, herramientas adicionales, mongos; servidor de base de datos y shell” en nuestro Debian 11 o 10 Linux.</p>
+<p>Por lo tanto, simplemente ejecute un comando simple:</p>
+<div><pre><code>sudo apt install mongodb-org
+</code></pre>
+</div><ol start="5">
+<li>Iniciar y habilitar el servicio MongoDB</li>
+</ol>
+<p>Una vez completada la instalación, habilitemos y también iniciemos el servicio del servidor de base de datos, para que no necesitemos ejecutarlo una y otra vez con el arranque del sistema.</p>
+<div><pre><code>sudo systemctl enable --now mongod
+</code></pre>
+</div><p>Comprobamos con el comando <em>systemctl</em> si esta activo mongod</p>
+<div><pre><code>sudo systemctl status mongod
+</code></pre>
+</div><p>![image]</p>
+<ol start="6">
+<li>Comprueba la versión instalada</li>
+</ol>
+<p>Para confirmar qué versión está instalada exactamente en su sistema, ejecute:</p>
+<div><pre><code>mongod --version
+</code></pre>
+</div><p>![image]</p>
+<p>Para obtener la línea de comando de mongo, simplemente escriba:</p>
+<div><pre><code>mongo
+</code></pre>
+</div><p>Desinstalar o Eliminar</p>
+<p>Bueno, aquellos que ya no están interesados ​​en MongoDB y no lo necesitan, pueden eliminarlo usando el siguiente comando:</p>
+<div><pre><code>sudo apt remove mongodb-org
+</code></pre>
+</div><p>¡Gracias!</p>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">Instalación de MySQL en Debian 11 Bullseye</title>
+    <id>https://github.com/oscarlucas22/guide/mysql/</id>
+    <link href="https://github.com/oscarlucas22/guide/mysql/"/>
+    <updated>2022-10-24T18:41:07.105Z</updated>
+    <content type="html"><![CDATA[<h1 id="instalacion-de-mysql-en-debian-11-bullseye"> Instalación de MySQL en Debian 11 Bullseye</h1>
+<p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener una maquina Debian 11 actualizada</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener un usuario con privilegios de sudo</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener acceso a internet</p>
+<p>Antes de comenzar con la instalción actualizaremos nuestra maquina</p>
+<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+</div><p>E instalamos las herramientas</p>
+<div><pre><code>sudo apt install -y gnupg wget
+</code></pre>
+</div><p>Despues de esto empezaremos ya con la instalación de MySQL.</p>
+<h2 id="configuracion-del-repositorio-de-mysql-para-debian-11-bullseye"> Configuración del repositorio de MySQL para Debian 11 Bullseye</h2>
+<p>Vamos a ver cómo configurar el repositorio oficial de MySQL Server para Debian 11.</p>
+<p>Para no tener que registrarse en la pagina de mysql aqui os dejo el <a href="https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb" target="_blank" rel="noopener noreferrer">enlace de descarga<i>Content not supported</i></a></p>
+<p>Una vez ya con el paquete descargado procedemos con la instalación:</p>
+<div><pre><code>cd Descargas &amp;&amp; sudo dpkg -i mysql-apt-config_0.8.22-1_all.deb
+</code></pre>
+</div><p>Al instalarse este paquete se lanzará un pequeño configurador en modo consola que nos mostrará las características que ofrece por defecto el nuevo repositorio:</p>
+<p><img src="./../images/mysql/3.png" alt="image"></p>
+<p>La primera opción nos muestra la versión de MySQL que se va a instalar, por defecto MySQL Server 8.0, aunque sería posible cambiarla por MySQL Cluster 8.0.</p>
+<p>Por defecto, la segunda opción nos informa de que está activado el repositorio de herramientas y conectores, que es lo deseable, aunque podríamos desactivarlo.</p>
+<p>Y, finalmente, la tercera opción ofrece un repositorio de software en pruebas, experimental, etc. que, con buen criterio, está desactivado inicialmente (aunque se puede activar).</p>
+<p>Para salir del configurador seleccionaremos <em>Ok</em> y el instalador configurará el repositorio con los valores seleccionados.</p>
+<p>Debemos actualizar la información de los repositorios para que se incluyan las nuevas listas de paquetes disponibles:</p>
+<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+</div><h2 id="instalar-mysql-en-debian-11"> Instalar MySQL en Debian 11</h2>
+<p>Ahora comenzaremos con la instalación de MySQL en Debian 11:</p>
+<div><pre><code>sudo apt install -y mysql-server
+</code></pre>
+</div><p>Una vez descargados este paquete y sus dependencias, durante la instalación de los mismos, se nos solicitará la contraseña del usuario administrador root de MySQL:</p>
+<p><img src="./../images/mysql/5.png" alt="image"></p>
+<p>Si dejamos la contraseña en blanco se usará la autenticación por sockets de Unix, es decir, sólo el usuario root de Debian 11 o usuarios privilegiados con sudo podrán conectar como usuario root de MySQL. En cambio, si creamos una contraseña se usará el típico sistema de usuario/contraseña para acceder como root a MySQL Server. Depende de tus necesidades o gustos elegir uno u otro sistema.</p>
+<p>Este instalador también nos advierte de la disponibilidad del nuevo plugin mejorado de autenticación, que tiene la desventaja de no ser compatible con conectores y clientes antiguos:</p>
+<p><img src="./../images/mysql/6.png" alt="image"></p>
+<p>Terminada esta pequeña configuración inicial, la instalación termina creando un nuevo servicio en Debian 11, el servicio mysql.service o simplemente mysql, que queda en ejecución y habilitado para su inicio automático.</p>
+<p>Podemos comprobar en cualquier momento el estado de dicho servicio con el comando <code>systemctl</code>:</p>
+<div><pre><code>systemctl status mysql
+</code></pre>
+</div><p><img src="./../images/mysql/12.png" alt="image"></p>
+<p>También disponemos del cliente de consola mysql que podemos utilizar para conectar al servicio con el usuario root, si elegimos el acceso por sockets de Unix:</p>
+<div><pre><code>sudo mysql
+</code></pre>
+</div><p>O especificando usuario y contraseña:</p>
+<div><pre><code>mysql -u root -p
+</code></pre>
+</div><p><img src="./../images/mysql/8.png" alt="image"></p>
+<h3 id="crear-un-usuario-administrador-propio"> Crear un usuario administrador propio</h3>
+<p>Es posible que necesites un usuario administrador de MySQL Server con acceso mediante contraseña para conectar al servicio desde aplicaciones, gestores, clientes gráficos, conexiones remotas, etc. dejando al usuario root con acceso únicamente local.</p>
+<p>Esto es fácil de hacer desde el cliente mysql, en el que creamos un usuario con contraseña:</p>
+<div><pre><code>&gt; create user *nombre-user* identified by *contraseña*; 
+</code></pre>
+</div><p>Y a continuación aplicamos permisos sobre todas las bases de datos y modificación de permisos de otros usuarios:</p>
+<div><pre><code>&gt; grant all privileges on *.* to *nombre-user* with grant option;
+</code></pre>
+</div><p>Refrescamos la tabla de permisos:</p>
+<div><pre><code>&gt; flush privileges;
+</code></pre>
+</div><p>Y cerramos la conexión:</p>
+<div><pre><code>&gt; exit
+</code></pre>
+</div><p><img src="./../images/mysql/10.png" alt="image"></p>
+<p>Y con esto ya tendríamos todo listo.</p>
+<p>Y así podremos acceder a nuestro usuario ya creado</p>
+<p><img src="./../images/mysql/11.png" alt="image"></p>
+<p>¡Gracias!</p>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">Nessus</title>
+    <id>https://github.com/oscarlucas22/guide/nessus/</id>
+    <link href="https://github.com/oscarlucas22/guide/nessus/"/>
+    <updated>2022-10-24T18:41:07.105Z</updated>
+    <content type="html"><![CDATA[<h1 id="nessus"> Nessus</h1>
+<ul>
+<li>
+<p><a href="./instalacion.html">Instalación y configuración inicial Nessus</a></p>
+</li>
+<li>
+<p><a href="./configuracion.html">Configuración y uso de Nessus</a></p>
+</li>
+<li>
+<p><a href="./monitorizacion.html">Monitorización continua de Nessus</a></p>
+</li>
+<li>
+<p><a href="./notificaciones.html">Alertas correo en Nessus</a></p>
+</li>
+<li>
+<p><a href="./analisis.html">Análisis de Vulnerabilidades Nessus</a></p>
+</li>
+<li>
+<p><a href="./parcheo.html">Demo Parcheo</a></p>
+</li>
+</ul>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <category term="Guia" scheme=""/>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">Instalación de Oracle en Debian 11 Bullseye</title>
+    <id>https://github.com/oscarlucas22/guide/oracle/</id>
+    <link href="https://github.com/oscarlucas22/guide/oracle/"/>
+    <updated>2022-10-24T18:41:07.105Z</updated>
+    <content type="html"><![CDATA[<h1 id="instalacion-de-oracle-en-debian-11-bullseye"> Instalación de Oracle en Debian 11 Bullseye</h1>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">Instalación de PostgreSQL en Debian 11 Bullseye</title>
+    <id>https://github.com/oscarlucas22/guide/postgresql/</id>
+    <link href="https://github.com/oscarlucas22/guide/postgresql/"/>
+    <updated>2022-10-24T18:41:07.106Z</updated>
+    <content type="html"><![CDATA[<h1 id="instalacion-de-postgresql-en-debian-11-bullseye"> Instalación de PostgreSQL en Debian 11 Bullseye</h1>
 ]]></content>
     <author>
       <name>Óscar Lucas</name>

@@ -1,0 +1,1 @@
+# Instalación de PostgreSQL en Debian 11 Bullseye
