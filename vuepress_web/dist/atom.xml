@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-10-24T18:50:19.393Z</updated>
+  <updated>2022-10-25T18:37:11.704Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -15,86 +15,10 @@
     <name>Óscar Lucas</name>
   </contributor>
   <entry>
-    <title type="html">Instalación de MongoDB en Debian 11 Bullseye</title>
-    <id>https://github.com/oscarlucas22/guide/mongo/</id>
-    <link href="https://github.com/oscarlucas22/guide/mongo/"/>
-    <updated>2022-10-24T18:41:09.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h1>
-<p>Para la instalación de MongoDB, el repositorio oficial de MongoDB está disponible para Debian 11 Bullseye, por lo que podemos usar el mismo.</p>
-<ol>
-<li>Agregue el repositorio MongoDB en Debian 11</li>
-</ol>
-<p>Como sabemos, los paquetes de MongoDB no están disponibles para instalar directamente desde el repositorio base de Debian 11, por lo que debemos agregar el oficial que ofrecen los desarrolladores de esta base de datos NoSQL.</p>
-<div><pre><code>echo &quot;deb http://repo.mongodb.org/apt/debian bullseye/mongodb-org/5.0 main&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-</code></pre>
-</div><ol start="2">
-<li>Integrar la clave GPG de MongoDB</li>
-</ol>
-<p>Para asegurarnos de que los paquetes que recibiremos para instalar esta base de datos en nuestro Linux provengan de una fuente auténtica. Agregue la clave firmada GPG por los desarrolladores del servidor de base de datos.</p>
-<div><pre><code>curl -sSL https://www.mongodb.org/static/pgp/server-5.0.asc  -o mongoserver.asc
-</code></pre>
-</div><p>Importamos <em>mongoserver.asc</em></p>
-<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --import ./mongoserver.asc
-</code></pre>
-</div><p>Exportamos <em>mongoserver_key.gpg</em></p>
-<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --export &gt; ./mongoserver_key.gpg
-</code></pre>
-</div><p>Movemos <em>mongoserver_key.gpg</em> a <em>trusted.gpg.d</em></p>
-<div><pre><code>sudo mv mongoserver_key.gpg /etc/apt/trusted.gpg.d/
-</code></pre>
-</div><ol start="3">
-<li>Ejecute la actualización del sistema</li>
-</ol>
-<p>En su terminal de comando Debian 11 o 10, ejecute el comando de actualización del sistema para asegurarse de que todos los paquetes existentes estén actualizados.</p>
-<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
-</code></pre>
-</div><ol start="4">
-<li>Comando para instalar MongoDB en Debian 11 o 10</li>
-</ol>
-<p>Eso es todo. Ya hemos configurado lo que necesitamos para instalar “herramientas de base de datos, mongosh, herramientas adicionales, mongos; servidor de base de datos y shell” en nuestro Debian 11 o 10 Linux.</p>
-<p>Por lo tanto, simplemente ejecute un comando simple:</p>
-<div><pre><code>sudo apt install mongodb-org
-</code></pre>
-</div><ol start="5">
-<li>Iniciar y habilitar el servicio MongoDB</li>
-</ol>
-<p>Una vez completada la instalación, habilitemos y también iniciemos el servicio del servidor de base de datos, para que no necesitemos ejecutarlo una y otra vez con el arranque del sistema.</p>
-<div><pre><code>sudo systemctl enable --now mongod
-</code></pre>
-</div><p>Comprobamos con el comando <em>systemctl</em> si esta activo mongod</p>
-<div><pre><code>sudo systemctl status mongod
-</code></pre>
-</div><p>![image]</p>
-<ol start="6">
-<li>Comprueba la versión instalada</li>
-</ol>
-<p>Para confirmar qué versión está instalada exactamente en su sistema, ejecute:</p>
-<div><pre><code>mongod --version
-</code></pre>
-</div><p>![image]</p>
-<p>Para obtener la línea de comando de mongo, simplemente escriba:</p>
-<div><pre><code>mongo
-</code></pre>
-</div><p>Desinstalar o Eliminar</p>
-<p>Bueno, aquellos que ya no están interesados ​​en MongoDB y no lo necesitan, pueden eliminarlo usando el siguiente comando:</p>
-<div><pre><code>sudo apt remove mongodb-org
-</code></pre>
-</div><p>¡Gracias!</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-24T18:41:09.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
     <title type="html">Instalación de MySQL en Debian 11 Bullseye</title>
     <id>https://github.com/oscarlucas22/guide/mysql/</id>
     <link href="https://github.com/oscarlucas22/guide/mysql/"/>
-    <updated>2022-10-24T18:41:09.000Z</updated>
+    <updated>2022-10-24T18:50:21.000Z</updated>
     <content type="html"><![CDATA[<h1 id="instalacion-de-mysql-en-debian-11-bullseye"> Instalación de MySQL en Debian 11 Bullseye</h1>
 <p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
 <p><input type="checkbox" name="vehicle" value="Bike"> Tener una maquina Debian 11 actualizada</p>
@@ -173,36 +97,75 @@
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
   <entry>
-    <title type="html">Nessus</title>
-    <id>https://github.com/oscarlucas22/guide/nessus/</id>
-    <link href="https://github.com/oscarlucas22/guide/nessus/"/>
+    <title type="html">Instalación de MongoDB en Debian 11 Bullseye</title>
+    <id>https://github.com/oscarlucas22/guide/mongo/</id>
+    <link href="https://github.com/oscarlucas22/guide/mongo/"/>
     <updated>2022-10-24T18:41:09.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="nessus"> Nessus</h1>
-<ul>
-<li>
-<p><a href="./instalacion.html">Instalación y configuración inicial Nessus</a></p>
-</li>
-<li>
-<p><a href="./configuracion.html">Configuración y uso de Nessus</a></p>
-</li>
-<li>
-<p><a href="./monitorizacion.html">Monitorización continua de Nessus</a></p>
-</li>
-<li>
-<p><a href="./notificaciones.html">Alertas correo en Nessus</a></p>
-</li>
-<li>
-<p><a href="./analisis.html">Análisis de Vulnerabilidades Nessus</a></p>
-</li>
-<li>
-<p><a href="./parcheo.html">Demo Parcheo</a></p>
-</li>
-</ul>
+    <content type="html"><![CDATA[<h1 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h1>
+<p>Para la instalación de MongoDB, el repositorio oficial de MongoDB está disponible para Debian 11 Bullseye, por lo que podemos usar el mismo.</p>
+<ol>
+<li>Agregue el repositorio MongoDB en Debian 11</li>
+</ol>
+<p>Como sabemos, los paquetes de MongoDB no están disponibles para instalar directamente desde el repositorio base de Debian 11, por lo que debemos agregar el oficial que ofrecen los desarrolladores de esta base de datos NoSQL.</p>
+<div><pre><code>echo &quot;deb http://repo.mongodb.org/apt/debian bullseye/mongodb-org/5.0 main&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+</code></pre>
+</div><ol start="2">
+<li>Integrar la clave GPG de MongoDB</li>
+</ol>
+<p>Para asegurarnos de que los paquetes que recibiremos para instalar esta base de datos en nuestro Linux provengan de una fuente auténtica. Agregue la clave firmada GPG por los desarrolladores del servidor de base de datos.</p>
+<div><pre><code>curl -sSL https://www.mongodb.org/static/pgp/server-5.0.asc  -o mongoserver.asc
+</code></pre>
+</div><p>Importamos <em>mongoserver.asc</em></p>
+<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --import ./mongoserver.asc
+</code></pre>
+</div><p>Exportamos <em>mongoserver_key.gpg</em></p>
+<div><pre><code>gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --export &gt; ./mongoserver_key.gpg
+</code></pre>
+</div><p>Movemos <em>mongoserver_key.gpg</em> a <em>trusted.gpg.d</em></p>
+<div><pre><code>sudo mv mongoserver_key.gpg /etc/apt/trusted.gpg.d/
+</code></pre>
+</div><ol start="3">
+<li>Ejecute la actualización del sistema</li>
+</ol>
+<p>En su terminal de comando Debian 11 o 10, ejecute el comando de actualización del sistema para asegurarse de que todos los paquetes existentes estén actualizados.</p>
+<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+</div><ol start="4">
+<li>Comando para instalar MongoDB en Debian 11 o 10</li>
+</ol>
+<p>Eso es todo. Ya hemos configurado lo que necesitamos para instalar “herramientas de base de datos, mongosh, herramientas adicionales, mongos; servidor de base de datos y shell” en nuestro Debian 11 o 10 Linux.</p>
+<p>Por lo tanto, simplemente ejecute un comando simple:</p>
+<div><pre><code>sudo apt install mongodb-org
+</code></pre>
+</div><ol start="5">
+<li>Iniciar y habilitar el servicio MongoDB</li>
+</ol>
+<p>Una vez completada la instalación, habilitemos y también iniciemos el servicio del servidor de base de datos, para que no necesitemos ejecutarlo una y otra vez con el arranque del sistema.</p>
+<div><pre><code>sudo systemctl enable --now mongod
+</code></pre>
+</div><p>Comprobamos con el comando <em>systemctl</em> si esta activo mongod</p>
+<div><pre><code>sudo systemctl status mongod
+</code></pre>
+</div><p>![image]</p>
+<ol start="6">
+<li>Comprueba la versión instalada</li>
+</ol>
+<p>Para confirmar qué versión está instalada exactamente en su sistema, ejecute:</p>
+<div><pre><code>mongod --version
+</code></pre>
+</div><p>![image]</p>
+<p>Para obtener la línea de comando de mongo, simplemente escriba:</p>
+<div><pre><code>mongo
+</code></pre>
+</div><p>Desinstalar o Eliminar</p>
+<p>Bueno, aquellos que ya no están interesados ​​en MongoDB y no lo necesitan, pueden eliminarlo usando el siguiente comando:</p>
+<div><pre><code>sudo apt remove mongodb-org
+</code></pre>
+</div><p>¡Gracias!</p>
 ]]></content>
     <author>
       <name>Óscar Lucas</name>
     </author>
-    <category term="Guia" scheme=""/>
     <contributor>
       <name>Óscar Lucas</name>
     </contributor>
@@ -242,272 +205,11 @@
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
   <entry>
-    <title type="html">Hydra en Debian 11</title>
-    <id>https://github.com/oscarlucas22/guide/hydra/</id>
-    <link href="https://github.com/oscarlucas22/guide/hydra/"/>
-    <updated>2022-10-24T18:41:09.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="hydra-en-debian-11"> Hydra en Debian 11</h1>
-<h2 id="instalacion-de-hydra-en-debian-11"> Instalación de Hydra en Debian 11</h2>
-<p><strong>Instale hydra usando apt</strong></p>
-<p>Actualice la base de datos apt con apt-get usando el siguiente comando.</p>
-<div><pre><code>sudo apt update
-</code></pre>
-</div><p>Después de actualizar la base de datos apt, podemos instalar hydra usando apt-get ejecutando el siguiente comando:</p>
-<div><pre><code>sudo apt -y install hydra
-</code></pre>
-</div><p>Esto tardará un poco</p>
-<p><strong>Cómo desinstalar Hydra en Debian 11</strong></p>
-<p>Para desinstalar solo el paquete hydra podemos usar el siguiente comando:</p>
-<div><pre><code>sudo apt-get remove hydra
-</code></pre>
-</div><p><em>Desinstalar hydra y sus dependencias</em></p>
-<p>Para desinstalar Hydra y sus dependencias que Debian 11 ya no necesita, podemos usar el siguiente comando:</p>
-<div><pre><code>sudo apt-get -y autoremove hydra
-</code></pre>
-</div><p><em>Eliminar configuraciones y datos de hydra</em></p>
-<p>Para eliminar la configuración y los datos de Hydra de Debian 11, podemos usar el siguiente comando:</p>
-<div><pre><code>sudo apt-get -y purge hydra
-</code></pre>
-</div><p><em>Eliminar la configuración, los datos y todas sus dependencias de Hydra</em></p>
-<p>Podemos usar el siguiente comando para eliminar las configuraciones de hidra, los datos y todas sus dependencias, podemos usar el siguiente comando:</p>
-<div><pre><code>sudo apt-get -y autoremove --purge hydra
-</code></pre>
-</div><h2 id="ataque-de-diccionarios-usando-hydra"> Ataque de diccionarios usando Hydra</h2>
-<p>Para descifrar las contraseñas a traves de un diccionario ejecutaremos el siguiente comando:</p>
-<p>Pero antes crearemos un fichero donde guardaremos las contraseñas</p>
-<p>Aqui dejo un fichero el cual contiene 10000 contraseñas más comunes por los usuarios que podemos utilizar a la hora de ejecutar este comando</p>
-<p><a href="https://dl.dropbox.com/s/x2pdf13f65c2obm/passwd.txt" download="">passwd.txt</a></p>
-<p>Eso lo que hará es si la contraseña que queremos averiguar esta dentro del fichero nos mostrará cual es, en cambio si no esta no nos mostrará ninguna</p>
-<div><pre><code>hydra -l &quot;nombre del user atacado&quot; -P &quot;ruta del fichero de passwd&quot; ssh
-</code></pre>
-</div><ul>
-<li><strong>-l</strong>: login del user</li>
-<li><strong>-P</strong>: password</li>
-</ul>
-<p><img src="./../images/hydra/1.png" alt="image"></p>
-<h2 id="ataque-de-fuerza-bruta-usando-hydra"> Ataque de fuerza bruta usando Hydra</h2>
-<h2 id="generacion-de-diccionario-usando-hydra"> Generación de diccionario usando Hydra</h2>
-<h2 id="ataque-a-linux-usando-hydra"> Ataque a Linux usando Hydra</h2>
-<h2 id="ataque-a-windows-usando-hydra"> Ataque a Windows usando Hydra</h2>
-<h2 id="ataque-a-apache-usando-hydra"> Ataque a Apache usando Hydra</h2>
-<h2 id="ataque-a-mysql-usando-hydra"> Ataque a MySQL usando Hydra</h2>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-16T09:11:02.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Análisis de Vulnerabilidades Nessus</title>
-    <id>https://github.com/oscarlucas22/guide/analisis/</id>
-    <link href="https://github.com/oscarlucas22/guide/analisis/"/>
-    <updated>2022-10-13T20:49:22.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="analisis-de-vulnerabilidades-nessus"> Análisis de Vulnerabilidades Nessus</h1>
-<p>Este es el paso que debemos completar antes de hacer la parte de explotación. Pero antes debemos saber que es lo que tenemos que explotar para no estar lanzando códigos maliciosos a lo loco.</p>
-<p>Un análisis de vulnerabilidad nos va ha permitir identificar cuales servicios de los cuales nosotros ya enumeramos, son vulnerables a algún tipo de ataque.</p>
-<p>En primero lugar haremos un escaneo si no tenemos ninguno, y lo lanzaremos. Cuando esto concluya podemos observar las diferentes categorías de las vulnerabilidades.</p>
-<p>Aqui podemos observar como un resumen de las cantidades de vulnerabilidades dependiendo del nivel que encontremos</p>
-<p><img src="./../images/SAD/1.png" alt="image"></p>
-<p><strong>Nota:</strong> Esto es bueno que sea revisado ya que una vulnerabilidad de información por ejemplo puede ayudar a comprometer un equipo porque puede obtener un cierto dato y posiblemente sirva para atacar vulnerabilidades mayores o simplemente para descubrir elementos que me permitan encontrar fallos dentro este sistema, aplicaciones que estén corriendo...</p>
-<p>Para ver los detaller pincharemos en &quot;Vulnerabilities&quot;, y aqui empieza ya cada uno de los detalles dependiendo de su naturaleza</p>
-<p><img src="./../images/SAD/2.png" alt="image"></p>
-<p>Podemos ir viendo cada uno:</p>
-<p><img src="./../images/SAD/3.png" alt="image"></p>
-<p>Como vemos nos da una pequeña descripción de cual es la vulnerabilidad, una solición, ciertas referencias e información relevante a CVE que es la vulnerabilidad que fue descubierta y publicada en algún momento</p>
-<p>Este tipo de herramientas son útiles porque nos ayudan a no solamente entender cual es el problema sino tambien a aportarte una posible remediación</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-13T20:49:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Configuración y uso de Nessus</title>
-    <id>https://github.com/oscarlucas22/guide/configuracion/</id>
-    <link href="https://github.com/oscarlucas22/guide/configuracion/"/>
-    <updated>2022-10-16T09:11:02.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="configuracion-y-uso-de-nessus"> Configuración y uso de Nessus</h1>
-<p><font color="#00FF00"><strong>Paso 1</strong></font> Damos clic en &quot;New Scan&quot; y seleccionamos el tipo de escaneo a usar, como vemos las opciones son variadas:</p>
-<p><img src="./../images/SAD/menu.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 2</strong></font></p>
-<p>Las opciones de escaneo que nos ofrece Nessus son:</p>
-<p><strong>Host Discovery</strong>
-Ejecuta un escaneo sencillo para descubrir hosts activos y puertos abiertos</p>
-<p><strong>Basic Network Scan</strong>
-Hace un análisis completo del sistema necesario para cualquier host seleccionado, es ideal para analizar vulnerabilidades internas</p>
-<p><strong>Advanced Scan</strong>
-Este análisis permite personalizar la configuración del escaneo</p>
-<p><strong>Advanced Dynamic Scan</strong>
-Permite configurar filtros de complementos dinámicos sin tener que hacerlo de forma manual</p>
-<p><strong>Malware Scan</strong>
-Como su nombre lo indica, busca malware en sistemas Windows y Unix</p>
-<p><strong>Mobile Device Scan</strong>
-Permite realizar análisis a dispositivos móviles usando Microsoft Exchange o un MDM</p>
-<p><strong>Web Application Tests</strong>
-Es funcional para buscar vulnerabilidades web publicadas y no publicadas o desconocidas</p>
-<p><strong>Credentialed Patch Audit</strong>
-Ejecuta una auditoría de parches con credenciales</p>
-<p><strong>Intel AMT Security Bypass</strong>
-Se encarga de realizar comprobaciones remotas y locales para CVE-2017-5689</p>
-<p><strong>Spectre and Meltdown</strong>
-Se encarga de llevar a cabo verificaciones remotas y locales para CVE-2017-5753, CVE-2017-5715 y CVE-2017-5754</p>
-<p><strong>WannaCry Ransomeware</strong>
-Busca el famoso ransomware WannaCry</p>
-<p><strong>Ripple20 Remote Scan</strong>
-Ubica equipos que ejecutan la pila Treck en la red</p>
-<p><strong>Zerologon Remote Scan</strong>
-Detecta la vulnerabilidad de elevación de privilegios (Zerologon) propia de Microsoft Netlogon</p>
-<p><strong>Solarigate</strong>
-Permite encontrar vulnerabilidades de SolarWinds Solorigate usando comprobaciones remotas y locales</p>
-<p><strong>ProxyLogon</strong>
-MS Exchange: ejecuta comprobaciones remotas y locales para detectar vulnerabilidades de Microsoft Exchange Server</p>
-<p><strong>PrintNightmare</strong>
-Hace análisis y verificaciones locales para CVE-2021-34527, es una vulnerabilidad PrintNightmare Windows Print Spooler</p>
-<p><strong>Active Directory Starter Scan</strong>
-Busca configuraciones incorrectas en Active Directory</p>
-<p><strong>Log4Shell</strong>
-Puede detectar la vulnerabilidad Log4Shell en Apache Log4j</p>
-<p><strong>Compliance</strong>
-Hace una auditoría de la infraestructura de la nube y audita la configuración de servicios en la nube de terceros</p>
-<p><strong>Internal PCI Network Scan</strong>
-Lleva a cabo un análisis de vulnerabilidad PCI DSS interno</p>
-<p><strong>MDM Config Audit</strong>
-Audita la configuración de los administradores de dispositivos móviles MDM</p>
-<p><strong>Offline Config Audit</strong>
-Hace una auditoria de la configuración de los dispositivos de red locales</p>
-<p><strong>Policy Compliance Auditing</strong>
-Lleva a cabo una auditoria de las configuraciones del sistema tomando como base una línea de base existente</p>
-<p><strong>SCAP and OVAL Auditing</strong>
-Analiza sistemas de auditoría a través de definiciones SCAP y OVAL</p>
-<p>Podemos ver como las opciones son variadas y funcionales.</p>
-<p>Damos clic en &quot;Basic Network Scan&quot; para un escaneo básico e ingresamos los detalles del escaneo con la IP objetivo:</p>
-<p><img src="./../images/SAD/paso2.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 3</strong></font> Damos clic en el icono &quot;Launch&quot; para iniciar el escaneo en el equipo de destino:</p>
-<p><img src="./../images/SAD/paso3.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 4</strong></font> Esperamos que el escaneo sea realizado, al finalizar pulsamos sobre el objetivo para ver las vulnerabilidades encontradas:</p>
-<p><img src="./../images/SAD/paso4.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 5</strong></font> Cada una estará dividida por colores en base a su nivel de riesgo indicando la cantidad y al lado podemos ver una representación de estas, damos clic sobre alguna sección para ver más específicamente las vulnerabilidades detectadas:</p>
-<p><img src="./../images/SAD/paso5.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 6</strong></font> Es posible ver un resumen de todas las vulnerabilidades de ese tipo y damos clic en algún elemento para tener acceso a detalles más completos:</p>
-<p><img src="./../images/SAD/paso6.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 7</strong></font> Es posible guardar un reporte del análisis ejecutado, para ello damos clic en &quot;Report&quot;:</p>
-<p><img src="./../images/SAD/paso7.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 8</strong></font> Se abrirá la siguiente ventana donde seleccionamos el formato y detalles a usar:</p>
-<p><img src="./../images/SAD/paso8.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 9</strong></font> Damos clic en &quot;Generate Report&quot; y después de creado lo abrimos o guardamos:</p>
-<p><img src="./../images/SAD/paso9.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 10</strong></font> Este reporte contendrá todo el resultado generado por Nessus y navegamos por las diferentes paginas para ver los resultados:</p>
-<p><img src="./../images/SAD/paso10.png" alt="image"></p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-13T20:49:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Instalación Nessus y Conf. Inicial</title>
-    <id>https://github.com/oscarlucas22/guide/instalacion/</id>
-    <link href="https://github.com/oscarlucas22/guide/instalacion/"/>
-    <updated>2022-10-16T09:11:02.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="instalacion-nessus-y-conf-inicial"> Instalación Nessus y Conf. Inicial</h1>
-<h2 id="instalacion-en-debian-11"> Instalación en Debian 11</h2>
-<p><font color="#00FF00"><strong>Paso 1</strong></font> Descargue el paquete Deb de Nessus Scanner</p>
-<p>Tenable ofrece el escáner Nessus a través del binario Deb, que el usuario debe descargar de su sitio web oficial para instalarlo. Por lo tanto, visite la página de descarga de Nessus y desplácese hasta encontrar el sistema operativo Debian Linux y descárguelo.</p>
-<p><a href="https://www.tenable.com/downloads/nessus?loginAttempted=true" target="_blank" rel="noopener noreferrer">Página de descarga<i>Content not supported</i></a></p>
-<p><font color="#00FF00"><strong>Paso 2</strong></font> Comando para instalar Nessus en Debian 11</p>
-<p>Ya hemos descargado el binario de Debian para configurar Nessus en Linux, ahora todo lo que descarguemos del navegador va a la carpeta Descargas, así que cambie a eso primero.</p>
-<div><pre><code>cd Descargas
-</code></pre>
-</div><p>Ahora, use el paquete APT para instalar el archivo.</p>
-<div><pre><code>sudo apt install ./Nessus-10.3.0-debian9_amd64.deb
-</code></pre>
-</div><p><font color="#00FF00"><strong>Paso 3</strong></font> Habilitar e iniciar los servicios del escáner</p>
-<p>Una vez que se complete la instalación, habilitemos su servicio para que se ejecute automáticamente con el arranque de Debian 11 y también comencemos lo mismo para la sesión actual.</p>
-<div><pre><code>sudo systemctl enable --now nessusd
-</code></pre>
-</div><p>Para comprobar el estado, escriba</p>
-<div><pre><code>sudo systemctl status nessusd
-</code></pre>
-</div><p><img src="./../images/SAD/nessusd.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 4</strong></font> Permitir el puerto de Nessus a través del firewall</p>
-<p>Nessus se ejecuta en el puerto número 8834, por lo tanto, para acceder a su interfaz web de forma remota mediante el navegador, debemos abrir este puerto en nuestro firewall Debian 11.</p>
-<div><pre><code>sudo apt-get install ufw
-sudo ufw enable
-sudo ufw allow 8834
-</code></pre>
-</div><p><font color="#00FF00"><strong>Paso 5</strong></font> Acceder a la interfaz web</p>
-<p>Ahora, abra un navegador en un sistema que pueda acceder a la dirección IP del servidor donde instaló la instancia del escáner Nessus. Y señale eso junto con un número de puerto.</p>
-<div><pre><code>https://server-ip-address:8834
-</code></pre>
-</div><p>Reemplace la dirección IP del servidor con la IP real de su Debian 11.</p>
-<p><strong>Nota:</strong> Si obtiene un error de certificado SSL, haga clic en el botón Avanzado y continúe de manera insegura.</p>
-<p><font color="#00FF00"><strong>Paso 6</strong></font> Elija cómo desea implementar Nessus: configuración en Debian 11</p>
-<p>La página web inicial de Nessus le pedirá que seleccione el producto que desea instalar. Aquí, la primera opción de producto que obtiene es de uso gratuito, mientras que el resto se paga, pero está disponible con un período de prueba.</p>
-<ul>
-<li><strong>Nessus Essentials:</strong> la versión gratuita para educadores, estudiantes y aficionados</li>
-<li><strong>Nessus Professional:</strong> la solución de evaluación de vulnerabilidades estándar de la industria de los profesionales de la seguridad.</li>
-<li><strong>Nessus Manager:</strong> la solución empresarial para administrar Nessus Agent a escala.</li>
-<li><strong>Escáner administrado:</strong> vincule su escáner a otra solución de Tenable, como Tenable.io y Tenable. Carolina del Sur.</li>
-</ul>
-<p><font color="#00FF00"><strong>Paso 7</strong></font> Obtenga el código de activación</p>
-<p>Ingrese su dirección de correo electrónico y otros detalles para obtener el código de activación, de modo que podamos activar el producto para usarlo más. La mejor manera de obtener el código es visitar la página de registro, registrarse para obtener una versión profesional o gratuita para obtener una de activación.</p>
-<p>Después de eso, haga clic en el botón Omitir y agregue el código que recibió en su correo electrónico.</p>
-<p><img src="https://www.how2shout.com/linux/wp-content/uploads/2021/07/Get-the-NEssus-activation-code.png" alt="image"></p>
-<p>Una forma alternativa de activar Nessus mediante la línea de comandos (<strong>opcional</strong>).</p>
-<div><pre><code>sudo -i
-export PATH=$PATH:/opt/nessus/sbin/ 
-source ~/.bashrc
-service nessusd stop 
-/opt/nessus/sbin/nessuscli fix --reset 
-/opt/nessus/sbin/nessuscli fetch --register ACTIVATION-CODE-HERE 
-/opt/nessus/sbin/nessusd -R 
-service nessusd start
-</code></pre>
-</div><p><font color="#00FF00"><strong>Paso 8</strong></font> Crear usuario</p>
-<p>Cuando el sistema le pida que cree un usuario Nessus Admin, créelo configurando un nombre de usuario y la contraseña correspondiente. Después de eso, tendrá el Nessus funcionando en su sistema.</p>
-<p><img src="./../images/SAD/Nessus-user.png" alt="image"></p>
-<p><font color="#00FF00"><strong>Paso 9</strong></font> Agregue el comando NessusCLI a la ruta del sistema</p>
-<p>De forma predeterminada, para acceder a la línea de comandos de Nessus, debemos definir la ruta completa para la herramienta nessuscli en la terminal de nuestro sistema Debian 11. Para eliminar esto, solo necesitamos agregar su carpeta de herramientas CLI a la ruta de nuestro sistema. Conozca más sobre su línea de comando en la <a href="https://docs.tenable.com/nessus/Content/NessusCLI.htm" target="_blank" rel="noopener noreferrer">página oficial de Doc<i>Content not supported</i></a>.</p>
-<p>Ejecute el siguiente comando en la terminal Debian 11:</p>
-<div><pre><code>sudo -i
-export PATH=$PATH:/opt/nessus/sbin/
-source ~/.bashrc
-
-nessuscli help
-</code></pre>
-</div><p><font color="#00FF00"><strong>Paso 10</strong></font> Desinstale Nessus de Debian 11 o 10 (<strong>opcional</strong>)</p>
-<p>Si ya no desea el escáner de vulnerabilidades Nessus en su Debian 11 o 10, use el comando bewloc para eliminarlo.</p>
-<div><pre><code>sudo systemctl stop nessusd
-
-sudo apt remove nessus </code></pre>
-</div>]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-13T20:49:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Compilación de un programa en C utilizando un Mekafile</title>
+    <title type="html">Compilación de un programa en C utilizando un Makafile</title>
     <id>https://github.com/oscarlucas22/guide/makefile/</id>
     <link href="https://github.com/oscarlucas22/guide/makefile/"/>
     <updated>2022-10-16T09:11:02.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="compilacion-de-un-programa-en-c-utilizando-un-mekafile"> Compilación de un programa en C utilizando un Mekafile</h1>
+    <content type="html"><![CDATA[<h1 id="compilacion-de-un-programa-en-c-utilizando-un-makafile"> Compilación de un programa en C utilizando un Makafile</h1>
 <p>Aqui dejo la url de la web de <a href="https://packages.debian.org/bullseye/imagination" target="_blank" rel="noopener noreferrer">Debian<i>Content not supported</i></a> donde se encuentra la compilación del paquete imagination.</p>
 <p><font color="#FFFF00"><strong>Paso 1</strong></font> Descarga del código fuente</p>
 <p>Primero instalaremos dpkg-dev</p>
@@ -556,180 +258,6 @@ sudo make uninstall
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
   <entry>
-    <title type="html">Monitorización continua de Nessus</title>
-    <id>https://github.com/oscarlucas22/guide/monitorizacion/</id>
-    <link href="https://github.com/oscarlucas22/guide/monitorizacion/"/>
-    <updated>2022-10-13T20:49:22.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="monitorizacion-continua-de-nessus"> Monitorización continua de Nessus</h1>
-<p><a href="https://www.tenable.com/" target="_blank" rel="noopener noreferrer">Tenable<i>Content not supported</i></a> ha publicado una nueva versión del escáner de vulnerabilidades Nessus. La versión actual es la 5.2 y posee una nueva funcionalidad llamada <a href="https://www.tenable.com/blog/continuous-monitoring-at-home-with-nessus" target="_blank" rel="noopener noreferrer">“Continuous Monitoring”<i>Content not supported</i></a> que permite a los usuarios con licenciamiento “HomeFeed” realizar un monitoreo continuo sobre sus redes.</p>
-<p>Nessus es una herramienta desarrollada para realizar escaneos de seguridad sobre diversos sistemas operativos y aplicaciones. Uno de sus grandes fuertes son los plugins desarrollados para evaluar vulnerabilidades específicas y auditar el nivel de seguridad de los sistemas. La nueva funcionalidad permite a aquellos usuarios registrados con HomeFeed, programar escaneos de seguridad para que se realicen sobre la red hogareña. De esta manera, ahora es posible enviar a través de correo electrónico y de forma periódica los informes generados con esta herramienta.</p>
-<p>Anteriormente, el monitoreo continuo estaba limitado solo a la versión de <a href="https://store.tenable.com/?main_page=index&amp;cPath=1%C2%A0" target="_blank" rel="noopener noreferrer">ProfessionalFeed<i>Content not supported</i></a> y <a href="https://www.tenable.com/products/tenable-sc" target="_blank" rel="noopener noreferrer">SecurityCenter<i>Content not supported</i></a>. Otro punto interesante, es que la nueva característica permite filtrar los informes con aquellos datos que el usuario desea obtener. Un ejemplo de esto es el envío del resumen de las aplicaciones y servicios que tengan más impacto en la red del usuario y de esa manera focalizar el informe sólo sobre los parámetros de interés para el usuario. Asimismo, el correo recibido contiene un resumen con la información más crítica:</p>
-<p><img src="https://www.welivesecurity.com/wp-content/uploads/es-la/2013/06/Resume-informe-correo-electrónico.png" alt="image"></p>
-<p>Además, es posible configurar otro tipo de parámetros tales como informar cuando un sistema se encuentra sin los últimos parches aplicados o notificar cuando ciertos sistemas posean vulnerabilidades críticas o explotables, entre otras alternativas. Otra característica de la nueva versión de Nessus es la amplia gama de parámetros que pueden establecerse a la hora de configurar un nuevo escaneo programado. En la siguiente captura pueden visualizarse alguno de ellos:</p>
-<p><img src="https://www.welivesecurity.com/wp-content/uploads/es-la/2013/06/Parámetros-establecidos.png" alt="image"></p>
-<p>Los resultados pueden agruparse por sistema objetivo (host) o criticidad en las vulnerabilidades encontradas, similar a las versiones anteriores. Posee una visualización muy cómoda, resaltando con diferentes colores las vulnerabilidades de criticad alta, media, baja e informacional:</p>
-<p><img src="https://www.welivesecurity.com/wp-content/uploads/es-la/2013/06/Resultados-del-scanning.png" alt="image"></p>
-<p>Finalmente, la opción para exportar los informes en diferentes formatos complementa la herramienta. Entre los formatos más populares se encuentran HTML, PDF y CSV:</p>
-<p><img src="https://www.welivesecurity.com/wp-content/uploads/es-la/2013/06/Exportar-resultados.png" alt="image"></p>
-<p>Además, la interfaz gráfica migró a HTML5, lo que brinda fluidez y diferencias a nivel de estética. Claramente la evolución de este tipo de herramientas permite realizar análisis más puntuales sobre los sistemas que se desea evaluar su estado de seguridad. Asimismo, permite ser más proactivo a la hora de <a href="https://www.welivesecurity.com/la-es/2012/02/03/eset-security-services-seguridad-gestionarse/" target="_blank" rel="noopener noreferrer">gestionar la seguridad<i>Content not supported</i></a>. Siempre recordamos que debemos recorrer un camino donde se pueda estar preparados para enfrentar eventos adversos y anticiparse a posibles ataques.</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-13T20:49:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Alertas de correos en Nessus</title>
-    <id>https://github.com/oscarlucas22/guide/notificaciones/</id>
-    <link href="https://github.com/oscarlucas22/guide/notificaciones/"/>
-    <updated>2022-10-13T20:49:22.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="alertas-de-correos-en-nessus"> Alertas de correos en Nessus</h1>
-<p>En este apartado explicaremos cómo crear notificaciones por correo electrónico en Nessus.</p>
-<p>Una vez haya configurado la configuración del servidor SMTP, puede crear un escaneo o editar un escaneo existente para agregar esas notificaciones.</p>
-<p><img src="./../images/SAD/SMTP.png" alt="image"></p>
-<p>Le daremos a &quot;New Scan&quot; y le daremos a &quot;Basic Network Scan&quot; (si no tenemos escaneado nada) y nos saldrá una opción de &quot;Notifications&quot;</p>
-<p><img src="./../images/SAD/New Scan.png" alt="image"></p>
-<p><img src="./../images/SAD/notifi.png" alt="image"></p>
-<p>Aqui colocaremos el mail al que queremos que nos llegue, luego puede adjuntar un informe en el formato CSV o PDF (tenga en cuenta el tamaño máximo del archivo adjunto), también puede agregar filtros adicionales para varios CD y filtros adicionales. Una vez que se complete el escaneo, recibirá una notificación por correo electrónico de que el escaneo ha terminado junto con el informe adjunto</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-13T20:49:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">¿Qué diferencia hay entre exploit, vulnerabilidad y payload?</title>
-    <id>https://github.com/oscarlucas22/guide/diferencias/</id>
-    <link href="https://github.com/oscarlucas22/guide/diferencias/"/>
-    <updated>2022-10-12T11:41:04.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="¿que-diferencia-hay-entre-exploit-vulnerabilidad-y-payload"> ¿Qué diferencia hay entre exploit, vulnerabilidad y payload?</h1>
-<p><img src="https://img.freepik.com/vector-premium/banner-tecnologia-digital-seguridad-abstracta_43778-429.jpg?w=900" alt="Banner"></p>
-<p>En seguridad informática es muy habitual confundir estos tres conceptos, y por ello vamos a ver que es un exploit, una vulnerabilidad y un payload. Un exploit tiene como objetivo comprometer, romper y explotar vulnerabilidades de los sistemas.</p>
-<p>Debemos tener en cuenta que estos términos son utilizados principalmente cuando realizamos pruebas de penetración o ejercicios de hacking ético.
-¿En qué parte del hacking podemos encontrarnos con estos términos?
-Lo vemos en la fase de explotación, es decir, una vez que conocemos las características del sistema que tienen las máquinas a las que queremos acceder, podemos investigar si existen vulnerabilidades para esos sistemas, y en el caso afirmativo, (que de costumbre es que sí) sería el momento de buscar algún exploit para romper dicha vulnerabilidad.</p>
-<p>Pero vamos a ver cada uno de ellos y como se interrelacionan</p>
-<h2 id="¿que-es-un-exploit"> ¿Qué es un exploit?</h2>
-<p>Un exploit es la herramienta(software) con la cual el hacker aprovechará para comprometer, romper y explotar una vulnerabilidad de seguridad del sistema para sus propios fines.</p>
-<p>Esto sucede ya que algunos fabricantes suelen tener fallas de seguridad en sus productos, como por el ejemplo el exploit de día cero, denominado así cuando el desarrollador del producto desconoce de una vulnerabilidad que solo el ciberdelincuente conoce.</p>
-<p><img src="./../images/exploit2022-1.png" alt="Exploit"></p>
-<p>Los ciberdelincuentes aplican ingeniería inversa para analizar toda la programación de dicho sistema, de este modo pueden detectar algún error de código y explotarlo.</p>
-<h3 id="tipos"> Tipos</h3>
-<ul>
-<li>Exploit remoto:
-Se realizan mediante una conexión víctima con el atacante, todo mediante una red de comunicaciones.
-Por ejemplo, una conexión por internet, por lo general este tipo de ataque suele hacerse mediante el envío y la instalación del software malicioso en el dispositivo.</li>
-</ul>
-<p><img src="https://assets.website-files.com/5ff66329429d880392f6cba2/61c43d47dccfe68a303551d4_exploit Preview.png" alt="Exploit"></p>
-<ul>
-<li>
-<p>Exploit local:
-La principal diferencia con el anterior tipo es que se necesita acceso al sistema antes de efectuar un ataque de explotación. Se necesita burlar al sistema para escalar privilegios en el sistema, donde el ciberdelincuente podría controlar al final todo el sistema.</p>
-</li>
-<li>
-<p>Exploit en cliente:
-Para realizar este tipo de ataques suele influir mucho el phishing para poder comprometer la máquina víctima con un exploit.
-Esto se realiza principalmente en las estaciones de trabajo de una organización atacando los softwares de ofimática mediante envío de malware por correos electrónicos.
-La mayoría de veces suele ser un éxito, ya que algunos cortafuegos o antivirus dan por alto estos ataques, de este modo los ciberdelincuentes empiezan a escalar privilegios hasta obtener el control total del sistema, aquí podemos llegar a la conclusión de que las víctimas dan el acceso.</p>
-</li>
-</ul>
-<p>Un claro ejemplo explot fue el llamado Eternal Blue, que se aprovechó de la vulnerabilidad en el protocolo SMB en la versión 1, que estaba presente en todos los sistemas operativos de windows, desde su versión 95 al 10. Es capaz de brindarnos control total de una máquina, otorgando la capacidad de ejecutar código a nivel administrador.</p>
-<h2 id="¿que-es-la-vulnerabilidad"> ¿Qué es la vulnerabilidad?</h2>
-<p><img src="https://netcloudengineering.com/wp-content/uploads/2017/06/vulnerabilidades-ciberseguridad.jpg" alt="vulnerabilidad"></p>
-<p>Una vulnerabilidad  es una debilidad o un error en el código de un sistema que puede ser explotado para obtener acceso no autorizado o realizar acciones no autorizadas en un sistema informático comprometer la seguridad permitiendo a los atacantes ejecutar código, acceder a la memoria de un sistema, instalar malware y robar, destruir o modificar datos confidenciales.</p>
-<h3 id="ejemplos-de-vulnerabilidad"> Ejemplos de vulnerabilidad</h3>
-<ul>
-<li>
-<p>Autenticación rota:
-En la autenticación rota, cada vez que un usuario inicia sesión en su cuenta, se crea una identificación de sesión, y esa identificación de sesión solo se permite para esa cuenta en particular. En caso de que la aplicación web no esté diseñada de forma segura, el atacante puede usar varias técnicas dadas:</p>
-<ul>
-<li>Relleno de credenciales</li>
-<li>Contraseñas sin cifrar</li>
-<li>Tiempos de espera de sesión mal configurados</li>
-</ul>
-</li>
-<li>
-<p>Inyección de SQL:
-Es un tipo de vulnerabilidad en la que un atacante inserta su propio código en un sitio web con el fin acceder a datos protegidos o sensibles.</p>
-</li>
-<li>
-<p>Secuencias de comandos entre sitios:
-Son un tipo de vulnerabilidad de los sitios web, que permite que los atacantes coloquen secuencias de comandos maliciosas en páginas web.</p>
-</li>
-</ul>
-<p><img src="https://academy.avast.com/hs-fs/hubfs/What_is_scross-site_scripting-1.png?width=600&amp;name=What_is_scross-site_scripting-1.png" alt="Vulnerabilidad"></p>
-<ul>
-<li>
-<p>Falsificación de solicitudes entre sitios:
-Es un ataque contra aplicaciones hospedadas en web en las que una aplicación web malintencionada puede influir en la interacción entre un explorador cliente y una aplicación web que confía en ese explorador.</p>
-</li>
-<li>
-<p>Configuración incorrecta de seguridad:
-Son controles de seguridad que se configuran incorrectamente o se dejan inseguros, lo que pone en riesgo sus sistemas y datos.</p>
-</li>
-</ul>
-<h2 id="¿que-es-el-payload"> ¿Qué es el payload?</h2>
-<p>En informática, un payload es una carga de capacidad en un paquete o en otros medios de transmisión. Dicho término está arraigado en el mundo militar y a veces está asociado con la capacidad de código malicioso con el fin de dañar. Podemos encontrarnos con data payloads o malware payload. Del primero podemos decir que se produce cuando el dato es enviado por un destino de comunicación, y el segundo es un código malicioso que pretende hacer daño al objetivo señalado.</p>
-<p><img src="https://esgeeks.com/media/2022/03/Concepto-payload-carga-útil.jpg" alt="payload"></p>
-<h3 id="ejemplos"> Ejemplos</h3>
-<p>Un ejemplo de Data pyload sería a través de un paquete IP. Este puede contener un payload con comandos emitidos por el último usuario, como una solicitud de un contenido web. Aunque, a menudo, consiste en transmitir datos por un servidor en respuesta a un usuario solicitante.  Los límites de los payloads en las PDUs (Protocol Data Unit) son con frecuencia especificados por un protocolo, y el tamaño máximo para un PDU individual raramente cambia.</p>
-<p><img src="https://cdn-icons-png.flaticon.com/512/1995/1995756.png" alt="icono"></p>
-<p>El tamaño máximo de payloads por paquetes de IP está limitado por el campo de longitud total (total length) en la cabecera del paquete IP; este campo tiene una longitud de 16 bits, lo que significa que el valor máximo posible es 2¹⁶ y el  valor más alto posible para la longitud del paquete es de 65535, menos del número de bytes que requiere un encabezado de paquete. El MTU para paquetes IP varía por el sistema y la red. La IP original estándar especifica que todos los hosts deben ser capaces de aceptar paquetes tan largos como sean de 576 bytes con los payload data de 512 bytes y los 64 de la cabecera. El valor predeterminado MTU actualmente aceptado para paquetes IPv4 es de 1500 bytes por la compatibilidad con los segmentos Ethernet.</p>
-<p>En cuanto a un payload malicioso (o malware payload) podemos poner como ejemplo todos aquellos correos electrónicos o incluso SMS que contienen un virus autorreplicante alojado en un enlace. Los atacantes eluden las defensas, mantienen la carga y atacan a la víctima. Esta vía, la de métodos de distribución comprobados, como los emails de suplantación de identidad y los gusanos, pueden adaptarse. Mientras no tenga límites específicos para la capacidad máxima de carga, los actores maliciosos intentarán mantenerlos en un tamaño razonable para evitar ser detectado por herramientas de detección de malware.</p>
-<p>Casi ningún tipo de malware puede ser incorporado dentro de un payload con la ayuda de un generador de payload para crear un malware ejecutable. Metasploit incluye recursos para buscar vulnerabilidades de seguridad, incluyendo un generador de payloads, que es una pequeña secuencia de código que comienza en un comando de shell explotable en el objetivo y crea un fichero binario ejecutable para permitir que el payload entre.</p>
-<p>Una vez entregado y ejecutado, el proceso de distribución infecta al sistema objetivo, a menos que haya un sistema de detección de malware. Una carga útil puede contener cualquier tipo de malware, incluido el ransomware, el reclutamiento de botnets u otros tipos de virus o gusanos.</p>
-<p><a href="https://www.techtarget.com/searchsecurity/definition/payload" target="_blank" rel="noopener noreferrer">Payload<i>Content not supported</i></a></p>
-<h2 id="conclusion"> Conclusión</h2>
-<p>Ya con este contexto, podemos decir que un exploit es un pequeño programa o un pedazo de código que se aprovecha o explota de una vulnerabilidad encontrada, mientras que un payload viene siendo esa acción que queremos hacer una vez que hemos explotado la vulnerabilidad.</p>
-<p>Tanto el exploit como el payload son pedazos de código que funcionan en conjunto para un fin, que en este caso, sería explotar la vulnerabilidad encontrada.</p>
-<p>Y también cabe decir que dentro del mundo del hacking, existen varias herramientas automatizadas, como lo es Metaexploit, que en la práctica nos ayudan a comprender mucho mejor como funciona este par de términos, ya que no necesariamente un exploit está amarrado a un payload y viceversa. Sino que un exploit puede usar varios payloads a fin de tener una shellcon privilegios, crear usuarios, etc.</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-12T11:41:04.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Guía SAD</title>
-    <id>https://github.com/oscarlucas22/guide/guiaSAD/</id>
-    <link href="https://github.com/oscarlucas22/guide/guiaSAD/"/>
-    <updated>2022-10-24T18:41:09.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="guia-sad"> Guía SAD</h1>
-<ul>
-<li>
-<p><a href="./diferencias.html">Diferencia entre exploit, vulnerabilidad y payload</a></p>
-</li>
-<li>
-<p><a href="./nessus.html">Nessus</a></p>
-</li>
-<li>
-<p><a href="./hydra.html">Hydra</a></p>
-</li>
-</ul>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <category term="Guia" scheme=""/>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-12T11:41:04.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
     <title type="html">Guía</title>
     <id>https://github.com/oscarlucas22/guide/</id>
     <link href="https://github.com/oscarlucas22/guide/"/>
@@ -740,16 +268,10 @@ Son controles de seguridad que se configuran incorrectamente o se dejan inseguro
 <p><a href="./makefile.html">Compilación de un programa en C utilizando un Mekafile</a></p>
 </li>
 <li>
-<p><a href="./mysql.html">Instalación de MySQL en Debian 11 Bullseye</a></p>
+<p><a href="./ABD.html">Servidores y Clientes de Base de Datos</a></p>
 </li>
 <li>
-<p><a href="./postgresql.html">Instalación de PostgreSQL en Debian 11 Bullseye</a></p>
-</li>
-<li>
-<p><a href="./oracle.html">Instalación de Oracle en Debian 11 Bullseye</a></p>
-</li>
-<li>
-<p><a href="./mongo.html">Instalación de MongoDB en Debian 11 Bullseye</a></p>
+<p><a href="https://www.dropbox.com/s/84gl6ea0ls0xksy/Plantilla%20Trabajo%20Grupal%201.pdf?dl=0" target="_blank" rel="noopener noreferrer">Herramientas de Seguridad (SNORT, NESSUS, TRIPWIRE, RKHUNTER, HYDRA)<i>Content not supported</i></a></p>
 </li>
 </ul>
 ]]></content>

@@ -7,10 +7,6 @@ category: Guia
 
 - [Compilación de un programa en C utilizando un Mekafile](makefile.md)
 
-- [Instalación de MySQL en Debian 11 Bullseye](mysql.md)
+- [Servidores y Clientes de Base de Datos](ABD.md)
 
-- [Instalación de PostgreSQL en Debian 11 Bullseye](postgresql.md)
-
-- [Instalación de Oracle en Debian 11 Bullseye](oracle.md)
-
-- [Instalación de MongoDB en Debian 11 Bullseye](mongo.md)
+- [Herramientas de Seguridad (SNORT, NESSUS, TRIPWIRE, RKHUNTER, HYDRA)](https://www.dropbox.com/s/84gl6ea0ls0xksy/Plantilla%20Trabajo%20Grupal%201.pdf?dl=0)
