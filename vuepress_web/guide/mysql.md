@@ -1,4 +1,6 @@
-# Instalación de MySQL en Debian 11 Bullseye
+# MySQL en Debian 11 Bullseye
+
+## Instalación de MySQL en Debian 11 Bullseye
 
 Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:
 

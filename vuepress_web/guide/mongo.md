@@ -1,73 +1,71 @@
-# Instalación de MongoDB en Debian 11 Bullseye
+# MongoDB en Debian 11 Bullseye
 
-Para la instalación de MongoDB, el repositorio oficial de MongoDB está disponible para Debian 11 Bullseye, por lo que podemos usar el mismo.
+## Instalación de MongoDB en Debian 11 Bullseye
 
-1. Agregue el repositorio MongoDB en Debian 11
+<font color="#800080">**Paso 1**</font> Instalar paquetes requeridos
 
-Como sabemos, los paquetes de MongoDB no están disponibles para instalar directamente desde el repositorio base de Debian 11, por lo que debemos agregar el oficial que ofrecen los desarrolladores de esta base de datos NoSQL.
+    sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
 
-    echo "deb http://repo.mongodb.org/apt/debian bullseye/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+<font color="#800080">**Paso 2**</font> Importar repositorio de MongoDB
 
-2. Integrar la clave GPG de MongoDB
+    sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
 
-Para asegurarnos de que los paquetes que recibiremos para instalar esta base de datos en nuestro Linux provengan de una fuente auténtica. Agregue la clave firmada GPG por los desarrolladores del servidor de base de datos.
+<font color="#800080">**Paso 3**</font> Agregamos el repositorio
 
-    curl -sSL https://www.mongodb.org/static/pgp/server-5.0.asc  -o mongoserver.asc
+    echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
 
-Importamos *mongoserver.asc*
+<font color="#800080">**Paso 4**</font> Actualizamos
 
-    gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --import ./mongoserver.asc
+    sudo apt-get update
 
-Exportamos *mongoserver_key.gpg*
+<font color="#800080">**Paso 5**</font> Instalar MongoDB 5.0
 
-    gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --export > ./mongoserver_key.gpg
+    sudo apt install mongodb-org -y
 
-Movemos *mongoserver_key.gpg* a *trusted.gpg.d*
+<font color="#800080">**Paso 6**</font> Activamos el servicio de mongodb
 
-    sudo mv mongoserver_key.gpg /etc/apt/trusted.gpg.d/
+    sudo systemctl enable mongod --now
 
-3. Ejecute la actualización del sistema
+<font color="#800080">**Paso 7**</font> Verificamos la version
 
-En su terminal de comando Debian 11 o 10, ejecute el comando de actualización del sistema para asegurarse de que todos los paquetes existentes estén actualizados.
+    mongo --eval 'db.runCommand({ connectionStatus: 1 })'
 
-    sudo apt update && sudo apt upgrade
+<font color="#800080">**Paso 8**</font> Configurar la seguridad de MongoDB
 
-4. Comando para instalar MongoDB en Debian 11 o 10
+    sudo nano /etc/mongod.conf
+---
+    security:
+        authorization: enabled
 
-Eso es todo. Ya hemos configurado lo que necesitamos para instalar “herramientas de base de datos, mongosh, herramientas adicionales, mongos; servidor de base de datos y shell” en nuestro Debian 11 o 10 Linux.
+<font color="#800080">**Paso 9**</font> Reiniciamos servicio
 
-Por lo tanto, simplemente ejecute un comando simple:
+    sudo systemctl restart mongod
 
-    sudo apt install mongodb-org
+## Creación de usuario
 
-5. Iniciar y habilitar el servicio MongoDB
-
-Una vez completada la instalación, habilitemos y también iniciemos el servicio del servidor de base de datos, para que no necesitemos ejecutarlo una y otra vez con el arranque del sistema.
-
-    sudo systemctl enable --now mongod
-
-Comprobamos con el comando *systemctl* si esta activo mongod
-
-    sudo systemctl status mongod
-
-![image]
-
-6. Comprueba la versión instalada
-
-Para confirmar qué versión está instalada exactamente en su sistema, ejecute:
-
-    mongod --version
-
-![image]
-
-Para obtener la línea de comando de mongo, simplemente escriba:
+<font color="#800080">**Paso 1**</font> Crear usuario administrador en MongoDB
 
     mongo
 
-Desinstalar o Eliminar
+<font color="#800080">**Paso 2**</font> Nos conectamos como administrador
 
-Bueno, aquellos que ya no están interesados ​​en MongoDB y no lo necesitan, pueden eliminarlo usando el siguiente comando:
+    use admin
 
-    sudo apt remove mongodb-org
+<font color="#800080">**Paso 3**</font> Creamos usuario
+
+    db.createUser(
+        {
+            user: "lucas", 
+            pwd: "admin", 
+            roles: [ { role: "root", db: "admin" } ]
+        }
+    )
+
+<font color="#800080">**Paso 4**</font> Nos conectamos
+
+    mongo --port 27017 --authenticationDatabase "admin" -u "lucas" -p
+---
+
+    mongosh -u lucas
 
 ¡Gracias!

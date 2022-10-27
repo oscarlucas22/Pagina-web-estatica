@@ -1,4 +1,4 @@
-# Compilación de un programa en C utilizando un Makafile
+# Compilación de un programa en C utilizando un Makefile
 
 Aqui dejo la url de la web de [Debian](https://packages.debian.org/bullseye/imagination) donde se encuentra la compilación del paquete imagination.
 
