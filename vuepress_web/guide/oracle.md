@@ -67,7 +67,7 @@ Veremos que da error. Eso se debe a que en al script de configuración le hace f
 
 Y buscamos(Ctrl + W) en la linea donde pone "Configuring"
 
-
+![image](../images/ABD/1-oracle.png)
 
 Borramos la linea que se ve marcada en la imagen y copiamos en su lugar la siguiente:
 
