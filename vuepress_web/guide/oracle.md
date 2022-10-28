@@ -63,11 +63,11 @@ Después de unos 10 minutos el proceso terminará. Ejecutamos el siguiente coman
 
 Veremos que da error. Eso se debe a que en al script de configuración le hace falta un parámetro. Para añadirlo entramos en el script con:
 
-    sudo nano /etc/init.d/oracle-xe-18c
+    sudo nano /etc/init.d/oracledb_ORCLCDB-19c configure
 
 Y buscamos(Ctrl + W) en la linea donde pone "Configuring"
 
-![image]()
+
 
 Borramos la linea que se ve marcada en la imagen y copiamos en su lugar la siguiente:
 
@@ -81,34 +81,28 @@ Ahora lo intentamos de nuevo:
 
 `**Nota**: Si nos sigue saliendo un error instalaremos lo siguiente *sudo apt install libaio1 unixodbc*`
 
-Y despues de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la maquina (*sudo reboot*) y vuelvelo a probar 
+Y despues de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la maquina (*sudo reboot*) y vuélvelo a probar 
 
 <font color="#800080">**Paso 6**</font>
 
+Añadimos las variables de entorno a bash:
 
+    nano ~/.bashrc
+
+Copiamos las siguientes líneas al final del fichero:
+
+    export ORACLE_HOME=/opt/oracle/product/19c/dbhome_1
+    export ORACLE_SID=ORCLCDB
+    export ORACLE_BASE=/opt/oracle/oradata
+    export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+    export PATH=$ORACLE_HOME/bin:$PATH
 
 <font color="#800080">**Paso 7**</font>
 
+Para finalizar reiniciamos el servicio de Oracle 19c:
 
+    sudo service oracledb_ORCLCDB-19c restart
 
-<font color="#800080">**Paso 8**</font>
+## Crear un usuario
 
-
-
-<font color="#800080">**Paso 9**</font>
-
-
-
-<font color="#800080">**Paso 10**</font>
-
-
-
-<font color="#800080">**Paso 11**</font>
-
-
-
-<font color="#800080">**Paso 12**</font>
-
-
-
-<font color="#800080">**Paso 13**</font>
+<font color="#800080">**Paso 1**</font>
