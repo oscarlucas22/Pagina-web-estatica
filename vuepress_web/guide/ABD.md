@@ -1,4 +1,4 @@
-- [MySQL](mysql.md)
+- [MariaDB](mariadb.md)
 
 - [PostgreSQL](postgresql.md)
 

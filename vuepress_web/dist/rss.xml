@@ -6,151 +6,11 @@
     <link>https://github.com/oscarlucas22/</link>
     <description>Tu página de confianza</description>
     <language>en-US</language>
-    <pubDate>Fri, 28 Oct 2022 06:41:38 GMT</pubDate>
-    <lastBuildDate>Fri, 28 Oct 2022 06:41:38 GMT</lastBuildDate>
+    <pubDate>Fri, 28 Oct 2022 21:13:21 GMT</pubDate>
+    <lastBuildDate>Fri, 28 Oct 2022 21:13:21 GMT</lastBuildDate>
     <generator>@mr-hope/vuepress-plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Guia</category>
-    <item>
-      <title>MongoDB en Debian 11 Bullseye</title>
-      <link>https://github.com/oscarlucas22/guide/mongo/</link>
-      <guid>https://github.com/oscarlucas22/guide/mongo/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">MongoDB en Debian 11 Bullseye</source>
-      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
-<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
-<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
-<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
-<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
-<div><pre><code>sudo apt-get update
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
-<div><pre><code>sudo apt install mongodb-org -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
-<div><pre><code>sudo systemctl enable mongod --now
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la version</p>
-<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
-<div><pre><code>sudo nano /etc/mongod.conf
-</code></pre>
-</div><hr>
-<div><pre><code>security:
-    authorization: enabled
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
-<div><pre><code>sudo systemctl restart mongod
-</code></pre>
-</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
-<div><pre><code>mongo
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
-<div><pre><code>use admin
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
-<div><pre><code>db.createUser(
-    {
-        user: &quot;lucas&quot;, 
-        pwd: &quot;admin&quot;, 
-        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
-    }
-)
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
-<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
-</code></pre>
-</div><hr>
-<div><pre><code>mongosh -u lucas
-</code></pre>
-</div><p>¡Gracias!</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>MySQL en Debian 11 Bullseye</title>
-      <link>https://github.com/oscarlucas22/guide/mysql/</link>
-      <guid>https://github.com/oscarlucas22/guide/mysql/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">MySQL en Debian 11 Bullseye</source>
-      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="mysql-en-debian-11-bullseye"> MySQL en Debian 11 Bullseye</h1>
-<h2 id="instalacion-de-mysql-en-debian-11-bullseye"> Instalación de MySQL en Debian 11 Bullseye</h2>
-<p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
-<p><input type="checkbox" name="vehicle" value="Bike"> Tener una maquina Debian 11 actualizada</p>
-<p><input type="checkbox" name="vehicle" value="Bike"> Tener un usuario con privilegios de sudo</p>
-<p><input type="checkbox" name="vehicle" value="Bike"> Tener acceso a internet</p>
-<p>Antes de comenzar con la instalción actualizaremos nuestra maquina</p>
-<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
-</code></pre>
-</div><p>E instalamos las herramientas</p>
-<div><pre><code>sudo apt install -y gnupg wget
-</code></pre>
-</div><p>Despues de esto empezaremos ya con la instalación de MySQL.</p>
-<h2 id="configuracion-del-repositorio-de-mysql-para-debian-11-bullseye"> Configuración del repositorio de MySQL para Debian 11 Bullseye</h2>
-<p>Vamos a ver cómo configurar el repositorio oficial de MySQL Server para Debian 11.</p>
-<p>Para no tener que registrarse en la pagina de mysql aqui os dejo el <a href="https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb" target="_blank" rel="noopener noreferrer">enlace de descarga<i>Content not supported</i></a></p>
-<p>Una vez ya con el paquete descargado procedemos con la instalación:</p>
-<div><pre><code>cd Descargas &amp;&amp; sudo dpkg -i mysql-apt-config_0.8.22-1_all.deb
-</code></pre>
-</div><p>Al instalarse este paquete se lanzará un pequeño configurador en modo consola que nos mostrará las características que ofrece por defecto el nuevo repositorio:</p>
-<p><img src="./../images/mysql/3.png" alt="image"></p>
-<p>La primera opción nos muestra la versión de MySQL que se va a instalar, por defecto MySQL Server 8.0, aunque sería posible cambiarla por MySQL Cluster 8.0.</p>
-<p>Por defecto, la segunda opción nos informa de que está activado el repositorio de herramientas y conectores, que es lo deseable, aunque podríamos desactivarlo.</p>
-<p>Y, finalmente, la tercera opción ofrece un repositorio de software en pruebas, experimental, etc. que, con buen criterio, está desactivado inicialmente (aunque se puede activar).</p>
-<p>Para salir del configurador seleccionaremos <em>Ok</em> y el instalador configurará el repositorio con los valores seleccionados.</p>
-<p>Debemos actualizar la información de los repositorios para que se incluyan las nuevas listas de paquetes disponibles:</p>
-<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
-</code></pre>
-</div><h2 id="instalar-mysql-en-debian-11"> Instalar MySQL en Debian 11</h2>
-<p>Ahora comenzaremos con la instalación de MySQL en Debian 11:</p>
-<div><pre><code>sudo apt install -y mysql-server
-</code></pre>
-</div><p>Una vez descargados este paquete y sus dependencias, durante la instalación de los mismos, se nos solicitará la contraseña del usuario administrador root de MySQL:</p>
-<p><img src="./../images/mysql/5.png" alt="image"></p>
-<p>Si dejamos la contraseña en blanco se usará la autenticación por sockets de Unix, es decir, sólo el usuario root de Debian 11 o usuarios privilegiados con sudo podrán conectar como usuario root de MySQL. En cambio, si creamos una contraseña se usará el típico sistema de usuario/contraseña para acceder como root a MySQL Server. Depende de tus necesidades o gustos elegir uno u otro sistema.</p>
-<p>Este instalador también nos advierte de la disponibilidad del nuevo plugin mejorado de autenticación, que tiene la desventaja de no ser compatible con conectores y clientes antiguos:</p>
-<p><img src="./../images/mysql/6.png" alt="image"></p>
-<p>Terminada esta pequeña configuración inicial, la instalación termina creando un nuevo servicio en Debian 11, el servicio mysql.service o simplemente mysql, que queda en ejecución y habilitado para su inicio automático.</p>
-<p>Podemos comprobar en cualquier momento el estado de dicho servicio con el comando <code>systemctl</code>:</p>
-<div><pre><code>systemctl status mysql
-</code></pre>
-</div><p><img src="./../images/mysql/12.png" alt="image"></p>
-<p>También disponemos del cliente de consola mysql que podemos utilizar para conectar al servicio con el usuario root, si elegimos el acceso por sockets de Unix:</p>
-<div><pre><code>sudo mysql
-</code></pre>
-</div><p>O especificando usuario y contraseña:</p>
-<div><pre><code>mysql -u root -p
-</code></pre>
-</div><p><img src="./../images/mysql/8.png" alt="image"></p>
-<h3 id="crear-un-usuario-administrador-propio"> Crear un usuario administrador propio</h3>
-<p>Es posible que necesites un usuario administrador de MySQL Server con acceso mediante contraseña para conectar al servicio desde aplicaciones, gestores, clientes gráficos, conexiones remotas, etc. dejando al usuario root con acceso únicamente local.</p>
-<p>Esto es fácil de hacer desde el cliente mysql, en el que creamos un usuario con contraseña:</p>
-<div><pre><code>&gt; create user lucas identified by 'contraseña'; 
-</code></pre>
-</div><p>Y a continuación aplicamos permisos sobre todas las bases de datos y modificación de permisos de otros usuarios:</p>
-<div><pre><code>&gt; grant all privileges on *.* to lucas with grant option;
-</code></pre>
-</div><p>Refrescamos la tabla de permisos:</p>
-<div><pre><code>&gt; flush privileges;
-</code></pre>
-</div><p>Y cerramos la conexión:</p>
-<div><pre><code>&gt; exit
-</code></pre>
-</div><p><img src="./../images/mysql/10.png" alt="image"></p>
-<p>Y con esto ya tendríamos todo listo.</p>
-<p>Y así podremos acceder a nuestro usuario ya creado</p>
-<p><img src="./../images/mysql/11.png" alt="image"></p>
-<p>¡Gracias!</p>
-]]></content:encoded>
-    </item>
     <item>
       <title>Oracle en Debian 11 Bullseye</title>
       <link>https://github.com/oscarlucas22/guide/oracle/</link>
@@ -200,13 +60,13 @@ kernel.shmmax=536870912
 </code></pre>
 </div><p><font color="#800080"><strong>Paso 5</strong></font> <strong>Comienzo de la instalación</strong></p>
 <p>Y ahora sí, instalamos el paquete <a href="https://www.dropbox.com/s/p1vhrnjw73fdc70/oracle-database-ee-19c_1.0-2_amd64.deb?dl=0" target="_blank" rel="noopener noreferrer">.deb<i>Content not supported</i></a>:</p>
-<div><pre><code>sudo dpkg -i oracle-database-xe-18c_1.0-2_amd64.deb
+<div><pre><code>sudo dpkg -i oracle-database-ee-19c_1.0-2_amd64.deb
 </code></pre>
 </div><p>Después de unos 10 minutos el proceso terminará. Ejecutamos el siguiente comando para configurar la contraseña de administrador de la base de datos y demás cosas:</p>
 <div><pre><code>sudo /etc/init.d/oracledb_ORCLCDB-19c configure
 </code></pre>
 </div><p>Veremos que da error. Eso se debe a que en al script de configuración le hace falta un parámetro. Para añadirlo entramos en el script con:</p>
-<div><pre><code>sudo nano /etc/init.d/oracledb_ORCLCDB-19c configure
+<div><pre><code>sudo nano /etc/init.d/oracledb_ORCLCDB-19c
 </code></pre>
 </div><p>Y buscamos(Ctrl + W) en la linea donde pone &quot;Configuring&quot;</p>
 <p><img src="./../images/ABD/1-oracle.png" alt="image"></p>
@@ -216,8 +76,15 @@ kernel.shmmax=536870912
 </div><p>Ahora lo intentamos de nuevo:</p>
 <div><pre><code>sudo /etc/init.d/oracledb_ORCLCDB-19c configure
 </code></pre>
-</div><p><code>**Nota**: Si nos salta un error de netstat tendremos que instalarlo *sudo apt install net-tools*</code></p>
-<p><code>**Nota**: Si nos sigue saliendo un error instalaremos lo siguiente *sudo apt install libaio1 unixodbc*</code></p>
+</div><p><code>Nota: Si nos salta un error de netstat tendremos que instalarlo sudo apt install net-tools</code></p>
+<p><code>Nota: Si nos sigue saliendo un error instalaremos lo siguiente sudo apt install libaio1 unixodbc</code></p>
+<p>Si te sale este error:</p>
+<p><img src="./../images/ABD/2-oracle.png" alt="image"></p>
+<p>Sigue estos pasos:</p>
+<div><pre><code>sudo nano /etc/hosts
+</code></pre>
+</div><p>Dentro del fichero escribe tu ip seguido de el nombre de tu maquina dos veces, como se muestra en la siguiente imagen:</p>
+<p><img src="./../images/ABD/3-oracle.png" alt="image"></p>
 <p>Y despues de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la maquina (<em>sudo reboot</em>) y vuélvelo a probar</p>
 <p><font color="#800080"><strong>Paso 6</strong></font></p>
 <p>Añadimos las variables de entorno a bash:</p>
@@ -226,7 +93,7 @@ kernel.shmmax=536870912
 </div><p>Copiamos las siguientes líneas al final del fichero:</p>
 <div><pre><code>export ORACLE_HOME=/opt/oracle/product/19c/dbhome_1
 export ORACLE_SID=ORCLCDB
-export ORACLE_BASE=/opt/oracle/oradata
+export ORACLE_BASE=/opt/oracle
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
 export PATH=$ORACLE_HOME/bin:$PATH
 </code></pre>
@@ -234,8 +101,42 @@ export PATH=$ORACLE_HOME/bin:$PATH
 <p>Para finalizar reiniciamos el servicio de Oracle 19c:</p>
 <div><pre><code>sudo service oracledb_ORCLCDB-19c restart
 </code></pre>
+</div><p>Para iniciar Oracle ejecutaremos una serie de pasos:</p>
+<p><strong>Primero pondremos una contraseña</strong></p>
+<div><pre><code>passwd oracle
+</code></pre>
+</div><p><strong>Segundo entrasemos en oracle</strong></p>
+<div><pre><code>su oracle
+</code></pre>
+</div><p>Seguramente te salga un <code>$</code>, si es así eso es que no tienes shell. Para solucionarlo ejecutaremos</p>
+<div><pre><code>sudo usermod -s /bin/bash oracle
+</code></pre>
+</div><p>Y probaremos de nuevo:</p>
+<div><pre><code>su oracle
+</code></pre>
+</div><p>Una vez dentro ya tendras shell y dentro ejecutaremos:</p>
+<div><pre><code>sqlplus / as sysdba
+</code></pre>
+</div><p>Si esto no te va reinicia la maquina <code>sudo reboot</code> y prueba de nuevo</p>
+<p>Bien, una vez echo esto si al iniciar te sale algo asi:</p>
+<p><img src="./../images/ABD/4-oracle.png" alt="image"></p>
+<p>Ejecuta lo siguiente</p>
+<div><pre><code>SQL&gt; shutdown abort
+</code></pre>
+</div><hr>
+<div><pre><code>SQL&gt; startup
+</code></pre>
+</div><p>Y ya estaria sal y entra de nuevo y te deberia salir algo así:</p>
+<p><img src="./../images/ABD/5-oracle.png" alt="image"></p>
+<p>Acto seguido cambiaremos la contraseña del user SYS y SYSTEM</p>
+<div><pre><code>SQL&gt; alter user sys identified by TU_PASSWD;
+</code></pre>
+</div><hr>
+<div><pre><code>SQL&gt; alter user system identified by TU_PASSWD;
+</code></pre>
 </div><h2 id="crear-un-usuario"> Crear un usuario</h2>
 <p><font color="#800080"><strong>Paso 1</strong></font></p>
+<p>!Gracias¡</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -256,7 +157,8 @@ export PATH=$ORACLE_HOME/bin:$PATH
 <p><font color="#800080"><strong>Paso 3</strong></font> Comprobamos el estado del servicio</p>
 <div><pre><code>systemctl status postgresql
 </code></pre>
-</div><p>En el caso que no estuviera iniciado lo iniciaremos</p>
+</div><p><img src="./../images/ABD/1-postgre.png" alt="image"></p>
+<p>En el caso que no estuviera iniciado lo iniciaremos</p>
 <div><pre><code>systemctl start postgresql
 </code></pre>
 </div><p><font color="#800080"><strong>Paso 4</strong></font> Instalamos el cliente</p>
@@ -284,22 +186,122 @@ export PATH=$ORACLE_HOME/bin:$PATH
 </div><h2 id="acceso-remoto"> Acceso remoto</h2>
 <p><font color="#800080"><strong>Paso 1</strong></font> Acceso remoto</p>
 <div><pre><code>sudo nano /etc/postgresql/13/main/postgresql.conf
-
-#listen_addresses = 'localhost'         # what IP address(es) to listen on;
 </code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Activamos contraseñas de red</p>
+</div><p>Busca la siguiente linea:</p>
+<p><code>#listen_addresses = 'localhost' # what IP address(es) to listen on;</code></p>
+<p>Y sustituye 'localhost' por '*':</p>
+<p><img src="./../images/ABD/2-postgre.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Activamos contraseñas de red</p>
+<p>El siguiente paso es configurar el fichero &quot;pg_hba.conf&quot; para permitir el acceso remoto desde cualquier dirección. Para ello ejecuta lo siguiente:</p>
 <div><pre><code>sudo nano /etc/postgresql/13/main/pg_hba.conf
 </code></pre>
-</div><p>Acceso desde red</p>
-<div><pre><code>host    all             all             all                     md5
+</div><p>Añade al final del fichero las siguientes líneas:</p>
+<div><pre><code>host    all      all              0.0.0.0/0                    md5
+host    all      all              ::/0                         md5
 </code></pre>
 </div><p><font color="#800080"><strong>Paso 3</strong></font> Reiniciamos el servicio</p>
-<div><pre><code>sudo systemctl reload postgresql
+<div><pre><code>sudo systemctl restart postgresql.service
 </code></pre>
 </div><p><font color="#800080"><strong>Paso 4</strong></font> Añadimos regla de firewall</p>
 <div><pre><code>sudo ufw allow postgresql
 
 psql -h debian11.local.lan -U oscar
+</code></pre>
+</div><h2 id="instalacion-de-una-herramienta-de-administracion-web"> Instalación de una herramienta de administración web</h2>
+<p>¡Gracias!</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>MongoDB en Debian 11 Bullseye</title>
+      <link>https://github.com/oscarlucas22/guide/mongo/</link>
+      <guid>https://github.com/oscarlucas22/guide/mongo/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">MongoDB en Debian 11 Bullseye</source>
+      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
+<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
+<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
+<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
+<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
+<div><pre><code>sudo apt-get update
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
+<div><pre><code>sudo apt install mongodb-org -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
+<div><pre><code>sudo systemctl enable mongod --now
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la version</p>
+<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
+</code></pre>
+</div><p><img src="./../images/ABD/1-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
+<div><pre><code>sudo nano /etc/mongod.conf
+</code></pre>
+</div><hr>
+<div><pre><code>security:
+    authorization: enabled
+</code></pre>
+</div><p><img src="./../images/ABD/2-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
+<div><pre><code>sudo systemctl restart mongod
+</code></pre>
+</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
+<div><pre><code>use admin
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
+<div><pre><code>db.createUser(
+    {
+        user: &quot;lucas&quot;, 
+        pwd: &quot;admin&quot;, 
+        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
+    }
+)
+</code></pre>
+</div><p><img src="./../images/ABD/3-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
+<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
+</code></pre>
+</div><p>o tambien puedes probar con:</p>
+<div><pre><code>mongosh -u lucas
+</code></pre>
+</div><h2 id="creacion-de-base-de-datos"> Creación de base de datos</h2>
+<p><strong>Iniciar MongoDB</strong></p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><strong>Crear y si ya esta creada usar base de datos</strong></p>
+<div><pre><code>use 'NOMBRE_BD'
+</code></pre>
+</div><p><strong>Listar base de datos</strong></p>
+<div><pre><code>show dbs
+</code></pre>
+</div><p><strong>Verificar la base de datos actual</strong></p>
+<div><pre><code>db
+</code></pre>
+</div><p><strong>Eliminar base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos</p>
+<div><pre><code>db.dropDatabase()
+</code></pre>
+</div><p><strong>Importar json en MongoDB</strong></p>
+<p>Hacerlo fuera de mongo</p>
+<div><pre><code>mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
+</code></pre>
+</div><p><strong>Eliminar json de la base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos donde este el json</p>
+<div><pre><code>db.NAME_COLLECTION.drop()
+</code></pre>
+</div><p><strong>Mostrar la coleccion</strong></p>
+<div><pre><code>db.NAME_COLLECTION.find().pretty
 </code></pre>
 </div><p>¡Gracias!</p>
 ]]></content:encoded>
@@ -363,12 +365,75 @@ sudo make uninstall
 <p><a href="./makefile.html">Compilación de un programa en C utilizando un Makefile</a></p>
 </li>
 <li>
-<p><a href="./ABD.html">Servidores y Clientes de Base de Datos</a></p>
+<p><a href="./ABD.html">Servidores y Clientes de Base de Datos (MariaDB, PostgreSQL, Oracle, MongoDB)</a></p>
 </li>
 <li>
 <p><a href="https://www.dropbox.com/s/84gl6ea0ls0xksy/Plantilla%20Trabajo%20Grupal%201.pdf?dl=0" target="_blank" rel="noopener noreferrer">Herramientas de Seguridad (SNORT, NESSUS, TRIPWIRE, RKHUNTER, HYDRA)<i>Content not supported</i></a></p>
 </li>
 </ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>MariaDB en Debian 11 Bullseye</title>
+      <link>https://github.com/oscarlucas22/guide/mariadb/</link>
+      <guid>https://github.com/oscarlucas22/guide/mariadb/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">MariaDB en Debian 11 Bullseye</source>
+      <content:encoded><![CDATA[<h1 id="mariadb-en-debian-11-bullseye"> MariaDB en Debian 11 Bullseye</h1>
+<p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener una máquina Debian 11 actualizada</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener un usuario con privilegios de sudo</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener acceso a internet</p>
+<p>Antes de comenzar con la instalación actualizaremos nuestra máquina</p>
+<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+</div><p>Una vez completada la actualización del sistema, ejecuta el siguiente comando para instalr los paquetes necesarios</p>
+<div><pre><code>sudo apt-get install software-properties-common dirmngr gnupg2 -y
+</code></pre>
+</div><hr>
+<div><pre><code>sudo apt-get install apt-transport-https wget curl -y
+</code></pre>
+</div><h2 id="instalar-mariadb-en-debian-11"> Instalar MariaDB en Debian 11</h2>
+<p>Para comenzar con la instalación ejecuta el siguiente comando:</p>
+<div><pre><code>sudo apt install mariadb-server -y
+</code></pre>
+</div><p>Para iniciar, detener y reiniciar el servidor de bases de datos MariaDB, utiliza los siguientes comandos:</p>
+<p>Iniciar</p>
+<div><pre><code>sudo systemctl start mariadb
+</code></pre>
+</div><p>Detener</p>
+<div><pre><code>sudo systemctl stop mariadb
+</code></pre>
+</div><p>Reiniciar</p>
+<div><pre><code>sudo systemctl restart mariadb
+</code></pre>
+</div><p>Para que MariaDB se inicie automáticamente al arrancar el sistema, ejecuta el siguiente comando:</p>
+<div><pre><code>sudo systemctl enable mariadb
+</code></pre>
+</div><p>MariaDB debería estar en marcha en este momento. Puedes comprobar si se esta ejecutando, ejecutando el siguiente comando:</p>
+<div><pre><code>sudo systemctl status mariadb
+</code></pre>
+</div><p>Ejemplo de salida:</p>
+<p><img src="./../images/ABD/1-mariadb.png" alt="image"></p>
+<p><code>Ctrl + C</code> para salir del fichero</p>
+<p>Y con esto ya tendriamos instalado MariaDB y para ejecutarlo, ejecutaremos el siguiente comando:</p>
+<div><pre><code>sudo mysql
+</code></pre>
+</div><h2 id="creacion-de-un-nuevo-usuario"> Creación de un nuevo usuario</h2>
+<p>Los siguientes pasos que vas a ver se ejecutan dentro de MariaDB (cambia el usuario y la contraseña por los tuyos)</p>
+<div><pre><code>CREATE USER 'lucas' IDENTIFIED BY 'admin';
+</code></pre>
+</div><hr>
+<div><pre><code>GRANT ALL ON *.* TO 'lucas'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
+</code></pre>
+</div><hr>
+<div><pre><code>FLUSH PRIVILEGES;
+</code></pre>
+</div><p><img src="./../images/ABD/2-mariadb.png" alt="image"></p>
+<p>Y una vez ya creado el usuario salimos de MariaDB ejecutando <code>exit;</code>
+Y para conectarnos a nuestro usuario ejecutaremos el siguiente comando:</p>
+<div><pre><code>mysql -u lucas -p
+</code></pre>
+</div><p>¡Gracias!</p>
 ]]></content:encoded>
     </item>
   </channel>

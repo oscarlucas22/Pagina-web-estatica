@@ -55,7 +55,7 @@ Para cargar los parámetros del kernel sin reiniciar:
 
 Y ahora sí, instalamos el paquete [.deb](https://www.dropbox.com/s/p1vhrnjw73fdc70/oracle-database-ee-19c_1.0-2_amd64.deb?dl=0):
 
-    sudo dpkg -i oracle-database-xe-18c_1.0-2_amd64.deb
+    sudo dpkg -i oracle-database-ee-19c_1.0-2_amd64.deb
 
 Después de unos 10 minutos el proceso terminará. Ejecutamos el siguiente comando para configurar la contraseña de administrador de la base de datos y demás cosas:
 
@@ -63,7 +63,7 @@ Después de unos 10 minutos el proceso terminará. Ejecutamos el siguiente coman
 
 Veremos que da error. Eso se debe a que en al script de configuración le hace falta un parámetro. Para añadirlo entramos en el script con:
 
-    sudo nano /etc/init.d/oracledb_ORCLCDB-19c configure
+    sudo nano /etc/init.d/oracledb_ORCLCDB-19c
 
 Y buscamos(Ctrl + W) en la linea donde pone "Configuring"
 
@@ -77,9 +77,21 @@ Ahora lo intentamos de nuevo:
 
     sudo /etc/init.d/oracledb_ORCLCDB-19c configure
 
-`**Nota**: Si nos salta un error de netstat tendremos que instalarlo *sudo apt install net-tools*`
+`Nota: Si nos salta un error de netstat tendremos que instalarlo sudo apt install net-tools`
 
-`**Nota**: Si nos sigue saliendo un error instalaremos lo siguiente *sudo apt install libaio1 unixodbc*`
+`Nota: Si nos sigue saliendo un error instalaremos lo siguiente sudo apt install libaio1 unixodbc`
+
+Si te sale este error:
+
+![image](../images/ABD/2-oracle.png)
+
+Sigue estos pasos:
+
+    sudo nano /etc/hosts
+
+Dentro del fichero escribe tu ip seguido de el nombre de tu maquina dos veces, como se muestra en la siguiente imagen:
+
+![image](../images/ABD/3-oracle.png)
 
 Y despues de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la maquina (*sudo reboot*) y vuélvelo a probar 
 
@@ -93,7 +105,7 @@ Copiamos las siguientes líneas al final del fichero:
 
     export ORACLE_HOME=/opt/oracle/product/19c/dbhome_1
     export ORACLE_SID=ORCLCDB
-    export ORACLE_BASE=/opt/oracle/oradata
+    export ORACLE_BASE=/opt/oracle
     export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
     export PATH=$ORACLE_HOME/bin:$PATH
 
@@ -103,6 +115,53 @@ Para finalizar reiniciamos el servicio de Oracle 19c:
 
     sudo service oracledb_ORCLCDB-19c restart
 
+Para iniciar Oracle ejecutaremos una serie de pasos:
+
+**Primero pondremos una contraseña**
+
+    passwd oracle
+
+**Segundo entrasemos en oracle**
+
+    su oracle
+
+Seguramente te salga un `$`, si es así eso es que no tienes shell. Para solucionarlo ejecutaremos
+
+    sudo usermod -s /bin/bash oracle
+
+Y probaremos de nuevo:
+
+    su oracle
+
+Una vez dentro ya tendras shell y dentro ejecutaremos:
+
+    sqlplus / as sysdba
+
+Si esto no te va reinicia la maquina `sudo reboot` y prueba de nuevo
+
+Bien, una vez echo esto si al iniciar te sale algo asi:
+
+![image](../images/ABD/4-oracle.png)
+
+Ejecuta lo siguiente
+
+    SQL> shutdown abort
+---
+    SQL> startup
+
+Y ya estaria sal y entra de nuevo y te deberia salir algo así:
+
+![image](../images/ABD/5-oracle.png)
+
+Acto seguido cambiaremos la contraseña del user SYS y SYSTEM
+
+    SQL> alter user sys identified by TU_PASSWD;
+---
+    SQL> alter user system identified by TU_PASSWD;
+
 ## Crear un usuario
 
 <font color="#800080">**Paso 1**</font>
+
+
+!Gracias¡

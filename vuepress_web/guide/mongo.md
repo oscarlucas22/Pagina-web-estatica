@@ -30,12 +30,16 @@
 
     mongo --eval 'db.runCommand({ connectionStatus: 1 })'
 
+![image](../images/ABD/1-mongo.png)
+
 <font color="#800080">**Paso 8**</font> Configurar la seguridad de MongoDB
 
     sudo nano /etc/mongod.conf
 ---
     security:
         authorization: enabled
+
+![image](../images/ABD/2-mongo.png)
 
 <font color="#800080">**Paso 9**</font> Reiniciamos servicio
 
@@ -61,11 +65,54 @@
         }
     )
 
+![image](../images/ABD/3-mongo.png)
+
 <font color="#800080">**Paso 4**</font> Nos conectamos
 
     mongo --port 27017 --authenticationDatabase "admin" -u "lucas" -p
----
+o tambien puedes probar con:
 
     mongosh -u lucas
+
+## Creación de base de datos
+
+**Iniciar MongoDB**
+
+    mongo
+
+**Crear y si ya esta creada usar base de datos**
+
+    use 'NOMBRE_BD'
+
+**Listar base de datos**
+
+    show dbs
+
+**Verificar la base de datos actual**
+
+    db
+
+**Eliminar base de datos**
+
+Hacerlo dentro de la base de datos
+
+    db.dropDatabase()
+
+**Importar json en MongoDB**
+
+Hacerlo fuera de mongo
+
+    mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
+
+**Eliminar json de la base de datos**
+
+Hacerlo dentro de la base de datos donde este el json
+
+    db.NAME_COLLECTION.drop()
+
+**Mostrar la coleccion**
+
+    db.NAME_COLLECTION.find().pretty
+
 
 ¡Gracias!
