@@ -1,5 +1,7 @@
 # MongoDB en Debian 11 Bullseye
 
+![image](../images/ABD/mongodb.png)
+
 ## Instalación de MongoDB en Debian 11 Bullseye
 
 <font color="#800080">**Paso 1**</font> Instalar paquetes requeridos
@@ -26,7 +28,7 @@
 
     sudo systemctl enable mongod --now
 
-<font color="#800080">**Paso 7**</font> Verificamos la version
+<font color="#800080">**Paso 7**</font> Verificamos la versión
 
     mongo --eval 'db.runCommand({ connectionStatus: 1 })'
 
@@ -70,7 +72,7 @@
 <font color="#800080">**Paso 4**</font> Nos conectamos
 
     mongo --port 27017 --authenticationDatabase "admin" -u "lucas" -p
-o tambien puedes probar con:
+o también puedes probar con:
 
     mongosh -u lucas
 
@@ -110,9 +112,28 @@ Hacerlo dentro de la base de datos donde este el json
 
     db.NAME_COLLECTION.drop()
 
-**Mostrar la coleccion**
+**Mostrar la colección**
 
     db.NAME_COLLECTION.find().pretty
 
+## Acceso remoto
+
+<font color="#800080">**Paso 1**</font> Editaremos el fichero `mongod.conf`
+
+    sudo /etc/mongod.conf
+
+Ahí editaremos donde pone `bindIp` escribiremos la ip del servidor, asi como se muestra en la imagen:
+
+![image](../images/ABD/4-mongo.png)
+
+<font color="#800080">**Paso 2**</font> Reiniciamos el servicio para que los cambios se guarden
+
+    sudo service mongod restart
+
+<font color="#800080">**Paso 3**</font> Nos iremos a la maquina cliente y nos conectaremos
+
+    mongosh -u nombre-user -p password ip-server
+
+![image](../images/ABD/5-mongo.png)
 
 ¡Gracias!

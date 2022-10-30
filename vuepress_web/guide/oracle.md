@@ -1,5 +1,7 @@
 # Oracle en Debian 11 Bullseye
 
+![image](../images/ABD/oracle.png)
+
 ## Instalación de Oracle en Debian 11 Bullseye
 
 <font color="#800080">**Paso 1**</font>
@@ -65,11 +67,11 @@ Veremos que da error. Eso se debe a que en al script de configuración le hace f
 
     sudo nano /etc/init.d/oracledb_ORCLCDB-19c
 
-Y buscamos(Ctrl + W) en la linea donde pone "Configuring"
+Y buscamos(Ctrl + W) en la línea donde pone "Configuring"
 
 ![image](../images/ABD/1-oracle.png)
 
-Borramos la linea que se ve marcada en la imagen y copiamos en su lugar la siguiente:
+Borramos la línea que se ve marcada en la imagen y copiamos en su lugar la siguiente:
 
     $SU -s /bin/bash  $ORACLE_OWNER -c "$DBCA -silent -createDatabase -gdbName $ORACLE_SID -templateName $TEMPLATE_NAME -characterSet $CHARSET -createAsContainerDatabase $CREATE_AS_CDB -numberOfPDBs $NUMBER_OF_PDBS -pdbName $PDB_NAME -createListener $LISTENER_NAME:$LISTENER_PORT -datafileDestination $ORACLE_DATA_LOCATION -sid $ORACLE_SID -autoGeneratePasswords -emConfiguration DBEXPRESS -emExpressPort $EM_EXPRESS_PORT -J-Doracle.assistants.dbca.validate.ConfigurationParams=false"
 
@@ -89,11 +91,11 @@ Sigue estos pasos:
 
     sudo nano /etc/hosts
 
-Dentro del fichero escribe tu ip seguido de el nombre de tu maquina dos veces, como se muestra en la siguiente imagen:
+Dentro del fichero escribe tu ip seguido del nombre de tu máquina dos veces, como se muestra en la siguiente imagen:
 
 ![image](../images/ABD/3-oracle.png)
 
-Y despues de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la maquina (*sudo reboot*) y vuélvelo a probar 
+Y después de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la máquina (*sudo reboot*) y vuélvelo a probar 
 
 <font color="#800080">**Paso 6**</font>
 
@@ -149,7 +151,7 @@ Ejecuta lo siguiente
 ---
     SQL> startup
 
-Y ya estaria sal y entra de nuevo y te deberia salir algo así:
+Y ya estaría sal y entra de nuevo y te deberia salir algo así:
 
 ![image](../images/ABD/5-oracle.png)
 
@@ -159,9 +161,18 @@ Acto seguido cambiaremos la contraseña del user SYS y SYSTEM
 ---
     SQL> alter user system identified by TU_PASSWD;
 
-## Crear un usuario
+## Creación de usuario
 
 <font color="#800080">**Paso 1**</font>
 
+Ejecutamos el siguiente comando:
+
+    SQL> alter session set "_ORACLE_SCRIPT"=true;
+
+Y luego nos dejara crear el usuario
+
+    SQL> create user lucas identified by admin;
+
+![image](../images/ABD/6-oracle.png)
 
 !Gracias¡

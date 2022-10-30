@@ -1,5 +1,7 @@
 # MariaDB en Debian 11 Bullseye
 
+![image](../images/ABD/mariadb.png)
+
 Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:
 
 <input type="checkbox" name="vehicle" value="Bike"> Tener una máquina Debian 11 actualizada
@@ -56,7 +58,7 @@ Y con esto ya tendriamos instalado MariaDB y para ejecutarlo, ejecutaremos el si
 
     sudo mysql
 
-## Creación de un nuevo usuario
+## Creación de usuario
 
 Los siguientes pasos que vas a ver se ejecutan dentro de MariaDB (cambia el usuario y la contraseña por los tuyos)
 
@@ -72,6 +74,30 @@ Y una vez ya creado el usuario salimos de MariaDB ejecutando `exit;`
 Y para conectarnos a nuestro usuario ejecutaremos el siguiente comando:
 
     mysql -u lucas -p
+
+## Acceso remoto
+
+<font color="#800080">**Paso 1**</font> Modificamos el fichero `50-server.conf`
+
+    sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+
+Y editamos la linea donde pone `bind-address` y lo dejaremos como se muestra en la imagen: 
+
+![image](../images/ABD/3-mariadb.png)
+
+<font color="#800080">**Paso 2**</font> Reiniciamos el servicio mariadb
+
+    sudo service mariadb restart
+
+<font color="#800080">**Paso 3**</font> Nos iremos al cliente e instalaremos mariadb-client
+
+    sudo apt install mariadb-client
+
+<font color="#800080">**Paso 4**</font> Nos conectamos
+
+    mariadb -u lucas -h ip-servidor -p 
+
+![image](../images/ABD/4-mariadb.png)
 
 ¡Gracias!
 

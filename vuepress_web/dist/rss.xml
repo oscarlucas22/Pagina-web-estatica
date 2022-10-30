@@ -6,11 +6,201 @@
     <link>https://github.com/oscarlucas22/</link>
     <description>Tu página de confianza</description>
     <language>en-US</language>
-    <pubDate>Fri, 28 Oct 2022 21:13:21 GMT</pubDate>
-    <lastBuildDate>Fri, 28 Oct 2022 21:13:21 GMT</lastBuildDate>
+    <pubDate>Sun, 30 Oct 2022 16:43:54 GMT</pubDate>
+    <lastBuildDate>Sun, 30 Oct 2022 16:43:54 GMT</lastBuildDate>
     <generator>@mr-hope/vuepress-plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Guia</category>
+    <item>
+      <title>MariaDB en Debian 11 Bullseye</title>
+      <link>https://github.com/oscarlucas22/guide/mariadb/</link>
+      <guid>https://github.com/oscarlucas22/guide/mariadb/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">MariaDB en Debian 11 Bullseye</source>
+      <pubDate>Fri, 28 Oct 2022 21:13:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="mariadb-en-debian-11-bullseye"> MariaDB en Debian 11 Bullseye</h1>
+<p><img src="./../images/ABD/mariadb.png" alt="image"></p>
+<p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener una máquina Debian 11 actualizada</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener un usuario con privilegios de sudo</p>
+<p><input type="checkbox" name="vehicle" value="Bike"> Tener acceso a internet</p>
+<p>Antes de comenzar con la instalación actualizaremos nuestra máquina</p>
+<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+</div><p>Una vez completada la actualización del sistema, ejecuta el siguiente comando para instalr los paquetes necesarios</p>
+<div><pre><code>sudo apt-get install software-properties-common dirmngr gnupg2 -y
+</code></pre>
+</div><hr>
+<div><pre><code>sudo apt-get install apt-transport-https wget curl -y
+</code></pre>
+</div><h2 id="instalar-mariadb-en-debian-11"> Instalar MariaDB en Debian 11</h2>
+<p>Para comenzar con la instalación ejecuta el siguiente comando:</p>
+<div><pre><code>sudo apt install mariadb-server -y
+</code></pre>
+</div><p>Para iniciar, detener y reiniciar el servidor de bases de datos MariaDB, utiliza los siguientes comandos:</p>
+<p>Iniciar</p>
+<div><pre><code>sudo systemctl start mariadb
+</code></pre>
+</div><p>Detener</p>
+<div><pre><code>sudo systemctl stop mariadb
+</code></pre>
+</div><p>Reiniciar</p>
+<div><pre><code>sudo systemctl restart mariadb
+</code></pre>
+</div><p>Para que MariaDB se inicie automáticamente al arrancar el sistema, ejecuta el siguiente comando:</p>
+<div><pre><code>sudo systemctl enable mariadb
+</code></pre>
+</div><p>MariaDB debería estar en marcha en este momento. Puedes comprobar si se esta ejecutando, ejecutando el siguiente comando:</p>
+<div><pre><code>sudo systemctl status mariadb
+</code></pre>
+</div><p>Ejemplo de salida:</p>
+<p><img src="./../images/ABD/1-mariadb.png" alt="image"></p>
+<p><code>Ctrl + C</code> para salir del fichero</p>
+<p>Y con esto ya tendriamos instalado MariaDB y para ejecutarlo, ejecutaremos el siguiente comando:</p>
+<div><pre><code>sudo mysql
+</code></pre>
+</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
+<p>Los siguientes pasos que vas a ver se ejecutan dentro de MariaDB (cambia el usuario y la contraseña por los tuyos)</p>
+<div><pre><code>CREATE USER 'lucas' IDENTIFIED BY 'admin';
+</code></pre>
+</div><hr>
+<div><pre><code>GRANT ALL ON *.* TO 'lucas'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
+</code></pre>
+</div><hr>
+<div><pre><code>FLUSH PRIVILEGES;
+</code></pre>
+</div><p><img src="./../images/ABD/2-mariadb.png" alt="image"></p>
+<p>Y una vez ya creado el usuario salimos de MariaDB ejecutando <code>exit;</code>
+Y para conectarnos a nuestro usuario ejecutaremos el siguiente comando:</p>
+<div><pre><code>mysql -u lucas -p
+</code></pre>
+</div><h2 id="acceso-remoto"> Acceso remoto</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Modificamos el fichero <code>50-server.conf</code></p>
+<div><pre><code>sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+</code></pre>
+</div><p>Y editamos la linea donde pone <code>bind-address</code> y lo dejaremos como se muestra en la imagen:</p>
+<p><img src="./../images/ABD/3-mariadb.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Reiniciamos el servicio mariadb</p>
+<div><pre><code>sudo service mariadb restart
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Nos iremos al cliente e instalaremos mariadb-client</p>
+<div><pre><code>sudo apt install mariadb-client
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
+<div><pre><code>mariadb -u lucas -h ip-servidor -p 
+</code></pre>
+</div><p><img src="./../images/ABD/4-mariadb.png" alt="image"></p>
+<p>¡Gracias!</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>MongoDB en Debian 11 Bullseye</title>
+      <link>https://github.com/oscarlucas22/guide/mongo/</link>
+      <guid>https://github.com/oscarlucas22/guide/mongo/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">MongoDB en Debian 11 Bullseye</source>
+      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
+<p><img src="./../images/ABD/mongodb.png" alt="image"></p>
+<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
+<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
+<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
+<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
+<div><pre><code>sudo apt-get update
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
+<div><pre><code>sudo apt install mongodb-org -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
+<div><pre><code>sudo systemctl enable mongod --now
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la versión</p>
+<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
+</code></pre>
+</div><p><img src="./../images/ABD/1-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
+<div><pre><code>sudo nano /etc/mongod.conf
+</code></pre>
+</div><hr>
+<div><pre><code>security:
+    authorization: enabled
+</code></pre>
+</div><p><img src="./../images/ABD/2-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
+<div><pre><code>sudo systemctl restart mongod
+</code></pre>
+</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
+<div><pre><code>use admin
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
+<div><pre><code>db.createUser(
+    {
+        user: &quot;lucas&quot;, 
+        pwd: &quot;admin&quot;, 
+        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
+    }
+)
+</code></pre>
+</div><p><img src="./../images/ABD/3-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
+<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
+</code></pre>
+</div><p>o también puedes probar con:</p>
+<div><pre><code>mongosh -u lucas
+</code></pre>
+</div><h2 id="creacion-de-base-de-datos"> Creación de base de datos</h2>
+<p><strong>Iniciar MongoDB</strong></p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><strong>Crear y si ya esta creada usar base de datos</strong></p>
+<div><pre><code>use 'NOMBRE_BD'
+</code></pre>
+</div><p><strong>Listar base de datos</strong></p>
+<div><pre><code>show dbs
+</code></pre>
+</div><p><strong>Verificar la base de datos actual</strong></p>
+<div><pre><code>db
+</code></pre>
+</div><p><strong>Eliminar base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos</p>
+<div><pre><code>db.dropDatabase()
+</code></pre>
+</div><p><strong>Importar json en MongoDB</strong></p>
+<p>Hacerlo fuera de mongo</p>
+<div><pre><code>mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
+</code></pre>
+</div><p><strong>Eliminar json de la base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos donde este el json</p>
+<div><pre><code>db.NAME_COLLECTION.drop()
+</code></pre>
+</div><p><strong>Mostrar la colección</strong></p>
+<div><pre><code>db.NAME_COLLECTION.find().pretty
+</code></pre>
+</div><h2 id="acceso-remoto"> Acceso remoto</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Editaremos el fichero <code>mongod.conf</code></p>
+<div><pre><code>sudo /etc/mongod.conf
+</code></pre>
+</div><p>Ahí editaremos donde pone <code>bindIp</code> escribiremos la ip del servidor, asi como se muestra en la imagen:</p>
+<p><img src="./../images/ABD/4-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Reiniciamos el servicio para que los cambios se guarden</p>
+<div><pre><code>sudo service mongod restart
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Nos iremos a la maquina cliente y nos conectaremos</p>
+<div><pre><code>mongosh -u nombre-user -p password ip-server
+</code></pre>
+</div><p><img src="./../images/ABD/5-mongo.png" alt="image"></p>
+<p>¡Gracias!</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Oracle en Debian 11 Bullseye</title>
       <link>https://github.com/oscarlucas22/guide/oracle/</link>
@@ -18,6 +208,7 @@
       <source url="https://github.com/oscarlucas22/rss.xml">Oracle en Debian 11 Bullseye</source>
       <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="oracle-en-debian-11-bullseye"> Oracle en Debian 11 Bullseye</h1>
+<p><img src="./../images/ABD/oracle.png" alt="image"></p>
 <h2 id="instalacion-de-oracle-en-debian-11-bullseye"> Instalación de Oracle en Debian 11 Bullseye</h2>
 <p><font color="#800080"><strong>Paso 1</strong></font></p>
 <p>Antes de instalar el paquete, tenemos que configurar algunas cosas. Empezaremos creando el script:</p>
@@ -68,9 +259,9 @@ kernel.shmmax=536870912
 </div><p>Veremos que da error. Eso se debe a que en al script de configuración le hace falta un parámetro. Para añadirlo entramos en el script con:</p>
 <div><pre><code>sudo nano /etc/init.d/oracledb_ORCLCDB-19c
 </code></pre>
-</div><p>Y buscamos(Ctrl + W) en la linea donde pone &quot;Configuring&quot;</p>
+</div><p>Y buscamos(Ctrl + W) en la línea donde pone &quot;Configuring&quot;</p>
 <p><img src="./../images/ABD/1-oracle.png" alt="image"></p>
-<p>Borramos la linea que se ve marcada en la imagen y copiamos en su lugar la siguiente:</p>
+<p>Borramos la línea que se ve marcada en la imagen y copiamos en su lugar la siguiente:</p>
 <div><pre><code>$SU -s /bin/bash  $ORACLE_OWNER -c &quot;$DBCA -silent -createDatabase -gdbName $ORACLE_SID -templateName $TEMPLATE_NAME -characterSet $CHARSET -createAsContainerDatabase $CREATE_AS_CDB -numberOfPDBs $NUMBER_OF_PDBS -pdbName $PDB_NAME -createListener $LISTENER_NAME:$LISTENER_PORT -datafileDestination $ORACLE_DATA_LOCATION -sid $ORACLE_SID -autoGeneratePasswords -emConfiguration DBEXPRESS -emExpressPort $EM_EXPRESS_PORT -J-Doracle.assistants.dbca.validate.ConfigurationParams=false&quot;
 </code></pre>
 </div><p>Ahora lo intentamos de nuevo:</p>
@@ -83,9 +274,9 @@ kernel.shmmax=536870912
 <p>Sigue estos pasos:</p>
 <div><pre><code>sudo nano /etc/hosts
 </code></pre>
-</div><p>Dentro del fichero escribe tu ip seguido de el nombre de tu maquina dos veces, como se muestra en la siguiente imagen:</p>
+</div><p>Dentro del fichero escribe tu ip seguido del nombre de tu máquina dos veces, como se muestra en la siguiente imagen:</p>
 <p><img src="./../images/ABD/3-oracle.png" alt="image"></p>
-<p>Y despues de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la maquina (<em>sudo reboot</em>) y vuélvelo a probar</p>
+<p>Y después de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la máquina (<em>sudo reboot</em>) y vuélvelo a probar</p>
 <p><font color="#800080"><strong>Paso 6</strong></font></p>
 <p>Añadimos las variables de entorno a bash:</p>
 <div><pre><code>nano ~/.bashrc
@@ -126,7 +317,7 @@ export PATH=$ORACLE_HOME/bin:$PATH
 </div><hr>
 <div><pre><code>SQL&gt; startup
 </code></pre>
-</div><p>Y ya estaria sal y entra de nuevo y te deberia salir algo así:</p>
+</div><p>Y ya estaría sal y entra de nuevo y te deberia salir algo así:</p>
 <p><img src="./../images/ABD/5-oracle.png" alt="image"></p>
 <p>Acto seguido cambiaremos la contraseña del user SYS y SYSTEM</p>
 <div><pre><code>SQL&gt; alter user sys identified by TU_PASSWD;
@@ -134,8 +325,15 @@ export PATH=$ORACLE_HOME/bin:$PATH
 </div><hr>
 <div><pre><code>SQL&gt; alter user system identified by TU_PASSWD;
 </code></pre>
-</div><h2 id="crear-un-usuario"> Crear un usuario</h2>
+</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
 <p><font color="#800080"><strong>Paso 1</strong></font></p>
+<p>Ejecutamos el siguiente comando:</p>
+<div><pre><code>SQL&gt; alter session set &quot;_ORACLE_SCRIPT&quot;=true;
+</code></pre>
+</div><p>Y luego nos dejara crear el usuario</p>
+<div><pre><code>SQL&gt; create user lucas identified by admin;
+</code></pre>
+</div><p><img src="./../images/ABD/6-oracle.png" alt="image"></p>
 <p>!Gracias¡</p>
 ]]></content:encoded>
     </item>
@@ -146,6 +344,7 @@ export PATH=$ORACLE_HOME/bin:$PATH
       <source url="https://github.com/oscarlucas22/rss.xml">PostgreSQL en Debian 11 Bullseye</source>
       <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="postgresql-en-debian-11-bullseye"> PostgreSQL en Debian 11 Bullseye</h1>
+<p><img src="./../images/ABD/postgresql.png" alt="image"></p>
 <h2 id="instalacion-de-postgresql-en-debian-11-bullseye"> Instalación de PostgreSQL en Debian 11 Bullseye</h2>
 <p><font color="#800080"><strong>Paso 1</strong></font> Actualizar el sistema</p>
 <div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade -y
@@ -153,7 +352,7 @@ export PATH=$ORACLE_HOME/bin:$PATH
 </div><p><font color="#800080"><strong>Paso 2</strong></font> Instalamos postgresql</p>
 <div><pre><code>sudo apt install -y postgresql*
 </code></pre>
-</div><p>Esto tradará un poco</p>
+</div><p>Esto tardará un poco</p>
 <p><font color="#800080"><strong>Paso 3</strong></font> Comprobamos el estado del servicio</p>
 <div><pre><code>systemctl status postgresql
 </code></pre>
@@ -164,14 +363,70 @@ export PATH=$ORACLE_HOME/bin:$PATH
 </div><p><font color="#800080"><strong>Paso 4</strong></font> Instalamos el cliente</p>
 <div><pre><code>sudo apt install -y postgresql-client
 </code></pre>
-</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
-<p>Para crear el usuario ingresaremos primero a postgres:</p>
+</div><h3 id="comandos-de-navegacion-y-consulta-de-informacion"> Comandos de navegación y consulta de información</h3>
+<ul>
+<li>
+<p><code>\c</code> Saltar entre bases de datos</p>
+</li>
+<li>
+<p><code>\l</code> Listar base de datos disponibles</p>
+</li>
+<li>
+<p><code>\dt</code> Listar las tablas de la base de datos</p>
+</li>
+<li>
+<p><code>\d &lt;nombre_tabla&gt;</code> Describir una tabla</p>
+</li>
+<li>
+<p><code>\dn</code> Listar los esquemas de la base de datos actual</p>
+</li>
+<li>
+<p><code>\df</code> Listar las funciones disponibles de la base de datos actual</p>
+</li>
+<li>
+<p><code>\dv</code> Listar las vistas de la base de datos actual</p>
+</li>
+<li>
+<p><code>\du</code> Listar los usuarios y sus roles de la base de datos actual</p>
+</li>
+</ul>
+<h3 id="comandos-de-inspeccion-y-ejecucion"> Comandos de inspección y ejecución</h3>
+<ul>
+<li>
+<p><code>\g</code> Volver a ejecutar el comando ejecutando justo antes</p>
+</li>
+<li>
+<p><code>\s</code> Ver el historial de comandos ejecutados</p>
+</li>
+<li>
+<p><code>\s &lt;nombre_archivo&gt;</code> Si se quiere guardar la lista de comandos ejecutados en un archivo de texto plano</p>
+</li>
+<li>
+<p><code>\i &lt;nombre_archivo&gt;</code> Ejecutar los comandos desde un archivo</p>
+</li>
+<li>
+<p><code>\e</code> Permite abrir un editor de texto plano, escribir comandos y ejecutar en lote. \e abre el editor de texto, escribir allí todos los comandos, luego guardar los cambios y cerrar, al cerrar se ejecutarán todos los comandos guardados.</p>
+</li>
+<li>
+<p><code>\ef</code> Equivalente al comando anterior pero permite editar también funciones en PostgreSQL</p>
+</li>
+</ul>
+<h3 id="comandos-para-debug-y-optimizacion"> Comandos para debug y optimización</h3>
+<ul>
+<li><code>\timing</code> Activar <code>/</code> Desactivar el contador de tiempo por consulta</li>
+</ul>
+<h3 id="comandos-para-cerrar-la-consola"> Comandos para cerrar la consola</h3>
+<ul>
+<li><code>\q</code> Cerrar la consola</li>
+</ul>
+<h2 id="creacion-de-usuario"> Creación de usuario</h2>
+<p>Para crear el usuario ingresamos primero a postgres:</p>
 <div><pre><code>sudo -u postgres psql
 </code></pre>
 </div><p><strong>Crearemos el usuario:</strong></p>
 <div><pre><code>CREATE USER lucas PASSWORD 'TU_PASSWORD';
 </code></pre>
-</div><p><strong>Asignar permisos de super usuario a un usuario</strong></p>
+</div><p><strong>Asignar permisos de superusuario a un usuario</strong></p>
 <div><pre><code>ALTER ROLE lucas WITH SUPERUSER;
 </code></pre>
 </div><p><strong>Cambiar la contraseña de un usuario</strong></p>
@@ -187,7 +442,7 @@ export PATH=$ORACLE_HOME/bin:$PATH
 <p><font color="#800080"><strong>Paso 1</strong></font> Acceso remoto</p>
 <div><pre><code>sudo nano /etc/postgresql/13/main/postgresql.conf
 </code></pre>
-</div><p>Busca la siguiente linea:</p>
+</div><p>Busca la siguiente línea:</p>
 <p><code>#listen_addresses = 'localhost' # what IP address(es) to listen on;</code></p>
 <p>Y sustituye 'localhost' por '*':</p>
 <p><img src="./../images/ABD/2-postgre.png" alt="image"></p>
@@ -204,106 +459,103 @@ host    all      all              ::/0                         md5
 </code></pre>
 </div><p><font color="#800080"><strong>Paso 4</strong></font> Añadimos regla de firewall</p>
 <div><pre><code>sudo ufw allow postgresql
-
-psql -h debian11.local.lan -U oscar
-</code></pre>
-</div><h2 id="instalacion-de-una-herramienta-de-administracion-web"> Instalación de una herramienta de administración web</h2>
-<p>¡Gracias!</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>MongoDB en Debian 11 Bullseye</title>
-      <link>https://github.com/oscarlucas22/guide/mongo/</link>
-      <guid>https://github.com/oscarlucas22/guide/mongo/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">MongoDB en Debian 11 Bullseye</source>
-      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
-<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
-<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
-<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
-<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
-<div><pre><code>sudo apt-get update
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
-<div><pre><code>sudo apt install mongodb-org -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
-<div><pre><code>sudo systemctl enable mongod --now
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la version</p>
-<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
-</code></pre>
-</div><p><img src="./../images/ABD/1-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
-<div><pre><code>sudo nano /etc/mongod.conf
 </code></pre>
 </div><hr>
-<div><pre><code>security:
-    authorization: enabled
+<p><font color="#800080"><strong>Paso 5</strong></font> Nos conectamos</p>
+<div><pre><code>psql -h ip-server -U nombre-user -p nombre-db
 </code></pre>
-</div><p><img src="./../images/ABD/2-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
-<div><pre><code>sudo systemctl restart mongod
+</div><p>Ejemplo:</p>
+<p><img src="./../images/ABD/3-postgre.png" alt="image"></p>
+<h2 id="instalacion-herramienta-de-administracion-web"> Instalación herramienta de administración web</h2>
+<p>En mi caso vamos a instalar la herramienta <code>pgadmin4</code></p>
+<p><font color="#800080"><strong>Paso 1</strong></font> Instala el paquete gnupg2 mediante el comando apt que aparece a continuación</p>
+<div><pre><code>apt install gnupg gnupg2
 </code></pre>
-</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
-<div><pre><code>mongo
+</div><p><font color="#800080"><strong>Paso 2</strong></font> A continuación, ejecuta el siguiente comando para añadir el repositorio de pgAdmin para el sistema Debian.</p>
+<div><pre><code>echo &quot;deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main&quot;\ | sudo tee /etc/apt/sources.list.d/pgadmin4.list
 </code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
-<div><pre><code>use admin
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Añade la clave gpg del repositorio pgAdmin utilizando el siguiente comando</p>
+<div><pre><code>curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
 </code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
-<div><pre><code>db.createUser(
-    {
-        user: &quot;lucas&quot;, 
-        pwd: &quot;admin&quot;, 
-        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
-    }
-)
+</div><p><font color="#800080"><strong>Paso 4</strong></font> Refresca y actualiza todos los repositorios utilizando el siguiente comando</p>
+<div><pre><code>sudo apt update
 </code></pre>
-</div><p><img src="./../images/ABD/3-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
-<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
+</div><p>Ahora estás listo para instalar pgAdmin en el sistema Debian.</p>
+<h3 id="instalacion-y-configuracion-de-pgadmin4-en-debian-11"> Instalación y configuración de pgAdmin4 en Debian 11</h3>
+<p><font color="#800080"><strong>Paso 1</strong></font> Para instalar pgAdmin en modo servidor, instala el paquete ‘pgadmin4-web’ utilizando el comando apt que aparece a continuación.</p>
+<div><pre><code>apt install pgadmin4-web
 </code></pre>
-</div><p>o tambien puedes probar con:</p>
-<div><pre><code>mongosh -u lucas
+</div><p>Escribe <code>y</code> y pulsa <code>Enter</code> para continuar la instalación.</p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Si la instalación se ha completado, ejecuta el siguiente comando para configurar la cuenta de usuario de pgAdmin4 y la configuración del host virtual de apache.</p>
+<div><pre><code>/usr/pgadmin4/bin/setup-web.sh
 </code></pre>
-</div><h2 id="creacion-de-base-de-datos"> Creación de base de datos</h2>
-<p><strong>Iniciar MongoDB</strong></p>
-<div><pre><code>mongo
+</div><p>Escribe el correo electrónico y la contraseña del usuario para crear un nuevo usuario pgAdmin, y luego pulsa <code>Enter</code>.</p>
+<p><img src="./../images/ABD/4-postgre.png" alt="image"></p>
+<p>Después, se te pedirá que configures el servidor web Apache, escribe <code>y</code>, y pulsa <code>Enter</code>.</p>
+<p>Ahora la instalación de pgAdmin es accesible en la ruta URL <code>/pgadmin4</code>.</p>
+<p>El script de instalación <code>setup-web.sh</code> creará y activará automáticamente la configuración de apache en el directorio <code>/etc/apache2/conf-enabled</code>. Puedes comprobarlo con el siguiente comando.</p>
+<p>A continuación se muestra la configuración que verás.</p>
+<p><img src="./../images/ABD/5-postgre.png" alt="image"></p>
+<h3 id="verificar-la-instalacion-de-pgadmin"> Verificar la instalación de pgAdmin</h3>
+<p><font color="#800080"><strong>Paso 1</strong></font> Abre tu navegador web y escribe la dirección IP del servidor o el nombre del dominio seguido de la ruta ‘/pgadmin4’ como se indica a continuación.</p>
+<div><pre><code>tu-ip/pgadmin4
 </code></pre>
-</div><p><strong>Crear y si ya esta creada usar base de datos</strong></p>
-<div><pre><code>use 'NOMBRE_BD'
-</code></pre>
-</div><p><strong>Listar base de datos</strong></p>
-<div><pre><code>show dbs
-</code></pre>
-</div><p><strong>Verificar la base de datos actual</strong></p>
-<div><pre><code>db
-</code></pre>
-</div><p><strong>Eliminar base de datos</strong></p>
-<p>Hacerlo dentro de la base de datos</p>
-<div><pre><code>db.dropDatabase()
-</code></pre>
-</div><p><strong>Importar json en MongoDB</strong></p>
-<p>Hacerlo fuera de mongo</p>
-<div><pre><code>mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
-</code></pre>
-</div><p><strong>Eliminar json de la base de datos</strong></p>
-<p>Hacerlo dentro de la base de datos donde este el json</p>
-<div><pre><code>db.NAME_COLLECTION.drop()
-</code></pre>
-</div><p><strong>Mostrar la coleccion</strong></p>
-<div><pre><code>db.NAME_COLLECTION.find().pretty
-</code></pre>
-</div><p>¡Gracias!</p>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Si la instalación se ha realizado correctamente, verás la página de inicio de sesión de pgadmin4 como se indica a continuación.</p>
+<p><img src="./../images/ABD/6-postgre.png" alt="image"></p>
+<p>Escribe tu usuario de acceso y tu correo electrónico, y luego haz clic en el botón <code>Login</code>.</p>
+<p>Ahora verás el panel de control de pgadmin4 como se indica a continuación.</p>
+<p><img src="./../images/ABD/7-postgre.png" alt="image"></p>
+<h3 id="conectar-con-el-servidor-postgresql-con-pgadmin4"> Conectar con el servidor PostgreSQL con pgAdmin4</h3>
+<p>Después de entrar en el tablero de pgAdmin, añadirás una nueva conexión a tu servidor PostgreSQL.</p>
+<p><font color="#800080"><strong>Paso 1</strong></font> En el tablero de pgAdmin, haz clic en el icono <code>Añadir nuevo servidor</code></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Aparecerá una pequeña ventana emergente.</p>
+<p>En la pestaña <code>General</code>, escribe un nuevo <code>Nombre</code> de tu conexión.</p>
+<p><img src="./../images/ABD/8-postgre.png" alt="image"></p>
+<p>Para esta guía, daremos a la nueva conexión el nombre de <code>local</code>.</p>
+<p><font color="#800080"><strong>Paso 3</strong></font> Pasa a la pestaña <code>Conexión</code> y escribe tus datos de host PostgreSQL, base de datos, usuario y contraseña.</p>
+<p>Para este ejemplo, utilizaremos el servidor PostgreSQL local con el usuario <code>lucas</code> para gestionar una base de datos predeterminada <code>postgres</code>.</p>
+<p><img src="./../images/ABD/9-postgre.png" alt="image"></p>
+<p>Después, haz clic en el botón <code>Guardar</code> para guardar una nueva conexión.</p>
+<p><font color="#800080"><strong>Paso 4</strong></font> Si la conexión se realiza con éxito, verás una página similar a la siguiente. En caso contrario, verás un error</p>
+<p><img src="./../images/ABD/10-postgre.png" alt="image"></p>
+<p>Como puedes ver en la parte inferior de la captura de pantalla, el usuario <code>lucas</code> está conectado a la base de datos <code>postgres</code> con la aplicación <code>pgAdmin4</code>, y el estado de la conexión es <code>activò</code>.</p>
+<h3 id="creacion-de-un-nuevo-usuario-en-pgadmin4"> Creación de un nuevo usuario en pgAdmin4</h3>
+<p>En esta etapa, vas a crear un nuevo usuario de PostgreSQL utilizando la herramienta pgAdmin4.</p>
+<p><font color="#800080"><strong>Paso 1</strong></font> Haz clic con el botón derecho del ratón sobre el nombre de la conexión en el menú <code>local =&gt; Crear =&gt; Rol de inicio de sesión/grupo..</code>.</p>
+<p><img src="./../images/ABD/11-postgre.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> En la pestaña <code>General</code>, escribe el nuevo usuario que quieres crear. Para este ejemplo, crearás un nuevo usuario <code>prueba</code>.</p>
+<p><img src="./../images/ABD/12-postgre.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 3</strong></font> Pasa a la pestaña <code>Definición</code> y escribe la contraseña de tu usuario.</p>
+<p><img src="./../images/ABD/13-postgre.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 4</strong></font> Ve a la pestaña <strong>«Privilegios»</strong> y activa los privilegios que necesites.</p>
+<p><img src="./../images/ABD/14-postgre.png" alt="image"></p>
+<p>Ahora haz clic en el botón <code>Guardar</code>.</p>
+<p><font color="#800080"><strong>Paso 5</strong></font> Para verificar tu nuevo usuario, haz clic en el menú <code>Roles de inicio de sesión/grupo</code> de la izquierda, y luego haz clic en el <code>prueba</code> que acabas de crear.</p>
+<p><img src="./../images/ABD/15-postgre.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 6</strong></font> Haz clic en la pestaña<code>Propiedades</code> de la página y obtendrás detalles del usuario como en la captura de pantalla superior.</p>
+<h3 id="creacion-de-una-nueva-base-de-datos-en-pgadmin4"> Creación de una nueva base de datos en pgAdmin4</h3>
+<p>En esta etapa, crearás una nueva base de datos desde el panel de control de pgAdmin.</p>
+<p><font color="#800080"><strong>Paso 1</strong></font> Haz clic con el botón derecho del ratón en el menú del nombre de la conexión <code>local =&gt; Crear =&gt; Base de datos..</code>.</p>
+<p><img src="./../images/ABD/16-postgre.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> En la pestaña <code>General</code>, escribe el nombre de tu nueva base de datos y elige el usuario propietario de la misma. Para este ejemplo, crearás una nueva base de datos <code>pruebadb</code> y harás al usuario <code>prueba</code> como propietario.</p>
+<p><img src="./../images/ABD/17-postgre.png" alt="image"></p>
+<p>Ahora haz clic en el botón <code>Guardar</code>.</p>
+<p><font color="#800080"><strong>Paso 3</strong></font> Para verificar tu nueva base de datos, haz clic en el menú <code>Bases de datos</code> de la izquierda, y luego haz clic en la base de datos <code>pruebadb</code> que acabas de crear.</p>
+<p><img src="./../images/ABD/18-postgre.png" alt="image"></p>
+<p>Haz clic en la pestaña <code>Propiedades</code> de la página y obtendrás los detalles de la base de datos <code>pruebadb</code> como en la captura de pantalla superior.</p>
+<h3 id="verificar-la-conexion-del-usuario"> Verificar la conexión del usuario</h3>
+<p>Después de crear un nuevo usuario y una base de datos utilizando el pgAdmin4, crearás una nueva conexión PostgreSQL en el pgAdmin4 utilizando el usuario <code>prueba</code> y la base de datos <code>pruebadb</code>.</p>
+<p><font color="#800080"><strong>Paso 1</strong></font> Vuelve al panel de control de pgAdmin4 y haz clic en el icono <code>Añadir nuevo servidor</code>.</p>
+<p><img src="./../images/ABD/19-postgre.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> En la pestaña <code>General</code>, escribe el nombre de la nueva conexión como <code>prueba-connection</code>, como se indica a continuación.</p>
+<p><img src="./../images/ABD/20-postgre.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 3</strong></font> Pasa a la pestaña <code>Conexión</code> y escribe los detalles de la nueva conexión. El host es <code>127.0.0.1</code> con el usuario <code>prueba</code>, y gestionará la base de datos <code>pruebadb</code>, y no olvides escribir la contraseña del usuario <code>prueba</code>.</p>
+<p><img src="./../images/ABD/21-postgre.png" alt="image"></p>
+<p>Ahora haz clic en el botón <code>Guardar</code>.</p>
+<p><font color="#800080"><strong>Paso 4</strong></font> Si tus credenciales de la base de datos son correctas, verás una página similar a la siguiente.</p>
+<p><img src="./../images/ABD/22-postgre.png" alt="image"></p>
+<p>Como puedes ver en la parte inferior de la captura de pantalla, el usuario <code>prueba</code> está conectado a la base de datos <code>pruebadb</code> con la aplicación <code>pgAdmin4</code>, y el estado de la conexión es <code>activo</code>.</p>
+<p>¡Gracias!</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -371,69 +623,6 @@ sudo make uninstall
 <p><a href="https://www.dropbox.com/s/84gl6ea0ls0xksy/Plantilla%20Trabajo%20Grupal%201.pdf?dl=0" target="_blank" rel="noopener noreferrer">Herramientas de Seguridad (SNORT, NESSUS, TRIPWIRE, RKHUNTER, HYDRA)<i>Content not supported</i></a></p>
 </li>
 </ul>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>MariaDB en Debian 11 Bullseye</title>
-      <link>https://github.com/oscarlucas22/guide/mariadb/</link>
-      <guid>https://github.com/oscarlucas22/guide/mariadb/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">MariaDB en Debian 11 Bullseye</source>
-      <content:encoded><![CDATA[<h1 id="mariadb-en-debian-11-bullseye"> MariaDB en Debian 11 Bullseye</h1>
-<p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
-<p><input type="checkbox" name="vehicle" value="Bike"> Tener una máquina Debian 11 actualizada</p>
-<p><input type="checkbox" name="vehicle" value="Bike"> Tener un usuario con privilegios de sudo</p>
-<p><input type="checkbox" name="vehicle" value="Bike"> Tener acceso a internet</p>
-<p>Antes de comenzar con la instalación actualizaremos nuestra máquina</p>
-<div><pre><code>sudo apt update &amp;&amp; sudo apt upgrade
-</code></pre>
-</div><p>Una vez completada la actualización del sistema, ejecuta el siguiente comando para instalr los paquetes necesarios</p>
-<div><pre><code>sudo apt-get install software-properties-common dirmngr gnupg2 -y
-</code></pre>
-</div><hr>
-<div><pre><code>sudo apt-get install apt-transport-https wget curl -y
-</code></pre>
-</div><h2 id="instalar-mariadb-en-debian-11"> Instalar MariaDB en Debian 11</h2>
-<p>Para comenzar con la instalación ejecuta el siguiente comando:</p>
-<div><pre><code>sudo apt install mariadb-server -y
-</code></pre>
-</div><p>Para iniciar, detener y reiniciar el servidor de bases de datos MariaDB, utiliza los siguientes comandos:</p>
-<p>Iniciar</p>
-<div><pre><code>sudo systemctl start mariadb
-</code></pre>
-</div><p>Detener</p>
-<div><pre><code>sudo systemctl stop mariadb
-</code></pre>
-</div><p>Reiniciar</p>
-<div><pre><code>sudo systemctl restart mariadb
-</code></pre>
-</div><p>Para que MariaDB se inicie automáticamente al arrancar el sistema, ejecuta el siguiente comando:</p>
-<div><pre><code>sudo systemctl enable mariadb
-</code></pre>
-</div><p>MariaDB debería estar en marcha en este momento. Puedes comprobar si se esta ejecutando, ejecutando el siguiente comando:</p>
-<div><pre><code>sudo systemctl status mariadb
-</code></pre>
-</div><p>Ejemplo de salida:</p>
-<p><img src="./../images/ABD/1-mariadb.png" alt="image"></p>
-<p><code>Ctrl + C</code> para salir del fichero</p>
-<p>Y con esto ya tendriamos instalado MariaDB y para ejecutarlo, ejecutaremos el siguiente comando:</p>
-<div><pre><code>sudo mysql
-</code></pre>
-</div><h2 id="creacion-de-un-nuevo-usuario"> Creación de un nuevo usuario</h2>
-<p>Los siguientes pasos que vas a ver se ejecutan dentro de MariaDB (cambia el usuario y la contraseña por los tuyos)</p>
-<div><pre><code>CREATE USER 'lucas' IDENTIFIED BY 'admin';
-</code></pre>
-</div><hr>
-<div><pre><code>GRANT ALL ON *.* TO 'lucas'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
-</code></pre>
-</div><hr>
-<div><pre><code>FLUSH PRIVILEGES;
-</code></pre>
-</div><p><img src="./../images/ABD/2-mariadb.png" alt="image"></p>
-<p>Y una vez ya creado el usuario salimos de MariaDB ejecutando <code>exit;</code>
-Y para conectarnos a nuestro usuario ejecutaremos el siguiente comando:</p>
-<div><pre><code>mysql -u lucas -p
-</code></pre>
-</div><p>¡Gracias!</p>
 ]]></content:encoded>
     </item>
   </channel>
