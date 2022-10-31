@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-10-30T16:43:54.177Z</updated>
+  <updated>2022-10-31T07:59:34.186Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -18,7 +18,7 @@
     <title type="html">MariaDB en Debian 11 Bullseye</title>
     <id>https://github.com/oscarlucas22/guide/mariadb/</id>
     <link href="https://github.com/oscarlucas22/guide/mariadb/"/>
-    <updated>2022-10-28T21:13:23.000Z</updated>
+    <updated>2022-10-30T16:43:56.000Z</updated>
     <content type="html"><![CDATA[<h1 id="mariadb-en-debian-11-bullseye"> MariaDB en Debian 11 Bullseye</h1>
 <p><img src="./../images/ABD/mariadb.png" alt="image"></p>
 <p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
@@ -75,7 +75,28 @@
 Y para conectarnos a nuestro usuario ejecutaremos el siguiente comando:</p>
 <div><pre><code>mysql -u lucas -p
 </code></pre>
-</div><h2 id="acceso-remoto"> Acceso remoto</h2>
+</div><p><img src="./../images/ABD/5-mariadb.png" alt="image"></p>
+<h3 id="creacion-de-base-de-datos"> Creación de base de datos</h3>
+<p>Para ejecutar una base de datos ejecutaremos el siguiente comando:</p>
+<div><pre><code>mysql&gt; CREATE DATABASE nombre-db;
+</code></pre>
+</div><p><img src="./../images/ABD/6-mariadb.png" alt="image"></p>
+<p>Para meternos en una base de datos ejecutaremos el siguiente comando:</p>
+<div><pre><code>mysql&gt; use nombre-db;
+</code></pre>
+</div><p>Para crear una tabla ejecutaremos el siguiente comando:</p>
+<div><pre><code>mysql&gt; CREATE TABLE NOMBRE (
+    -&gt;     DATO,
+    -&gt;     DATO,
+    -&gt;     DATO
+    -&gt; );
+</code></pre>
+</div><p>Para ejecutar los insert dentro de la table ejecutaremos el siguiente comando:</p>
+<div><pre><code>mysql&gt; INSERT INTO NOMBRE VALUES ('DATO','DATO','DATO');
+</code></pre>
+</div><p>Ejemplo práctico:</p>
+<p><img src="./../images/ABD/7-mariadb.png" alt="image"></p>
+<h2 id="acceso-remoto"> Acceso remoto</h2>
 <p><font color="#800080"><strong>Paso 1</strong></font> Modificamos el fichero <code>50-server.conf</code></p>
 <div><pre><code>sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
 </code></pre>
@@ -103,269 +124,10 @@ Y para conectarnos a nuestro usuario ejecutaremos el siguiente comando:</p>
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
   <entry>
-    <title type="html">MongoDB en Debian 11 Bullseye</title>
-    <id>https://github.com/oscarlucas22/guide/mongo/</id>
-    <link href="https://github.com/oscarlucas22/guide/mongo/"/>
-    <updated>2022-10-28T21:13:23.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
-<p><img src="./../images/ABD/mongodb.png" alt="image"></p>
-<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
-<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
-<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
-<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
-<div><pre><code>sudo apt-get update
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
-<div><pre><code>sudo apt install mongodb-org -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
-<div><pre><code>sudo systemctl enable mongod --now
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la versión</p>
-<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
-</code></pre>
-</div><p><img src="./../images/ABD/1-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
-<div><pre><code>sudo nano /etc/mongod.conf
-</code></pre>
-</div><hr>
-<div><pre><code>security:
-    authorization: enabled
-</code></pre>
-</div><p><img src="./../images/ABD/2-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
-<div><pre><code>sudo systemctl restart mongod
-</code></pre>
-</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
-<div><pre><code>mongo
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
-<div><pre><code>use admin
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
-<div><pre><code>db.createUser(
-    {
-        user: &quot;lucas&quot;, 
-        pwd: &quot;admin&quot;, 
-        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
-    }
-)
-</code></pre>
-</div><p><img src="./../images/ABD/3-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
-<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
-</code></pre>
-</div><p>o también puedes probar con:</p>
-<div><pre><code>mongosh -u lucas
-</code></pre>
-</div><h2 id="creacion-de-base-de-datos"> Creación de base de datos</h2>
-<p><strong>Iniciar MongoDB</strong></p>
-<div><pre><code>mongo
-</code></pre>
-</div><p><strong>Crear y si ya esta creada usar base de datos</strong></p>
-<div><pre><code>use 'NOMBRE_BD'
-</code></pre>
-</div><p><strong>Listar base de datos</strong></p>
-<div><pre><code>show dbs
-</code></pre>
-</div><p><strong>Verificar la base de datos actual</strong></p>
-<div><pre><code>db
-</code></pre>
-</div><p><strong>Eliminar base de datos</strong></p>
-<p>Hacerlo dentro de la base de datos</p>
-<div><pre><code>db.dropDatabase()
-</code></pre>
-</div><p><strong>Importar json en MongoDB</strong></p>
-<p>Hacerlo fuera de mongo</p>
-<div><pre><code>mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
-</code></pre>
-</div><p><strong>Eliminar json de la base de datos</strong></p>
-<p>Hacerlo dentro de la base de datos donde este el json</p>
-<div><pre><code>db.NAME_COLLECTION.drop()
-</code></pre>
-</div><p><strong>Mostrar la colección</strong></p>
-<div><pre><code>db.NAME_COLLECTION.find().pretty
-</code></pre>
-</div><h2 id="acceso-remoto"> Acceso remoto</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Editaremos el fichero <code>mongod.conf</code></p>
-<div><pre><code>sudo /etc/mongod.conf
-</code></pre>
-</div><p>Ahí editaremos donde pone <code>bindIp</code> escribiremos la ip del servidor, asi como se muestra en la imagen:</p>
-<p><img src="./../images/ABD/4-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 2</strong></font> Reiniciamos el servicio para que los cambios se guarden</p>
-<div><pre><code>sudo service mongod restart
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Nos iremos a la maquina cliente y nos conectaremos</p>
-<div><pre><code>mongosh -u nombre-user -p password ip-server
-</code></pre>
-</div><p><img src="./../images/ABD/5-mongo.png" alt="image"></p>
-<p>¡Gracias!</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-24T18:41:09.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Oracle en Debian 11 Bullseye</title>
-    <id>https://github.com/oscarlucas22/guide/oracle/</id>
-    <link href="https://github.com/oscarlucas22/guide/oracle/"/>
-    <updated>2022-10-28T21:13:23.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="oracle-en-debian-11-bullseye"> Oracle en Debian 11 Bullseye</h1>
-<p><img src="./../images/ABD/oracle.png" alt="image"></p>
-<h2 id="instalacion-de-oracle-en-debian-11-bullseye"> Instalación de Oracle en Debian 11 Bullseye</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font></p>
-<p>Antes de instalar el paquete, tenemos que configurar algunas cosas. Empezaremos creando el script:</p>
-<div><pre><code>sudo nano /sbin/chkconfig
-</code></pre>
-</div><p>Y copiamos estas líneas en el archivo:</p>
-<div><pre><code>#!/bin/bash
-# Oracle XE installer chkconfig hack for Ubuntu
-file=/etc/init.d/oracle-xe
-if [[ ! `tail -n1 $file | grep INIT` ]]; then
-echo &gt;&gt; $file
-echo '### BEGIN INIT INFO' &gt;&gt; $file
-echo '# Provides: OracleXE' &gt;&gt; $file
-echo '# Required-Start: $remote_fs $syslog' &gt;&gt; $file
-echo '# Required-Stop: $remote_fs $syslog' &gt;&gt; $file
-echo '# Default-Start: 2 3 4 5' &gt;&gt; $file
-echo '# Default-Stop: 0 1 6' &gt;&gt; $file
-echo '# Short-Description: Oracle 19c Express Edition' &gt;&gt; $file
-echo '### END INIT INFO' &gt;&gt; $file
-fi
-update-rc.d oracle-xe defaults 80 01
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font></p>
-<p>Damos los permisos necesarios al archivo:</p>
-<div><pre><code>sudo chmod 755 /sbin/chkconfig
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font></p>
-<p>Oracle 19c XE requiere de una configuración especial en kernel para funcionar. Por eso necesitamos añadir algunos parámetros al mismo.</p>
-<div><pre><code>sudo nano /etc/sysctl.d/60-oracle.conf
-</code></pre>
-</div><p>Copiamos lo siguiente y guardamos.</p>
-<div><pre><code>fs.file-max=6815744
-net.ipv4.ip_local_port_range=9000 65000
-kernel.sem=250 32000 100 128
-kernel.shmmax=536870912
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 4</strong></font></p>
-<p>Para cargar los parámetros del kernel sin reiniciar:</p>
-<div><pre><code>sudo service procps start
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 5</strong></font> <strong>Comienzo de la instalación</strong></p>
-<p>Y ahora sí, instalamos el paquete <a href="https://www.dropbox.com/s/p1vhrnjw73fdc70/oracle-database-ee-19c_1.0-2_amd64.deb?dl=0" target="_blank" rel="noopener noreferrer">.deb<i>Content not supported</i></a>:</p>
-<div><pre><code>sudo dpkg -i oracle-database-ee-19c_1.0-2_amd64.deb
-</code></pre>
-</div><p>Después de unos 10 minutos el proceso terminará. Ejecutamos el siguiente comando para configurar la contraseña de administrador de la base de datos y demás cosas:</p>
-<div><pre><code>sudo /etc/init.d/oracledb_ORCLCDB-19c configure
-</code></pre>
-</div><p>Veremos que da error. Eso se debe a que en al script de configuración le hace falta un parámetro. Para añadirlo entramos en el script con:</p>
-<div><pre><code>sudo nano /etc/init.d/oracledb_ORCLCDB-19c
-</code></pre>
-</div><p>Y buscamos(Ctrl + W) en la línea donde pone &quot;Configuring&quot;</p>
-<p><img src="./../images/ABD/1-oracle.png" alt="image"></p>
-<p>Borramos la línea que se ve marcada en la imagen y copiamos en su lugar la siguiente:</p>
-<div><pre><code>$SU -s /bin/bash  $ORACLE_OWNER -c &quot;$DBCA -silent -createDatabase -gdbName $ORACLE_SID -templateName $TEMPLATE_NAME -characterSet $CHARSET -createAsContainerDatabase $CREATE_AS_CDB -numberOfPDBs $NUMBER_OF_PDBS -pdbName $PDB_NAME -createListener $LISTENER_NAME:$LISTENER_PORT -datafileDestination $ORACLE_DATA_LOCATION -sid $ORACLE_SID -autoGeneratePasswords -emConfiguration DBEXPRESS -emExpressPort $EM_EXPRESS_PORT -J-Doracle.assistants.dbca.validate.ConfigurationParams=false&quot;
-</code></pre>
-</div><p>Ahora lo intentamos de nuevo:</p>
-<div><pre><code>sudo /etc/init.d/oracledb_ORCLCDB-19c configure
-</code></pre>
-</div><p><code>Nota: Si nos salta un error de netstat tendremos que instalarlo sudo apt install net-tools</code></p>
-<p><code>Nota: Si nos sigue saliendo un error instalaremos lo siguiente sudo apt install libaio1 unixodbc</code></p>
-<p>Si te sale este error:</p>
-<p><img src="./../images/ABD/2-oracle.png" alt="image"></p>
-<p>Sigue estos pasos:</p>
-<div><pre><code>sudo nano /etc/hosts
-</code></pre>
-</div><p>Dentro del fichero escribe tu ip seguido del nombre de tu máquina dos veces, como se muestra en la siguiente imagen:</p>
-<p><img src="./../images/ABD/3-oracle.png" alt="image"></p>
-<p>Y después de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la máquina (<em>sudo reboot</em>) y vuélvelo a probar</p>
-<p><font color="#800080"><strong>Paso 6</strong></font></p>
-<p>Añadimos las variables de entorno a bash:</p>
-<div><pre><code>nano ~/.bashrc
-</code></pre>
-</div><p>Copiamos las siguientes líneas al final del fichero:</p>
-<div><pre><code>export ORACLE_HOME=/opt/oracle/product/19c/dbhome_1
-export ORACLE_SID=ORCLCDB
-export ORACLE_BASE=/opt/oracle
-export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
-export PATH=$ORACLE_HOME/bin:$PATH
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 7</strong></font></p>
-<p>Para finalizar reiniciamos el servicio de Oracle 19c:</p>
-<div><pre><code>sudo service oracledb_ORCLCDB-19c restart
-</code></pre>
-</div><p>Para iniciar Oracle ejecutaremos una serie de pasos:</p>
-<p><strong>Primero pondremos una contraseña</strong></p>
-<div><pre><code>passwd oracle
-</code></pre>
-</div><p><strong>Segundo entrasemos en oracle</strong></p>
-<div><pre><code>su oracle
-</code></pre>
-</div><p>Seguramente te salga un <code>$</code>, si es así eso es que no tienes shell. Para solucionarlo ejecutaremos</p>
-<div><pre><code>sudo usermod -s /bin/bash oracle
-</code></pre>
-</div><p>Y probaremos de nuevo:</p>
-<div><pre><code>su oracle
-</code></pre>
-</div><p>Una vez dentro ya tendras shell y dentro ejecutaremos:</p>
-<div><pre><code>sqlplus / as sysdba
-</code></pre>
-</div><p>Si esto no te va reinicia la maquina <code>sudo reboot</code> y prueba de nuevo</p>
-<p>Bien, una vez echo esto si al iniciar te sale algo asi:</p>
-<p><img src="./../images/ABD/4-oracle.png" alt="image"></p>
-<p>Ejecuta lo siguiente</p>
-<div><pre><code>SQL&gt; shutdown abort
-</code></pre>
-</div><hr>
-<div><pre><code>SQL&gt; startup
-</code></pre>
-</div><p>Y ya estaría sal y entra de nuevo y te deberia salir algo así:</p>
-<p><img src="./../images/ABD/5-oracle.png" alt="image"></p>
-<p>Acto seguido cambiaremos la contraseña del user SYS y SYSTEM</p>
-<div><pre><code>SQL&gt; alter user sys identified by TU_PASSWD;
-</code></pre>
-</div><hr>
-<div><pre><code>SQL&gt; alter user system identified by TU_PASSWD;
-</code></pre>
-</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font></p>
-<p>Ejecutamos el siguiente comando:</p>
-<div><pre><code>SQL&gt; alter session set &quot;_ORACLE_SCRIPT&quot;=true;
-</code></pre>
-</div><p>Y luego nos dejara crear el usuario</p>
-<div><pre><code>SQL&gt; create user lucas identified by admin;
-</code></pre>
-</div><p><img src="./../images/ABD/6-oracle.png" alt="image"></p>
-<p>!Gracias¡</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-24T18:41:09.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
     <title type="html">PostgreSQL en Debian 11 Bullseye</title>
     <id>https://github.com/oscarlucas22/guide/postgresql/</id>
     <link href="https://github.com/oscarlucas22/guide/postgresql/"/>
-    <updated>2022-10-28T21:13:23.000Z</updated>
+    <updated>2022-10-30T16:43:56.000Z</updated>
     <content type="html"><![CDATA[<h1 id="postgresql-en-debian-11-bullseye"> PostgreSQL en Debian 11 Bullseye</h1>
 <p><img src="./../images/ABD/postgresql.png" alt="image"></p>
 <h2 id="instalacion-de-postgresql-en-debian-11-bullseye"> Instalación de PostgreSQL en Debian 11 Bullseye</h2>
@@ -579,6 +341,265 @@ host    all      all              ::/0                         md5
 <p><img src="./../images/ABD/22-postgre.png" alt="image"></p>
 <p>Como puedes ver en la parte inferior de la captura de pantalla, el usuario <code>prueba</code> está conectado a la base de datos <code>pruebadb</code> con la aplicación <code>pgAdmin4</code>, y el estado de la conexión es <code>activo</code>.</p>
 <p>¡Gracias!</p>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <published>2022-10-24T18:41:09.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">MongoDB en Debian 11 Bullseye</title>
+    <id>https://github.com/oscarlucas22/guide/mongo/</id>
+    <link href="https://github.com/oscarlucas22/guide/mongo/"/>
+    <updated>2022-10-30T16:43:56.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
+<p><img src="./../images/ABD/mongodb.png" alt="image"></p>
+<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
+<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
+<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
+<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
+<div><pre><code>sudo apt-get update
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
+<div><pre><code>sudo apt install mongodb-org -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
+<div><pre><code>sudo systemctl enable mongod --now
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la versión</p>
+<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
+</code></pre>
+</div><p><img src="./../images/ABD/1-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
+<div><pre><code>sudo nano /etc/mongod.conf
+</code></pre>
+</div><hr>
+<div><pre><code>security:
+    authorization: enabled
+</code></pre>
+</div><p><img src="./../images/ABD/2-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
+<div><pre><code>sudo systemctl restart mongod
+</code></pre>
+</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
+<div><pre><code>use admin
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
+<div><pre><code>db.createUser(
+    {
+        user: &quot;lucas&quot;, 
+        pwd: &quot;admin&quot;, 
+        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
+    }
+)
+</code></pre>
+</div><p><img src="./../images/ABD/3-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
+<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
+</code></pre>
+</div><p>o también puedes probar con:</p>
+<div><pre><code>mongosh -u lucas
+</code></pre>
+</div><h2 id="creacion-de-base-de-datos"> Creación de base de datos</h2>
+<p><strong>Iniciar MongoDB</strong></p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><strong>Crear y si ya esta creada usar base de datos</strong></p>
+<div><pre><code>use 'NOMBRE_BD'
+</code></pre>
+</div><p><strong>Listar base de datos</strong></p>
+<div><pre><code>show dbs
+</code></pre>
+</div><p><strong>Verificar la base de datos actual</strong></p>
+<div><pre><code>db
+</code></pre>
+</div><p><strong>Eliminar base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos</p>
+<div><pre><code>db.dropDatabase()
+</code></pre>
+</div><p><strong>Importar json en MongoDB</strong></p>
+<p>Hacerlo fuera de mongo</p>
+<div><pre><code>mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
+</code></pre>
+</div><p><strong>Eliminar json de la base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos donde este el json</p>
+<div><pre><code>db.NAME_COLLECTION.drop()
+</code></pre>
+</div><p><strong>Mostrar la colección</strong></p>
+<div><pre><code>db.NAME_COLLECTION.find().pretty
+</code></pre>
+</div><h2 id="acceso-remoto"> Acceso remoto</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Editaremos el fichero <code>mongod.conf</code></p>
+<div><pre><code>sudo /etc/mongod.conf
+</code></pre>
+</div><p>Ahí editaremos donde pone <code>bindIp</code> escribiremos la ip del servidor, asi como se muestra en la imagen:</p>
+<p><img src="./../images/ABD/4-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Reiniciamos el servicio para que los cambios se guarden</p>
+<div><pre><code>sudo service mongod restart
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Nos iremos a la maquina cliente y nos conectaremos</p>
+<div><pre><code>mongosh -u nombre-user -p password ip-server
+</code></pre>
+</div><p><img src="./../images/ABD/5-mongo.png" alt="image"></p>
+<p>¡Gracias!</p>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <published>2022-10-24T18:41:09.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">Oracle en Debian 11 Bullseye</title>
+    <id>https://github.com/oscarlucas22/guide/oracle/</id>
+    <link href="https://github.com/oscarlucas22/guide/oracle/"/>
+    <updated>2022-10-30T16:43:56.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="oracle-en-debian-11-bullseye"> Oracle en Debian 11 Bullseye</h1>
+<p><img src="./../images/ABD/oracle.png" alt="image"></p>
+<h2 id="instalacion-de-oracle-en-debian-11-bullseye"> Instalación de Oracle en Debian 11 Bullseye</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font></p>
+<p>Antes de instalar el paquete, tenemos que configurar algunas cosas. Empezaremos creando el script:</p>
+<div><pre><code>sudo nano /sbin/chkconfig
+</code></pre>
+</div><p>Y copiamos estas líneas en el archivo:</p>
+<div><pre><code>#!/bin/bash
+# Oracle XE installer chkconfig hack for Ubuntu
+file=/etc/init.d/oracle-xe
+if [[ ! `tail -n1 $file | grep INIT` ]]; then
+echo &gt;&gt; $file
+echo '### BEGIN INIT INFO' &gt;&gt; $file
+echo '# Provides: OracleXE' &gt;&gt; $file
+echo '# Required-Start: $remote_fs $syslog' &gt;&gt; $file
+echo '# Required-Stop: $remote_fs $syslog' &gt;&gt; $file
+echo '# Default-Start: 2 3 4 5' &gt;&gt; $file
+echo '# Default-Stop: 0 1 6' &gt;&gt; $file
+echo '# Short-Description: Oracle 19c Express Edition' &gt;&gt; $file
+echo '### END INIT INFO' &gt;&gt; $file
+fi
+update-rc.d oracle-xe defaults 80 01
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font></p>
+<p>Damos los permisos necesarios al archivo:</p>
+<div><pre><code>sudo chmod 755 /sbin/chkconfig
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font></p>
+<p>Oracle 19c XE requiere de una configuración especial en kernel para funcionar. Por eso necesitamos añadir algunos parámetros al mismo.</p>
+<div><pre><code>sudo nano /etc/sysctl.d/60-oracle.conf
+</code></pre>
+</div><p>Copiamos lo siguiente y guardamos.</p>
+<div><pre><code>fs.file-max=6815744
+net.ipv4.ip_local_port_range=9000 65000
+kernel.sem=250 32000 100 128
+kernel.shmmax=536870912
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 4</strong></font></p>
+<p>Para cargar los parámetros del kernel sin reiniciar:</p>
+<div><pre><code>sudo service procps start
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 5</strong></font> <strong>Comienzo de la instalación</strong></p>
+<p>Y ahora sí, instalamos el paquete <a href="https://www.dropbox.com/s/p1vhrnjw73fdc70/oracle-database-ee-19c_1.0-2_amd64.deb?dl=0" target="_blank" rel="noopener noreferrer">.deb<i>Content not supported</i></a>:</p>
+<div><pre><code>sudo dpkg -i oracle-database-ee-19c_1.0-2_amd64.deb
+</code></pre>
+</div><p>Después de unos 10 minutos el proceso terminará. Ejecutamos el siguiente comando para configurar la contraseña de administrador de la base de datos y demás cosas:</p>
+<div><pre><code>sudo /etc/init.d/oracledb_ORCLCDB-19c configure
+</code></pre>
+</div><p>Veremos que da error. Eso se debe a que en al script de configuración le hace falta un parámetro. Para añadirlo entramos en el script con:</p>
+<div><pre><code>sudo nano /etc/init.d/oracledb_ORCLCDB-19c
+</code></pre>
+</div><p>Y buscamos(Ctrl + W) en la línea donde pone &quot;Configuring&quot;</p>
+<p><img src="./../images/ABD/1-oracle.png" alt="image"></p>
+<p>Borramos la línea que se ve marcada en la imagen y copiamos en su lugar la siguiente:</p>
+<div><pre><code>$SU -s /bin/bash  $ORACLE_OWNER -c &quot;$DBCA -silent -createDatabase -gdbName $ORACLE_SID -templateName $TEMPLATE_NAME -characterSet $CHARSET -createAsContainerDatabase $CREATE_AS_CDB -numberOfPDBs $NUMBER_OF_PDBS -pdbName $PDB_NAME -createListener $LISTENER_NAME:$LISTENER_PORT -datafileDestination $ORACLE_DATA_LOCATION -sid $ORACLE_SID -autoGeneratePasswords -emConfiguration DBEXPRESS -emExpressPort $EM_EXPRESS_PORT -J-Doracle.assistants.dbca.validate.ConfigurationParams=false&quot;
+</code></pre>
+</div><p>Ahora lo intentamos de nuevo:</p>
+<div><pre><code>sudo /etc/init.d/oracledb_ORCLCDB-19c configure
+</code></pre>
+</div><p><code>Nota: Si nos salta un error de netstat tendremos que instalarlo sudo apt install net-tools</code></p>
+<p><code>Nota: Si nos sigue saliendo un error instalaremos lo siguiente sudo apt install libaio1 unixodbc</code></p>
+<p>Si te sale este error:</p>
+<p><img src="./../images/ABD/2-oracle.png" alt="image"></p>
+<p>Sigue estos pasos:</p>
+<div><pre><code>sudo nano /etc/hosts
+</code></pre>
+</div><p>Dentro del fichero escribe tu ip seguido del nombre de tu máquina dos veces, como se muestra en la siguiente imagen:</p>
+<p><img src="./../images/ABD/3-oracle.png" alt="image"></p>
+<p>Y después de esto ejecutaremos de nuevo el comando y ya debería de ir sino reinicia la máquina (<em>sudo reboot</em>) y vuélvelo a probar</p>
+<p><font color="#800080"><strong>Paso 6</strong></font></p>
+<p>Añadimos las variables de entorno a bash:</p>
+<div><pre><code>nano ~/.bashrc
+</code></pre>
+</div><p>Copiamos las siguientes líneas al final del fichero:</p>
+<div><pre><code>export ORACLE_HOME=/opt/oracle/product/19c/dbhome_1
+export ORACLE_SID=ORCLCDB
+export ORACLE_BASE=/opt/oracle
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+export PATH=$ORACLE_HOME/bin:$PATH
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 7</strong></font></p>
+<p>Para finalizar reiniciamos el servicio de Oracle 19c:</p>
+<div><pre><code>sudo service oracledb_ORCLCDB-19c restart
+</code></pre>
+</div><p>Para iniciar Oracle ejecutaremos una serie de pasos:</p>
+<p><strong>Primero pondremos una contraseña</strong></p>
+<div><pre><code>passwd oracle
+</code></pre>
+</div><p><strong>Segundo entrasemos en oracle</strong></p>
+<div><pre><code>su oracle
+</code></pre>
+</div><p>Seguramente te salga un <code>$</code>, si es así eso es que no tienes shell. Para solucionarlo ejecutaremos</p>
+<div><pre><code>sudo usermod -s /bin/bash oracle
+</code></pre>
+</div><p>Y probaremos de nuevo:</p>
+<div><pre><code>su oracle
+</code></pre>
+</div><p>Una vez dentro ya tendras shell y dentro ejecutaremos:</p>
+<div><pre><code>sqlplus / as sysdba
+</code></pre>
+</div><p>Si esto no te va reinicia la maquina <code>sudo reboot</code> y prueba de nuevo</p>
+<p>Bien, una vez echo esto si al iniciar te sale algo asi:</p>
+<p><img src="./../images/ABD/4-oracle.png" alt="image"></p>
+<p>Ejecuta lo siguiente</p>
+<div><pre><code>SQL&gt; shutdown abort
+</code></pre>
+</div><hr>
+<div><pre><code>SQL&gt; startup
+</code></pre>
+</div><p>Y ya estaría sal y entra de nuevo y te deberia salir algo así:</p>
+<p><img src="./../images/ABD/5-oracle.png" alt="image"></p>
+<p>Acto seguido cambiaremos la contraseña del user SYS y SYSTEM</p>
+<div><pre><code>SQL&gt; alter user sys identified by TU_PASSWD;
+</code></pre>
+</div><hr>
+<div><pre><code>SQL&gt; alter user system identified by TU_PASSWD;
+</code></pre>
+</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font></p>
+<p>Ejecutamos el siguiente comando:</p>
+<div><pre><code>SQL&gt; alter session set &quot;_ORACLE_SCRIPT&quot;=true;
+</code></pre>
+</div><p>Y luego nos dejara crear el usuario</p>
+<div><pre><code>SQL&gt; create user lucas identified by admin;
+</code></pre>
+</div><p><img src="./../images/ABD/6-oracle.png" alt="image"></p>
+<p>!Gracias¡</p>
 ]]></content>
     <author>
       <name>Óscar Lucas</name>

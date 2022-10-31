@@ -75,6 +75,36 @@ Y para conectarnos a nuestro usuario ejecutaremos el siguiente comando:
 
     mysql -u lucas -p
 
+![image](../images/ABD/5-mariadb.png)
+
+### Creación de base de datos
+
+Para ejecutar una base de datos ejecutaremos el siguiente comando:
+
+    mysql> CREATE DATABASE nombre-db;
+
+![image](../images/ABD/6-mariadb.png)
+
+Para meternos en una base de datos ejecutaremos el siguiente comando:
+
+    mysql> use nombre-db;
+
+Para crear una tabla ejecutaremos el siguiente comando:
+
+    mysql> CREATE TABLE NOMBRE (
+        ->     DATO,
+        ->     DATO,
+        ->     DATO
+        -> );
+
+Para ejecutar los insert dentro de la table ejecutaremos el siguiente comando:
+
+    mysql> INSERT INTO NOMBRE VALUES ('DATO','DATO','DATO');
+
+Ejemplo práctico:
+
+![image](../images/ABD/7-mariadb.png)
+
 ## Acceso remoto
 
 <font color="#800080">**Paso 1**</font> Modificamos el fichero `50-server.conf`
