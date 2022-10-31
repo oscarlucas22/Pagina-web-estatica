@@ -95,6 +95,10 @@ Para crear el usuario ingresamos primero a postgres:
 
     GRANT ALL PRIVILEGES ON DATABASE lucas_db TO lucas;
 
+Ejemplo práctico:
+
+![image](../images/ABD/23-postgre.png)
+
 ## Acceso remoto
 
 <font color="#800080">**Paso 1**</font> Acceso remoto

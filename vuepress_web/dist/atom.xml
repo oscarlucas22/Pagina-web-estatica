@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-10-31T08:05:51.030Z</updated>
+  <updated>2022-10-31T08:27:41.789Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -482,7 +482,9 @@ export PATH=$ORACLE_HOME/bin:$PATH
 </div><p><strong>Asignar todos los permisos a un usuario a una base de datos existente</strong></p>
 <div><pre><code>GRANT ALL PRIVILEGES ON DATABASE lucas_db TO lucas;
 </code></pre>
-</div><h2 id="acceso-remoto"> Acceso remoto</h2>
+</div><p>Ejemplo práctico:</p>
+<p><img src="./../images/ABD/23-postgre.png" alt="image"></p>
+<h2 id="acceso-remoto"> Acceso remoto</h2>
 <p><font color="#800080"><strong>Paso 1</strong></font> Acceso remoto</p>
 <div><pre><code>sudo nano /etc/postgresql/13/main/postgresql.conf
 </code></pre>
