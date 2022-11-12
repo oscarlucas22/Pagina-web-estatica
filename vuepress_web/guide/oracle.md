@@ -165,7 +165,7 @@ Acto seguido cambiaremos la contraseña del user SYS y SYSTEM
 
 <font color="#800080">**Paso 1**</font>
 
-Ejecutamos el siguiente comando:
+Ejecutamos el siguiente comando para activar _ORACLE_SCRIPT para que se puedan ejecutar sin errores los siguientes comandos:
 
     SQL> alter session set "_ORACLE_SCRIPT"=true;
 
@@ -173,6 +173,57 @@ Y luego nos dejara crear el usuario
 
     SQL> create user lucas identified by admin;
 
+Si le queremos dar prvilegios ejecutaremos el siguiente comando(en este caso le daremos todos los privilegios):
+
+    SQL> grant all privileges to lucas;
+
+Una vez hecho esto pasos ya estaria el usuario creato y nos podremos conectar con el siguiente comando:
+
+    sqlplus lucas/admin
+
 ![image](../images/ABD/6-oracle.png)
+
+Para crear la base de datos y las tablas con sus respectivos inserts aqui os muestro como se hace:
+
+[Como crear base de datos y tablas en Oracle](https://github.com/oscarlucas22/Proyecto-DDL-y-DML_BD/tree/main/Oracle)
+
+## Cliente remoto Oracle
+
+<font color="#800080">**Paso 1**</font> Activaremos listener y habilitaremos el pueto 1521/tcp
+
+Antes de comenzar tenemos que activar el listener:
+
+    lsnrclt start
+
+Despues de eso habilitaremos el puerto 1521 del firewall, pero antes si no tenemos instalado firewalld lo instalaremos:
+
+    sudo apt install firewalld
+
+Y ahora si habilitaremos el puerto 1521:
+
+    sudo firewall-cmd --permanent --add-port=1521/tcp
+---
+    sudo firewall-cmd --reload
+
+<font color="#800080">**Paso 2**</font> Instalaremos los clientes
+
+Una vez hecho esto instalaremos los clientes de Oracle
+
+- [basic](https://download.oracle.com/otn_software/linux/instantclient/218000/oracle-
+instantclient-basic-21.8.0.0.0-1.el8.x86_64.rpm)
+- [devel](https://download.oracle.com/otn_software/linux/instantclient/218000/oracle-
+instantclient-devel-21.8.0.0.0-1.el8.x86_64.rpm)
+- [sqlplus](https://download.oracle.com/otn_software/linux/instantclient/218000/oracle-
+instantclient-sqlplus-21.8.0.0.0-1.el8.x86_64.rpm)
+
+Una vez descargados los instalaremos en mi caso como lo voy a instalar en un Debian utilizaremos el comando `alien`
+
+    sudo alien -i --scripts oracle-instantclient-*
+
+<font color="#800080">**Paso 3**</font> Acceso al cliente
+
+Una vez instalados los clientes ya podremos acceder 
+
+    sqlplus lucas/admin@ip-server/ORCLCDB
 
 !Gracias¡
