@@ -209,21 +209,20 @@ Y ahora si habilitaremos el puerto 1521:
 
 Una vez hecho esto instalaremos los clientes de Oracle
 
-- [basic](https://download.oracle.com/otn_software/linux/instantclient/218000/oracle-
-instantclient-basic-21.8.0.0.0-1.el8.x86_64.rpm)
-- [devel](https://download.oracle.com/otn_software/linux/instantclient/218000/oracle-
-instantclient-devel-21.8.0.0.0-1.el8.x86_64.rpm)
-- [sqlplus](https://download.oracle.com/otn_software/linux/instantclient/218000/oracle-
-instantclient-sqlplus-21.8.0.0.0-1.el8.x86_64.rpm)
+- [basic](https://download.oracle.com/otn_software/linux/instantclient/218000/oracle-instantclient-basic-21.8.0.0.0-1.el8.x86_64.rpm)
+- [devel](https://download.oracle.com/otn_software/linux/instantclient/218000/oracle-instantclient-devel-21.8.0.0.0-1.el8.x86_64.rpm)
+- [sqlplus](https://download.oracle.com/otn_software/linux/instantclient/218000/oracle-instantclient-sqlplus-21.8.0.0.0-1.el8.x86_64.rpm)
 
 Una vez descargados los instalaremos en mi caso como lo voy a instalar en un Debian utilizaremos el comando `alien`
 
     sudo alien -i --scripts oracle-instantclient-*
 
-<font color="#800080">**Paso 3**</font> Acceso al cliente
+<font color="#800080">**Paso 3**</font> Acceso desde el cliente
 
 Una vez instalados los clientes ya podremos acceder 
 
     sqlplus lucas/admin@ip-server/ORCLCDB
+
+![image](../images/ABD/7-oracle.png)
 
 !Gracias¡

@@ -99,6 +99,15 @@ Ejemplo práctico:
 
 ![image](../images/ABD/23-postgre.png)
 
+## Borrar usuario
+    su - postgres
+
+En el caso que queramos borrar solo el usuario antes debemos revocarle los permisos sobre la base de datos
+
+    revoke all on database nombre-db from nombre-user;
+---
+    drop user nombre-user;
+
 ## Acceso remoto
 
 <font color="#800080">**Paso 1**</font> Acceso remoto
