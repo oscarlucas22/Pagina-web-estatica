@@ -13,7 +13,7 @@ category: Guia
 
 - [Servidores y Clientes de Base de Datos (*MariaDB *PostgreSQL *Oracle *MongoDB)](ABD.md)
 
-- [Interconexión Servidores (*Oracle-Oracle *PostgreSQL-PostgreSQl *Oracle-PostgreSQL *PostgreSQL-Oracle)](orcl-psql.md)
+- [Interconexión Servidores (*Oracle-Oracle *PostgreSQL-PostgreSQl *Oracle-PostgreSQL *PostgreSQL-Oracle)]()
 
 <font color="#00ff00">**SAD**</font>
 

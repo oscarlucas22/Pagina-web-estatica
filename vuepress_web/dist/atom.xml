@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-11-21T21:51:58.115Z</updated>
+  <updated>2022-11-21T21:53:44.704Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -924,7 +924,7 @@ sudo make uninstall
     <title type="html">Guía</title>
     <id>https://github.com/oscarlucas22/guide/</id>
     <link href="https://github.com/oscarlucas22/guide/"/>
-    <updated>2022-11-21T21:39:19.000Z</updated>
+    <updated>2022-11-21T21:52:00.000Z</updated>
     <content type="html"><![CDATA[<h1 id="guia"> Guía</h1>
 <p><font color="#FFFF00"><strong>ASO</strong></font></p>
 <ul>
@@ -936,7 +936,7 @@ sudo make uninstall
 <p><a href="./ABD.html">Servidores y Clientes de Base de Datos (*MariaDB *PostgreSQL *Oracle *MongoDB)</a></p>
 </li>
 <li>
-<p><a href="./orcl-psql.html">Interconexión Servidores (*Oracle-Oracle *PostgreSQL-PostgreSQl *Oracle-PostgreSQL *PostgreSQL-Oracle)</a></p>
+<p><a href="">Interconexión Servidores (*Oracle-Oracle *PostgreSQL-PostgreSQl *Oracle-PostgreSQL *PostgreSQL-Oracle)</a></p>
 </li>
 </ul>
 <p><font color="#00ff00"><strong>SAD</strong></font></p>
