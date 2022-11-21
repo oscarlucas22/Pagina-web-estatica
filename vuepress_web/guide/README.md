@@ -18,3 +18,5 @@ category: Guia
 <font color="#00ff00">**SAD**</font>
 
 - [Herramientas de Seguridad (*SNORT *NESSUS *TRIPWIRE *RKHUNTER *HYDRA)](https://www.dropbox.com/s/84gl6ea0ls0xksy/Plantilla%20Trabajo%20Grupal%201.pdf?dl=0)
+
+- [Plan de Seguridad y de Contingencia]()
