@@ -6,8 +6,8 @@
     <link>https://github.com/oscarlucas22/</link>
     <description>Tu página de confianza</description>
     <language>en-US</language>
-    <pubDate>Mon, 21 Nov 2022 21:39:17 GMT</pubDate>
-    <lastBuildDate>Mon, 21 Nov 2022 21:39:17 GMT</lastBuildDate>
+    <pubDate>Mon, 21 Nov 2022 21:51:58 GMT</pubDate>
+    <lastBuildDate>Mon, 21 Nov 2022 21:51:58 GMT</lastBuildDate>
     <generator>@mr-hope/vuepress-plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Guia</category>
@@ -890,15 +890,15 @@ sudo make uninstall
 <p><font color="#800080"><strong>ABD</strong></font></p>
 <ul>
 <li>
-<p><a href="./ABD.html">Servidores y Clientes de Base de Datos (MariaDB, PostgreSQL, Oracle, MongoDB)</a></p>
+<p><a href="./ABD.html">Servidores y Clientes de Base de Datos (*MariaDB *PostgreSQL *Oracle *MongoDB)</a></p>
 </li>
 <li>
-<p><a href="./orcl-psql.html">Interconexión Servidores (Oracle-Oracle, PostgreSQL-PostgreSQl, Oracle-PostgreSQL y PostgreSQL-Oracle)</a></p>
+<p><a href="./orcl-psql.html">Interconexión Servidores (*Oracle-Oracle *PostgreSQL-PostgreSQl *Oracle-PostgreSQL *PostgreSQL-Oracle)</a></p>
 </li>
 </ul>
 <p><font color="#00ff00"><strong>SAD</strong></font></p>
 <ul>
-<li><a href="https://www.dropbox.com/s/84gl6ea0ls0xksy/Plantilla%20Trabajo%20Grupal%201.pdf?dl=0" target="_blank" rel="noopener noreferrer">Herramientas de Seguridad (SNORT, NESSUS, TRIPWIRE, RKHUNTER, HYDRA)<i>Content not supported</i></a></li>
+<li><a href="https://www.dropbox.com/s/84gl6ea0ls0xksy/Plantilla%20Trabajo%20Grupal%201.pdf?dl=0" target="_blank" rel="noopener noreferrer">Herramientas de Seguridad (*SNORT *NESSUS *TRIPWIRE *RKHUNTER *HYDRA)<i>Content not supported</i></a></li>
 </ul>
 ]]></content:encoded>
     </item>
