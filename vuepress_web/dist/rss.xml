@@ -6,8 +6,8 @@
     <link>https://github.com/oscarlucas22/</link>
     <description>Tu página de confianza</description>
     <language>en-US</language>
-    <pubDate>Sun, 13 Nov 2022 18:24:00 GMT</pubDate>
-    <lastBuildDate>Sun, 13 Nov 2022 18:24:00 GMT</lastBuildDate>
+    <pubDate>Mon, 21 Nov 2022 21:33:27 GMT</pubDate>
+    <lastBuildDate>Mon, 21 Nov 2022 21:33:27 GMT</lastBuildDate>
     <generator>@mr-hope/vuepress-plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Guia</category>
@@ -110,115 +110,6 @@ Y para conectarnos a nuestro usuario ejecutaremos el siguiente comando:</p>
 <div><pre><code>mariadb -u lucas -h ip-servidor -p 
 </code></pre>
 </div><p><img src="./../images/ABD/4-mariadb.png" alt="image"></p>
-<p>¡Gracias!</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>MongoDB en Debian 11 Bullseye</title>
-      <link>https://github.com/oscarlucas22/guide/mongo/</link>
-      <guid>https://github.com/oscarlucas22/guide/mongo/</guid>
-      <source url="https://github.com/oscarlucas22/rss.xml">MongoDB en Debian 11 Bullseye</source>
-      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
-<p><img src="./../images/ABD/mongodb.png" alt="image"></p>
-<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
-<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
-<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
-<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
-<div><pre><code>sudo apt-get update
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
-<div><pre><code>sudo apt install mongodb-org -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
-<div><pre><code>sudo systemctl enable mongod --now
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la versión</p>
-<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
-</code></pre>
-</div><p><img src="./../images/ABD/1-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
-<div><pre><code>sudo nano /etc/mongod.conf
-</code></pre>
-</div><hr>
-<div><pre><code>security:
-    authorization: enabled
-</code></pre>
-</div><p><img src="./../images/ABD/2-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
-<div><pre><code>sudo systemctl restart mongod
-</code></pre>
-</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
-<div><pre><code>mongo
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
-<div><pre><code>use admin
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
-<div><pre><code>db.createUser(
-    {
-        user: &quot;lucas&quot;, 
-        pwd: &quot;admin&quot;, 
-        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
-    }
-)
-</code></pre>
-</div><p><img src="./../images/ABD/3-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
-<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
-</code></pre>
-</div><p>o también puedes probar con:</p>
-<div><pre><code>mongosh -u lucas
-</code></pre>
-</div><h2 id="creacion-de-base-de-datos"> Creación de base de datos</h2>
-<p><strong>Iniciar MongoDB</strong></p>
-<div><pre><code>mongo
-</code></pre>
-</div><p><strong>Crear y si ya esta creada usar base de datos</strong></p>
-<div><pre><code>use 'NOMBRE_BD'
-</code></pre>
-</div><p><strong>Listar base de datos</strong></p>
-<div><pre><code>show dbs
-</code></pre>
-</div><p><strong>Verificar la base de datos actual</strong></p>
-<div><pre><code>db
-</code></pre>
-</div><p><strong>Eliminar base de datos</strong></p>
-<p>Hacerlo dentro de la base de datos</p>
-<div><pre><code>db.dropDatabase()
-</code></pre>
-</div><p><strong>Importar json en MongoDB</strong></p>
-<p>Hacerlo fuera de mongo</p>
-<div><pre><code>mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
-</code></pre>
-</div><p><strong>Eliminar json de la base de datos</strong></p>
-<p>Hacerlo dentro de la base de datos donde este el json</p>
-<div><pre><code>db.NAME_COLLECTION.drop()
-</code></pre>
-</div><p><strong>Mostrar la colección</strong></p>
-<div><pre><code>db.NAME_COLLECTION.find().pretty
-</code></pre>
-</div><h2 id="acceso-remoto"> Acceso remoto</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Editaremos el fichero <code>mongod.conf</code></p>
-<div><pre><code>sudo /etc/mongod.conf
-</code></pre>
-</div><p>Ahí editaremos donde pone <code>bindIp</code> escribiremos la ip del servidor, asi como se muestra en la imagen:</p>
-<p><img src="./../images/ABD/4-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 2</strong></font> Reiniciamos el servicio para que los cambios se guarden</p>
-<div><pre><code>sudo service mongod restart
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Nos iremos a la maquina cliente y nos conectaremos</p>
-<div><pre><code>mongosh -u nombre-user -p password ip-server
-</code></pre>
-</div><p><img src="./../images/ABD/5-mongo.png" alt="image"></p>
 <p>¡Gracias!</p>
 ]]></content:encoded>
     </item>
@@ -393,6 +284,115 @@ export PATH=$ORACLE_HOME/bin:$PATH
 </code></pre>
 </div><p><img src="./../images/ABD/7-oracle.png" alt="image"></p>
 <p>!Gracias¡</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>MongoDB en Debian 11 Bullseye</title>
+      <link>https://github.com/oscarlucas22/guide/mongo/</link>
+      <guid>https://github.com/oscarlucas22/guide/mongo/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">MongoDB en Debian 11 Bullseye</source>
+      <pubDate>Mon, 24 Oct 2022 18:41:09 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
+<p><img src="./../images/ABD/mongodb.png" alt="image"></p>
+<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
+<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
+<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
+<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
+<div><pre><code>sudo apt-get update
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
+<div><pre><code>sudo apt install mongodb-org -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
+<div><pre><code>sudo systemctl enable mongod --now
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la versión</p>
+<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
+</code></pre>
+</div><p><img src="./../images/ABD/1-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
+<div><pre><code>sudo nano /etc/mongod.conf
+</code></pre>
+</div><hr>
+<div><pre><code>security:
+    authorization: enabled
+</code></pre>
+</div><p><img src="./../images/ABD/2-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
+<div><pre><code>sudo systemctl restart mongod
+</code></pre>
+</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
+<div><pre><code>use admin
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
+<div><pre><code>db.createUser(
+    {
+        user: &quot;lucas&quot;, 
+        pwd: &quot;admin&quot;, 
+        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
+    }
+)
+</code></pre>
+</div><p><img src="./../images/ABD/3-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
+<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
+</code></pre>
+</div><p>o también puedes probar con:</p>
+<div><pre><code>mongosh -u lucas
+</code></pre>
+</div><h2 id="creacion-de-base-de-datos"> Creación de base de datos</h2>
+<p><strong>Iniciar MongoDB</strong></p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><strong>Crear y si ya esta creada usar base de datos</strong></p>
+<div><pre><code>use 'NOMBRE_BD'
+</code></pre>
+</div><p><strong>Listar base de datos</strong></p>
+<div><pre><code>show dbs
+</code></pre>
+</div><p><strong>Verificar la base de datos actual</strong></p>
+<div><pre><code>db
+</code></pre>
+</div><p><strong>Eliminar base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos</p>
+<div><pre><code>db.dropDatabase()
+</code></pre>
+</div><p><strong>Importar json en MongoDB</strong></p>
+<p>Hacerlo fuera de mongo</p>
+<div><pre><code>mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
+</code></pre>
+</div><p><strong>Eliminar json de la base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos donde este el json</p>
+<div><pre><code>db.NAME_COLLECTION.drop()
+</code></pre>
+</div><p><strong>Mostrar la colección</strong></p>
+<div><pre><code>db.NAME_COLLECTION.find().pretty
+</code></pre>
+</div><h2 id="acceso-remoto"> Acceso remoto</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Editaremos el fichero <code>mongod.conf</code></p>
+<div><pre><code>sudo /etc/mongod.conf
+</code></pre>
+</div><p>Ahí editaremos donde pone <code>bindIp</code> escribiremos la ip del servidor, asi como se muestra en la imagen:</p>
+<p><img src="./../images/ABD/4-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Reiniciamos el servicio para que los cambios se guarden</p>
+<div><pre><code>sudo service mongod restart
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Nos iremos a la maquina cliente y nos conectaremos</p>
+<div><pre><code>mongosh -u nombre-user -p password ip-server
+</code></pre>
+</div><p><img src="./../images/ABD/5-mongo.png" alt="image"></p>
+<p>¡Gracias!</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -691,7 +691,211 @@ sudo make uninstall
 <li>
 <p><a href="https://www.dropbox.com/s/84gl6ea0ls0xksy/Plantilla%20Trabajo%20Grupal%201.pdf?dl=0" target="_blank" rel="noopener noreferrer">Herramientas de Seguridad (SNORT, NESSUS, TRIPWIRE, RKHUNTER, HYDRA)<i>Content not supported</i></a></p>
 </li>
+<li>
+<p><a href="./orcl-psql.html">Interconexión Servidores (Oracle-Oracle, PostgreSQL-PostgreSQl, Oracle-PostgreSQL y PostgreSQL-Oracle)</a></p>
+</li>
 </ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Interconexión Servidores</title>
+      <link>https://github.com/oscarlucas22/guide/orcl-psql/</link>
+      <guid>https://github.com/oscarlucas22/guide/orcl-psql/</guid>
+      <source url="https://github.com/oscarlucas22/rss.xml">Interconexión Servidores</source>
+      <content:encoded><![CDATA[<h1 id="interconexion-servidores"> Interconexión Servidores</h1>
+<h2 id="oracle-oracle"> Oracle - Oracle</h2>
+<h2 id="postgresql-postgresql"> PostgreSQL - PostgreSQL</h2>
+<p>Aqui vamos a interconectar dos servidores Postgres. Yo tendre dos maquinas las cuales son postgres1(192.168.122.27) y postgres2(192.168.122.53)</p>
+<p><font color="#800080"><strong>Paso 1</strong></font> Permitir acceso remoto</p>
+<p>Para permitir el acceso remoto nos iremos al fichero postgresql.conf</p>
+<div><pre><code>sudo nano /etc/postgresql/13/main/postgresql.conf
+</code></pre>
+</div><p>Donde editaremos las linea de <code>listen_addresses</code>. Y la dejaremos así:</p>
+<div><pre><code>listen_addresses = '*'          # what IP address(es) to listen on;
+</code></pre>
+</div><p>Despues nos iremos al fichero pg_hba.conf</p>
+<div><pre><code>sudo nano /etc/postgresql/13/main/pg_hba.conf
+</code></pre>
+</div><p>Y escribiremos al final de este fichero las siguientes lineas:</p>
+<div><pre><code>host    all     all     0.0.0.0/0       md5
+host    all     all     ::/0    md5
+</code></pre>
+</div><p>Una vez hecho esto reiniriaremos el servicio postgresql</p>
+<div><pre><code>sudo systemctl restart postgresql
+</code></pre>
+</div><p><strong>Este paso lo haremos en las dos maquinas</strong></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Crearemos las bases de datos y sus respectivas tablas</p>
+<p><strong>postgres1</strong></p>
+<p>Primero entraremos al usuario postgres</p>
+<div><pre><code>sudo su
+</code></pre>
+</div><hr>
+<div><pre><code>su postgres
+</code></pre>
+</div><hr>
+<div><pre><code>psql
+</code></pre>
+</div><p>Una vez dentro crearemos el usuario y la base de datos:</p>
+<div><pre><code>postgres=# create user maquina1 with password 'root';
+</code></pre>
+</div><hr>
+<div><pre><code>postgres=# create database db1;
+</code></pre>
+</div><hr>
+<div><pre><code>postgres=# grant all privileges on database db1 to maquina1;
+</code></pre>
+</div><hr>
+<div><pre><code>postgres=# \q
+</code></pre>
+</div><p>Una vez ya creados el usuario y la base de datos entraremos en ella para crear las tablas:</p>
+<div><pre><code>psql -h localhost -U maquina1 -W -d db1
+</code></pre>
+</div><hr>
+<div><pre><code>db1=&gt; create table peliculas (
+    NombrePelicula varchar (20),
+    Genero varchar (20),
+    Director varchar (20),
+    AnoEstreno varchar (4),
+    constraint PK_1 primary key (NombrePelicula)
+);
+</code></pre>
+</div><hr>
+<div><pre><code>db1=&gt; INSERT INTO peliculas VALUES ('Dune','Ciencia-ficcion','Edwards','1984');
+INSERT INTO peliculas VALUES ('Los Idiotas','Drama','Von Trier','1999');
+INSERT INTO peliculas VALUES ('Kramer vs Kramer','Drama','Smith','1978');
+INSERT INTO peliculas VALUES ('Mision Imposible','Ciencia-ficcion','Johnson','1998');
+INSERT INTO peliculas VALUES ('Mi nombre es Joe','Drama','Loach','1995');
+INSERT INTO peliculas VALUES ('Rompiendo las olas','Drama','Von Trier','1997');
+INSERT INTO peliculas VALUES ('Los Otros','Suspense','Amenabar','2001');
+</code></pre>
+</div><p><img src="./../images/orcl-psql/1-psql-psql.png" alt="image"></p>
+<p><strong>postgres2</strong></p>
+<p>Ahora haremos lo mismo con la otra maquina</p>
+<div><pre><code>sudo su
+</code></pre>
+</div><hr>
+<div><pre><code>su postgres
+</code></pre>
+</div><hr>
+<div><pre><code>psql
+</code></pre>
+</div><p>Una vez dentro crearemos el usuario y la base de datos:</p>
+<div><pre><code>postgres=# create user maquina2 with password 'root';
+</code></pre>
+</div><hr>
+<div><pre><code>postgres=# create database db2;
+</code></pre>
+</div><hr>
+<div><pre><code>postgres=# grant all privileges on database db2 to maquina2;
+</code></pre>
+</div><hr>
+<div><pre><code>postgres=# \q
+</code></pre>
+</div><p>Una vez ya creados el usuario y la base de datos entraremos en ella para crear las tablas:</p>
+<div><pre><code>psql -h localhost -U maquina2 -W -d db2
+</code></pre>
+</div><hr>
+<div><pre><code>db1=&gt; create table socios (
+    DNI varchar (10),
+    Nombre varchar (20),
+    Direccion varchar (20),
+    constraint PK_2 primary key (DNI)
+);
+</code></pre>
+</div><hr>
+<div><pre><code>db1=&gt; INSERT INTO socios VALUES ('111-A','David','Sevilla Este');
+INSERT INTO socios VALUES ('222-B','Mariano','Los Remedios');
+INSERT INTO socios VALUES ('333-C','Raul','Triana');
+INSERT INTO socios VALUES ('444-D','Rocio','La Oliva');
+INSERT INTO socios VALUES ('555-E','Marilo','Triana');
+INSERT INTO socios VALUES ('666-F','Benjamin','Montequinto');
+INSERT INTO socios VALUES ('777-G','Carlos','Los Remedios');
+INSERT INTO socios VALUES ('888-H','Manolo','Montequinto');
+</code></pre>
+</div><p><img src="./../images/orcl-psql/2-psql-psql.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 3</strong></font> Interconexiones</p>
+<p><strong>postgres1</strong></p>
+<p>Primero entraremos en la base de datos para crear la extension del link. Esto lo haremos en el usuario postgres</p>
+<div><pre><code>psql -d db1
+</code></pre>
+</div><hr>
+<div><pre><code>db1=# create extension dblink;
+</code></pre>
+</div><hr>
+<div><pre><code>db1=# \q
+</code></pre>
+</div><p><img src="./../images/orcl-psql/3-psql-psql.png" alt="image"></p>
+<div><pre><code>psql -h localhost -U maquina1 -W -d db1
+</code></pre>
+</div><hr>
+<div><pre><code>db1=&gt; select * from dblink('dbname=db2 host=192.168.122.53 user=maquina2 password=root', 'select * from socios') as socios (dni varchar, nombre varchar, direccion varchar);
+</code></pre>
+</div><p><img src="./../images/orcl-psql/4-psql-psql.png" alt="image"></p>
+<p><strong>postgres2</strong></p>
+<p>Repitiremos loas pasos pero ahora en la otra maquina</p>
+<div><pre><code>psql -d db2
+</code></pre>
+</div><hr>
+<div><pre><code>db1=# create extension dblink;
+</code></pre>
+</div><hr>
+<div><pre><code>db1=# \q
+</code></pre>
+</div><p><img src="./../images/orcl-psql/5-psql-psql.png" alt="image"></p>
+<div><pre><code>psql -h localhost -U maquina2 -W -d db2
+</code></pre>
+</div><hr>
+<div><pre><code>db2=&gt; select * from dblink('dbname=db1 host=192.168.122.27 user=maquina1 password=root', 'select * from peliculas') as peliculas (nombrepelicula varchar, genero varchar, director varchar, anoestreno varchar);
+</code></pre>
+</div><p><img src="./../images/orcl-psql/6-psql-psql.png" alt="image"></p>
+<p>Como podemos comprobar ya podemos realizar interconexiones entre ambas maquinas.</p>
+<h2 id="oracle-postgresql"> Oracle - PostgreSQl</h2>
+<h2 id="postgresql-oracle"> PostgreSQL - Oracle</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Instalamos la paquetería requerida</p>
+<div><pre><code>sudo apt install libaio1 postgresql-server-dev-all build-essential git
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Descargamos los paquetes clientes de Oracle</p>
+<p>Accedemos al usuario de postgres y descargamos los paquetes del sitio oficial de Oracle:</p>
+<div><pre><code>su - postgres
+</code></pre>
+</div><hr>
+<div><pre><code>wget https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-basic-linux.x64-21.1.0.0.0.zip
+</code></pre>
+</div><hr>
+<div><pre><code>wget https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-sdk-linux.x64-21.1.0.0.0.zip
+</code></pre>
+</div><hr>
+<div><pre><code>wget https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-sqlplus-linux.x64-21.1.0.0.0.zip
+</code></pre>
+</div><p>Descomprimiremos los archivos con unzip:</p>
+<div><pre><code>unzip instantclient-basic-linux.x64-21.1.0.0.0.zip
+</code></pre>
+</div><hr>
+<div><pre><code>unzip instantclient-sqlplus-linux.x64-21.1.0.0.0.zip
+</code></pre>
+</div><hr>
+<div><pre><code>unzip instantclient-sdk-linux.x64-21.1.0.0.0.zip
+</code></pre>
+</div><p>Despues de descomprimir los 3 archivos se nos creará una carpeta llamada <code>instantclient_21_1</code>.</p>
+<p><font color="#800080"><strong>Paso 3</strong></font> Estableceremos las nuevas variables de entorno</p>
+<div><pre><code>export ORACLE_HOME=/var/lib/postgresql/instantclient_21_1
+</code></pre>
+</div><hr>
+<div><pre><code>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
+</code></pre>
+</div><hr>
+<div><pre><code>export PATH=$PATH:$ORACLE_HOME
+</code></pre>
+</div><p>Para comprobar si hemos puesto correctamente las variables utilizaremos el comando wich que nos deberá devolver la ruta.</p>
+<div><pre><code>cd /var/lib/
+</code></pre>
+</div><hr>
+<div><pre><code>which sqlplusç
+</code></pre>
+</div><p><img src="./../images/orcl-psql/1-psql-orcl.png" alt="image"></p>
+<p>Y una vez hecho esto ya nos podremos conectar:</p>
+<p>![image]</p>
+<p>¡Gracias!</p>
 ]]></content:encoded>
     </item>
   </channel>
