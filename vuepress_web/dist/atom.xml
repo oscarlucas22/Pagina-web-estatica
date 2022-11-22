@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-11-21T21:59:31.584Z</updated>
+  <updated>2022-11-22T18:51:18.418Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -21,6 +21,121 @@
     <updated>2022-11-21T21:33:30.000Z</updated>
     <content type="html"><![CDATA[<h1 id="interconexion-servidores"> Interconexión Servidores</h1>
 <h2 id="oracle-oracle"> Oracle - Oracle</h2>
+<p>Aqui vamos a interconectar dos servidores Oracle. Yo tendré dos maquinas las cuales son oracle1(192.168.122.179) y oracle2(192.168.122.144)</p>
+<p><font color="#800080"><strong>Paso 1</strong></font> Configuración del fichero tnsnames.ora</p>
+<p>Primero configuraremos el fichero tnsnames.ora y lo dejaremos de la siguiente manera:</p>
+<div><pre><code>nano /opt/oracle/product/19c/dbhome_1/network/admin/tnsnames.ora
+</code></pre>
+</div><p><strong>oracle1</strong></p>
+<p><img src="./../images/orcl-psql/1-orcl-orcl.png" alt="image"></p>
+<p><strong>oracle2</strong></p>
+<p><img src="./../images/orcl-psql/2-orcl-orcl.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Configuración del fichero listener.ora</p>
+<p>A continuación editaremos el fichero listener.ora de la siguiente manera:</p>
+<div><pre><code>nano /opt/oracle/product/19c/dbhome_1/network/admin/listener.ora
+</code></pre>
+</div><p><strong>oracle1</strong></p>
+<p><img src="./../images/orcl-psql/3-orcl-orcl.png" alt="image"></p>
+<p><strong>oracle2</strong></p>
+<p><img src="./../images/orcl-psql/4-orcl-orcl.png" alt="image"></p>
+<p>Y una vez modificados estos ficheros reiniciamos el servicio</p>
+<div><pre><code>lsnrctl stop
+</code></pre>
+</div><hr>
+<div><pre><code>lsnrctl start
+</code></pre>
+</div><p><strong>oracle1</strong></p>
+<p><img src="./../images/orcl-psql/5-orcl-orcl.png" alt="image"></p>
+<p><strong>oracle2</strong></p>
+<p><img src="./../images/orcl-psql/6-orcl-orcl.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 3</strong></font> Creación del usuario</p>
+<p><strong>oracle1</strong></p>
+<p>Para la maquina oracle1 crearemos un usuario llamado <code>maquina1</code></p>
+<div><pre><code>sqlplus / as sysdba
+</code></pre>
+</div><hr>
+<div><pre><code>alter session set &quot;_ORACLE_SCRIPT&quot;=true;
+</code></pre>
+</div><hr>
+<div><pre><code>create user maquina1 identified by root;
+</code></pre>
+</div><hr>
+<div><pre><code>grant all privileges to maquina1;
+</code></pre>
+</div><p><img src="./../images/orcl-psql/7-orcl-orcl.png" alt="image"></p>
+<p><strong>oracle2</strong></p>
+<p>Para la maquina oracle2 crearemos un usuario llamado <code>maquina2</code></p>
+<div><pre><code>sqlplus / as sysdba
+</code></pre>
+</div><hr>
+<div><pre><code>alter session set &quot;_ORACLE_SCRIPT&quot;=true;
+</code></pre>
+</div><hr>
+<div><pre><code>create user maquina2 identified by root;
+</code></pre>
+</div><hr>
+<div><pre><code>grant all privileges to maquina2;
+</code></pre>
+</div><p><img src="./../images/orcl-psql/8-orcl-orcl.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 4</strong></font> Creacion de las tablas</p>
+<p><strong>oracle1</strong></p>
+<div><pre><code>sqlplus maquina1/root
+</code></pre>
+</div><hr>
+<div><pre><code>create table peliculas (
+    NombrePelicula varchar2(20),
+    Genero varchar2(20),
+    Director varchar2(20),
+    AnoEstreno varchar2(4),
+    constraint PK primary key (NombrePelicula)
+);
+</code></pre>
+</div><hr>
+<div><pre><code>INSERT INTO peliculas VALUES ('Dune','Ciencia-ficcion','Edwards','1984');
+INSERT INTO peliculas VALUES ('Los Idiotas','Drama','Von Trier','1999');
+INSERT INTO peliculas VALUES ('Kramer vs Kramer','Drama','Smith','1978');
+INSERT INTO peliculas VALUES ('Mision Imposible','Ciencia-ficcion','Johnson','1998');
+INSERT INTO peliculas VALUES ('Mi nombre es Joe','Drama','Loach','1995');
+INSERT INTO peliculas VALUES ('Rompiendo las olas','Drama','Von Trier','1997');
+INSERT INTO peliculas VALUES ('Los Otros','Suspense','Amenabar','2001');
+</code></pre>
+</div><p><img src="./../images/orcl-psql/9-orcl-orcl.png" alt="image"></p>
+<p><strong>oracle2</strong></p>
+<div><pre><code>sqlplus maquina2/root
+</code></pre>
+</div><hr>
+<div><pre><code>create table socios (
+    DNI varchar2(10),
+    Nombre varchar2(20),
+    Direccion varchar2(20),
+    constraint PK primary key (DNI)
+);
+</code></pre>
+</div><hr>
+<div><pre><code>INSERT INTO SOCIOS VALUES ('111-A','David','Sevilla Este');
+INSERT INTO SOCIOS VALUES ('222-B','Mariano','Los Remedios');
+INSERT INTO SOCIOS VALUES ('333-C','Raul','Triana');
+INSERT INTO SOCIOS VALUES ('444-D','Rocio','La Oliva');
+INSERT INTO SOCIOS VALUES ('555-E','Marilo','Triana');
+INSERT INTO SOCIOS VALUES ('666-F','Benjamin','Montequinto');
+INSERT INTO SOCIOS VALUES ('777-G','Carlos','Los Remedios');
+INSERT INTO SOCIOS VALUES ('888-H','Manolo','Montequinto');
+</code></pre>
+</div><p><img src="./../images/orcl-psql/10-orcl-orcl.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 5</strong></font> Interconexión</p>
+<p>Este paso lo haremos dentro del usuario que hemos creado en cada maquina.</p>
+<p><strong>oracle1</strong></p>
+<div><pre><code>create database link linkdb1 connect to maquina2 identified by root using 'ORCL2';
+</code></pre>
+</div><p><img src="./../images/orcl-psql/11-orcl-orcl.png" alt="image"></p>
+<p>Ejemplo de funcionamiento (veremos que le podemos hacer una consulta a la tabla <code>socios</code> que se encuentra en la maquina <code>oracle2</code> en el usuario <code>maquina2</code>)</p>
+<p><img src="./../images/orcl-psql/12-orcl-orcl.png" alt="image"></p>
+<p><strong>oracle2</strong></p>
+<div><pre><code>create database link linkdb2 connect to maquina1 identified by root using 'ORCL1';
+</code></pre>
+</div><p><img src="./../images/orcl-psql/13-orcl-orcl.png" alt="image"></p>
+<p>Ejemplo de funcionamiento (veremos que le podemos hacer una consulta a la tabla <code>peliculas</code> que se encuentra en la maquina <code>oracle1</code> en el usuario <code>maquina1</code>)</p>
+<p><img src="./../images/orcl-psql/14-orcl-orcl.png" alt="image"></p>
 <h2 id="postgresql-postgresql"> PostgreSQL - PostgreSQL</h2>
 <p>Aqui vamos a interconectar dos servidores Postgres. Yo tendre dos maquinas las cuales son postgres1(192.168.122.27) y postgres2(192.168.122.53)</p>
 <p><font color="#800080"><strong>Paso 1</strong></font> Permitir acceso remoto</p>
@@ -167,7 +282,42 @@ INSERT INTO socios VALUES ('888-H','Manolo','Montequinto');
 </div><p><img src="./../images/orcl-psql/6-psql-psql.png" alt="image"></p>
 <p>Como podemos comprobar ya podemos realizar interconexiones entre ambas maquinas.</p>
 <h2 id="oracle-postgresql"> Oracle - PostgreSQl</h2>
+<p>Aqui vamos a interconectar una maquina Oracle y una maquina PostgreSQL, las cuales son las que creamos para las otras interconexiones. Yo tendré dos maquinas las cuales son oracle2(192.168.122.144) y postgres1(192.168.122.27).</p>
+<p><font color="#800080"><strong>Paso 1</strong></font> Instalación de la paquetería necesaria.</p>
+<div><pre><code>sudo apt install odbc-postgresql
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Configuramos el driver ODBC.</p>
+<p>Una vez instalada la paqueteria accederemos al archivo <code>/etc/odbcinst.ini</code>, en el podremos ver los drivers existentes, en nuestro caso nos interesa el de postgres y nos fijaremos en como se llama especificamente. Podemos ver que hay dos, nosotros cogeremos el de abajo.</p>
+<p><img src="./../images/orcl-psql/1-orcl-psql.png" alt="image"></p>
+<p>Crearemos un DSN llamado <code>odbc.ini</code> que determinará la conexión al gestor que especifiquemos.</p>
+<p><img src="./../images/orcl-psql/2-orcl-psql.png" alt="image"></p>
+<p>Ya tendremos configurado el driver de ODBC, probaremos el resultado.</p>
+<p><img src="./../images/orcl-psql/3-orcl-psql.png" alt="image"></p>
+<p>Como podemos comprobar la configuración del driver ha sido exitosa, ahora procederemos a configurar Oracle para que pueda usar dicho driver.</p>
+<p><font color="#800080"><strong>Paso 3</strong></font> Configuracion de Oracle para la interconexión.</p>
+<p>Primero editaremos el siguiente fichero de la siguiente forma:</p>
+<div><pre><code>sudo nano /opt/oracle/product/19c/dbhome_1/hs/admin/initdg4odbc.ora
+</code></pre>
+</div><p><img src="./../images/orcl-psql/4-orcl-psql.png" alt="image"></p>
+<p>Despues configuraremos el fichero listener:</p>
+<div><pre><code>sudo nano /opt/oracle/product/19c/dbhome_1/network/admin/listener.ora
+</code></pre>
+</div><p><img src="./../images/orcl-psql/5-orcl-psql.png" alt="image"></p>
+<p>Y tambien configuraremos el fichero tnsnames:</p>
+<div><pre><code>sudo nano /opt/oracle/product/19c/dbhome_1/network/admin/tnsnames.ora
+</code></pre>
+</div><p><img src="./../images/orcl-psql/6-orlc-psql.png" alt="image"></p>
+<p>Despues de haber configurado estos dos ficheros reiniciamos el servicio.</p>
+<div><pre><code>lsnrctl stop
+</code></pre>
+</div><hr>
+<div><pre><code>lsnrctl start
+</code></pre>
+</div><p><img src="./../images/orcl-psql/7-orcl-psql.png" alt="image"></p>
+<p>Y una vez hecho esto accedemos a nuestro usuario oracle y crearemos un enlace para comprobar la configuración.</p>
+<p>![image]</p>
 <h2 id="postgresql-oracle"> PostgreSQL - Oracle</h2>
+<p>Aqui vamos a interconectar una maquina PostgreSQL y una maquina Oracle, las cuales son las que creamos para las otras interconexiones. Yo tendré dos maquinas las cuales son postgres1(192.168.122.27) y oracle2(192.168.122.144)</p>
 <p><font color="#800080"><strong>Paso 1</strong></font> Instalamos la paquetería requerida</p>
 <div><pre><code>sudo apt install libaio1 postgresql-server-dev-all build-essential git
 </code></pre>
@@ -207,11 +357,11 @@ INSERT INTO socios VALUES ('888-H','Manolo','Montequinto');
 <div><pre><code>cd /var/lib/
 </code></pre>
 </div><hr>
-<div><pre><code>which sqlplusç
+<div><pre><code>which sqlplus
 </code></pre>
 </div><p><img src="./../images/orcl-psql/1-psql-orcl.png" alt="image"></p>
 <p>Y una vez hecho esto ya nos podremos conectar:</p>
-<p>![image]</p>
+<p><img src="./../images/orcl-psql/2-psql-orcl.png" alt="image"></p>
 <p>¡Gracias!</p>
 ]]></content>
     <author>
@@ -924,7 +1074,7 @@ sudo make uninstall
     <title type="html">Guía</title>
     <id>https://github.com/oscarlucas22/guide/</id>
     <link href="https://github.com/oscarlucas22/guide/"/>
-    <updated>2022-11-21T21:53:46.000Z</updated>
+    <updated>2022-11-21T21:59:33.000Z</updated>
     <content type="html"><![CDATA[<h1 id="guia"> Guía</h1>
 <p><font color="#FFFF00"><strong>ASO</strong></font></p>
 <ul>
@@ -936,7 +1086,7 @@ sudo make uninstall
 <p><a href="./ABD.html">Servidores y Clientes de Base de Datos (*MariaDB *PostgreSQL *Oracle *MongoDB)</a></p>
 </li>
 <li>
-<p><a href="">Interconexión Servidores (*Oracle-Oracle *PostgreSQL-PostgreSQl *Oracle-PostgreSQL *PostgreSQL-Oracle)</a></p>
+<p><a href="./orcl-psql.html">Interconexión Servidores (*Oracle-Oracle *PostgreSQL-PostgreSQl *Oracle-PostgreSQL *PostgreSQL-Oracle)</a></p>
 </li>
 </ul>
 <p><font color="#00ff00"><strong>SAD</strong></font></p>
