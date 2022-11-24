@@ -1,10 +1,10 @@
 # Interconexión Servidores
 
-## Oracle - Oracle
+<h2><img src="../images/orcl-psql/oracle-img.png"  alt="" width="100"/> Oracle - Oracle <img src="../images/orcl-psql/oracle-img.png"  alt="" width="100"/></h2>
 
-Aqui vamos a interconectar dos servidores Oracle. Yo tendré dos maquinas las cuales son oracle1(192.168.122.179) y oracle2(192.168.122.144)
+Aquí vamos a interconectar dos servidores Oracle. Yo tendré dos máquinas las cuales son oracle1(192.168.122.179) y oracle2(192.168.122.144).
 
-<font color="#800080">**Paso 1**</font> Configuración del fichero tnsnames.ora
+<font color="#800080">**Paso 1**</font> Configuración del fichero tnsnames.ora.
 
 Primero configuraremos el fichero tnsnames.ora y lo dejaremos de la siguiente manera:
 
@@ -32,7 +32,7 @@ A continuación editaremos el fichero listener.ora de la siguiente manera:
 
 ![image](../images/orcl-psql/4-orcl-orcl.png)
 
-Y una vez modificados estos ficheros reiniciamos el servicio
+Y una vez modificados estos ficheros reiniciamos el servicio.
 
     lsnrctl stop
 ---
@@ -50,7 +50,7 @@ Y una vez modificados estos ficheros reiniciamos el servicio
 
 **oracle1**
 
-Para la maquina oracle1 crearemos un usuario llamado `maquina1`
+Para la maquina oracle1 crearemos un usuario llamado `maquina1`.
 
     sqlplus / as sysdba
 ---
@@ -64,7 +64,7 @@ Para la maquina oracle1 crearemos un usuario llamado `maquina1`
 
 **oracle2**
 
-Para la maquina oracle2 crearemos un usuario llamado `maquina2`
+Para la máquina oracle2 crearemos un usuario llamado `maquina2`.
 
     sqlplus / as sysdba
 ---
@@ -76,7 +76,7 @@ Para la maquina oracle2 crearemos un usuario llamado `maquina2`
 
 ![image](../images/orcl-psql/8-orcl-orcl.png)
 
-<font color="#800080">**Paso 4**</font> Creacion de las tablas
+<font color="#800080">**Paso 4**</font> Creacion de las tablas.
 
 **oracle1**
 
@@ -122,9 +122,9 @@ Para la maquina oracle2 crearemos un usuario llamado `maquina2`
 
 ![image](../images/orcl-psql/10-orcl-orcl.png)
 
-<font color="#800080">**Paso 5**</font> Interconexión
+<font color="#800080">**Paso 5**</font> Interconexión.
 
-Este paso lo haremos dentro del usuario que hemos creado en cada maquina.
+Este paso lo haremos dentro del usuario que hemos creado en cada máquina.
 
 **oracle1**
 
@@ -132,7 +132,7 @@ Este paso lo haremos dentro del usuario que hemos creado en cada maquina.
 
 ![image](../images/orcl-psql/11-orcl-orcl.png)
 
-Ejemplo de funcionamiento (veremos que le podemos hacer una consulta a la tabla `socios` que se encuentra en la maquina `oracle2` en el usuario `maquina2`)
+Ejemplo de funcionamiento (veremos que le podemos hacer una consulta a la tabla `socios` que se encuentra en la máquina `oracle2` en el usuario `maquina2`).
 
 ![image](../images/orcl-psql/12-orcl-orcl.png)
 
@@ -142,44 +142,44 @@ Ejemplo de funcionamiento (veremos que le podemos hacer una consulta a la tabla 
 
 ![image](../images/orcl-psql/13-orcl-orcl.png)
 
-Ejemplo de funcionamiento (veremos que le podemos hacer una consulta a la tabla `peliculas` que se encuentra en la maquina `oracle1` en el usuario `maquina1`)
+Ejemplo de funcionamiento (veremos que le podemos hacer una consulta a la tabla `peliculas` que se encuentra en la máquina `oracle1` en el usuario `maquina1`).
 
 ![image](../images/orcl-psql/14-orcl-orcl.png)
 
-## PostgreSQL - PostgreSQL
+<h2><img src="../images/orcl-psql/psql-img.png"  alt="" width="100"/> PostgreSQL - PostgreSQL <img src="../images/orcl-psql/psql-img.png"  alt="" width="100"/></h2>
 
-Aqui vamos a interconectar dos servidores Postgres. Yo tendre dos maquinas las cuales son postgres1(192.168.122.27) y postgres2(192.168.122.53)
+Aquí vamos a interconectar dos servidores Postgres. Yo tendré dos máquinas las cuales son postgres1(192.168.122.27) y postgres2(192.168.122.53).
 
 <font color="#800080">**Paso 1**</font> Permitir acceso remoto
 
-Para permitir el acceso remoto nos iremos al fichero postgresql.conf
+Para permitir el acceso remoto nos iremos al fichero postgresql.conf.
 
     sudo nano /etc/postgresql/13/main/postgresql.conf
 
-Donde editaremos las linea de `listen_addresses`. Y la dejaremos así:
+Donde editaremos las línea de `listen_addresses`. Y la dejaremos así:
 
     listen_addresses = '*'          # what IP address(es) to listen on;
 
-Despues nos iremos al fichero pg_hba.conf
+Después nos iremos al fichero `pg_hba.conf`.
 
     sudo nano /etc/postgresql/13/main/pg_hba.conf
 
-Y escribiremos al final de este fichero las siguientes lineas:
+Y escribiremos al final de este fichero las siguientes líneas:
 
     host    all     all     0.0.0.0/0       md5
     host    all     all     ::/0    md5
 
-Una vez hecho esto reiniriaremos el servicio postgresql
+Una vez hecho esto reiniciamos el servicio postgresql.
 
     sudo systemctl restart postgresql
 
-**Este paso lo haremos en las dos maquinas**
+**Este paso lo haremos en las dos máquinas**
 
-<font color="#800080">**Paso 2**</font> Crearemos las bases de datos y sus respectivas tablas
+<font color="#800080">**Paso 2**</font> Crearemos las bases de datos y sus respectivas tablas.
 
 **postgres1**
 
-Primero entraremos al usuario postgres
+Primero entraremos al usuario postgres.
 
     sudo su
 ---
@@ -221,7 +221,7 @@ Una vez ya creados el usuario y la base de datos entraremos en ella para crear l
 
 **postgres2**
 
-Ahora haremos lo mismo con la otra maquina
+Ahora haremos lo mismo con la otra máquina.
 
     sudo su
 ---
@@ -261,11 +261,11 @@ Una vez ya creados el usuario y la base de datos entraremos en ella para crear l
 
 ![image](../images/orcl-psql/2-psql-psql.png)
 
-<font color="#800080">**Paso 3**</font> Interconexiones
+<font color="#800080">**Paso 3**</font> Interconexiones.
 
 **postgres1**
 
-Primero entraremos en la base de datos para crear la extension del link. Esto lo haremos en el usuario postgres
+Primero entraremos en la base de datos para crear la extensión del link. Esto lo haremos en el usuario postgres.
 
     psql -d db1
 ---
@@ -283,7 +283,7 @@ Primero entraremos en la base de datos para crear la extension del link. Esto lo
 
 **postgres2**
 
-Repitiremos loas pasos pero ahora en la otra maquina
+Repetiremos los pasos pero ahora en la otra máquina.
 
     psql -d db2
 ---
@@ -299,11 +299,11 @@ Repitiremos loas pasos pero ahora en la otra maquina
 
 ![image](../images/orcl-psql/6-psql-psql.png)
 
-Como podemos comprobar ya podemos realizar interconexiones entre ambas maquinas.
+Como podemos comprobar ya podemos realizar interconexiones entre ambas máquinas.
 
-## Oracle - PostgreSQl
+<h2><img src="../images/orcl-psql/oracle-img.png"  alt="" width="100"/> Oracle - PostgreSQl <img src="../images/orcl-psql/psql-img.png"  alt="" width="100"/></h2>
 
-Aqui vamos a interconectar una maquina Oracle y una maquina PostgreSQL, las cuales son las que creamos para las otras interconexiones. Yo tendré dos maquinas las cuales son oracle2(192.168.122.144) y postgres1(192.168.122.27).
+Aquí vamos a interconectar una máquina Oracle y una máquina PostgreSQL, las cuales son las que creamos para las otras interconexiones. Yo tendré dos máquinas las cuales son oracle2(192.168.122.144) y postgres1(192.168.122.27).
 
 <font color="#800080">**Paso 1**</font> Instalación de la paquetería necesaria.
 
@@ -311,7 +311,7 @@ Aqui vamos a interconectar una maquina Oracle y una maquina PostgreSQL, las cual
 
 <font color="#800080">**Paso 2**</font> Configuramos el driver ODBC.
 
-Una vez instalada la paqueteria accederemos al archivo `/etc/odbcinst.ini`, en el podremos ver los drivers existentes, en nuestro caso nos interesa el de postgres y nos fijaremos en como se llama especificamente. Podemos ver que hay dos, nosotros cogeremos el de abajo.
+Una vez instalada la paqueteria accederemos al archivo `/etc/odbcinst.ini`, en el que está la configuración para los controladores unixODBC y lo dejaremos como se muestra en la imagen:
 
 ![image](../images/orcl-psql/1-orcl-psql.png)
 
@@ -323,29 +323,37 @@ Ya tendremos configurado el driver de ODBC, probaremos el resultado.
 
 ![image](../images/orcl-psql/3-orcl-psql.png)
 
+**NOTA**: `Como podemos observar en la captura anterior he creado una nueva tabla que es la que comprobaremos en el funcionamiento.`
+
 Como podemos comprobar la configuración del driver ha sido exitosa, ahora procederemos a configurar Oracle para que pueda usar dicho driver.
 
-<font color="#800080">**Paso 3**</font> Configuracion de Oracle para la interconexión.
+<font color="#800080">**Paso 3**</font> Configuración de Oracle para la interconexión.
 
-Primero editaremos el siguiente fichero de la siguiente forma:
+Si todo ha ido bien hasta este punto, vamos a crear el fichero initPSQLU.ora. Este fichero nos permitirá crear el enlace con postgresql.
 
-    sudo nano /opt/oracle/product/19c/dbhome_1/hs/admin/initdg4odbc.ora
+    sudo nano /opt/oracle/product/19c/dbhome_1/hs/admin/initPSQLU.ora
 
-![image](../images/orcl-psql/4-orcl-psql.png)
+Y escribiremos lo siguiente:
 
-Despues configuraremos el fichero listener:
+    HS_FDS_CONNECT_INFO = PSQLU
+    HS_FDS_TRACE_LEVEL = Debug
+    HS_FDS_SHAREABLE_NAME = /usr/lib/x86_64-linux-gnu/odbc/psqlodbcw.so
+    HS_LANGUAGE = AMERICAN_AMERICA.WE8ISO8859P1
+    set ODBCINI=/etc/odbc.ini
+
+Después configuraremos el fichero listener:
 
     sudo nano /opt/oracle/product/19c/dbhome_1/network/admin/listener.ora
 
-![image](../images/orcl-psql/5-orcl-psql.png)
+![image](../images/orcl-psql/4-orcl-psql.png)
 
-Y tambien configuraremos el fichero tnsnames:
+Y también configuraremos el fichero tnsnames:
 
     sudo nano /opt/oracle/product/19c/dbhome_1/network/admin/tnsnames.ora
 
-![image](../images/orcl-psql/6-orlc-psql.png)
+![image](../images/orcl-psql/5-orcl-psql.png)
 
-Despues de haber configurado estos dos ficheros reiniciamos el servicio.
+Después de haber configurado estos dos ficheros reiniciamos el servicio.
 
     lsnrctl stop
 ---
@@ -355,17 +363,23 @@ Despues de haber configurado estos dos ficheros reiniciamos el servicio.
 
 Y una vez hecho esto accedemos a nuestro usuario oracle y crearemos un enlace para comprobar la configuración.
 
-![image]
+Creamos el link:
 
-## PostgreSQL - Oracle
+![image](../images/orcl-psql/8-orcl-psql.png)
 
-Aqui vamos a interconectar una maquina PostgreSQL y una maquina Oracle, las cuales son las que creamos para las otras interconexiones. Yo tendré dos maquinas las cuales son postgres1(192.168.122.27) y oracle2(192.168.122.144)
+Y comprobamos el funcionamiento:
 
-<font color="#800080">**Paso 1**</font> Instalamos la paquetería requerida
+![image](../images/orcl-psql/9-orcl-psql.png)
+
+<h2><img src="../images/orcl-psql/psql-img.png"  alt="" width="100"/> PostgreSQL - Oracle <img src="../images/orcl-psql/oracle-img.png"  alt="" width="100"/></h2>
+
+Aquí vamos a interconectar una máquina PostgreSQL y una máquina Oracle, las cuales son las que creamos para las otras interconexiones. Yo tendré dos máquinas las cuales son postgres1(192.168.122.27) y oracle2(192.168.122.144).
+
+<font color="#800080">**Paso 1**</font> Instalamos la paquetería requerida.
 
     sudo apt install libaio1 postgresql-server-dev-all build-essential git
 
-<font color="#800080">**Paso 2**</font> Descargamos los paquetes clientes de Oracle
+<font color="#800080">**Paso 2**</font> Descargamos los paquetes clientes de Oracle.
 
 Accedemos al usuario de postgres y descargamos los paquetes del sitio oficial de Oracle:
 
@@ -377,7 +391,7 @@ Accedemos al usuario de postgres y descargamos los paquetes del sitio oficial de
 ---
     wget https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-sqlplus-linux.x64-21.1.0.0.0.zip
 
-Descomprimiremos los archivos con unzip:
+Descomprimimos los archivos con unzip:
 
     unzip instantclient-basic-linux.x64-21.1.0.0.0.zip
 ---
@@ -385,9 +399,9 @@ Descomprimiremos los archivos con unzip:
 ---
     unzip instantclient-sdk-linux.x64-21.1.0.0.0.zip
 
-Despues de descomprimir los 3 archivos se nos creará una carpeta llamada `instantclient_21_1`.
+Después de descomprimir los 3 archivos se nos creará una carpeta llamada `instantclient_21_1`.
 
-<font color="#800080">**Paso 3**</font> Estableceremos las nuevas variables de entorno
+<font color="#800080">**Paso 3**</font> Estableceremos las nuevas variables de entorno.
 
     export ORACLE_HOME=/var/lib/postgresql/instantclient_21_1
 ---
@@ -403,8 +417,73 @@ Para comprobar si hemos puesto correctamente las variables utilizaremos el coman
 
 ![image](../images/orcl-psql/1-psql-orcl.png)
 
-Y una vez hecho esto ya nos podremos conectar:
+Y una vez hecho esto ya nos podremos conectar remotamente:
 
 ![image](../images/orcl-psql/2-psql-orcl.png)
+
+<font color="#800080">**Paso 4**</font> Compilación de oracle_fdw.
+
+Descargamos el repositorio de GitHub con el código fuente.
+
+    wget https://github.com/laurenz/oracle_fdw/archive/refs/tags/ORACLE_FDW_2_3_0.zip
+---
+    unzip ORACLE_FDW_2_3_0.zip
+
+Para evitar futuros problemas, le cambiamos el nombre al directorio extraído por oracle_fdw:
+
+    mv oracle_fdw-ORACLE_FDW_2_3_0/ oracle_fdw
+
+Entramos en el directorio oracle_fdw, compilamos el código y realizamos la instalación:
+
+    cd oracle_fdw
+---
+    make
+---
+    make install
+
+Al entrar en la base de datos e intentar crear la extensión, nos informarán de que el sistema no encuentra las librerías de oracle:
+
+![image](../images/orcl-psql/3-psql-orcl.png)
+
+Para solucionar esto crearemos el fichero `/etc/ld.so.conf.d/oracle.conf` y dentro añadiremos las rutas de los directorios que contengan los ficheros .so:
+
+    sudo nano /etc/ld.so.conf.d/oracle.conf
+---
+    /var/lib/postgresql/instantclient_21_1
+    /usr/share/postgresql/11/extension
+
+Ejecutamos el comando ldconfig, con el que se crearán los vínculos y caché necesarios a las librerías que se encuentren en los directorios que hemos especificado en el fichero creado, y reiniciamos el servicio de PostgreSQL:
+
+    sudo ldconfig
+---
+    sudo systemctl restart postgresql
+
+Y después de hacer esto ya podremos crear la extensión:
+
+![image](../images/orcl-psql/4-psql-orcl.png)
+
+Después creamos un nuevo esquema al que importamos las tablas de la base de datos Oracle:
+
+![image](../images/orcl-psql/5-psql-orcl.png)
+
+Como el esquema que hemos creado está vacío, definiremos un servidor remoto que use la extensión que hemos generado antes, indicando la dirección IP y la base de datos que tenemos en Oracle:
+
+![image](../images/orcl-psql/6-psql-orcl.png)
+
+Luego de esto, necesitamos mapear nuestro usuario local a uno existente en Oracle con los privilegios necesarios para acceder a las tablas:
+
+![image](../images/orcl-psql/7-psql-orcl.png)
+
+Otorgamos a nuestro usuario de PostgreSQL los privilegios para utilizar el esquema de Oracle y el servidor remoto:
+
+![image](../images/orcl-psql/8-psql-orcl.png)
+
+Y una vez hecho todo esto importamos las tablas existentes en el esquema remoto al local:
+
+![image](../images/orcl-psql/9-psql-orcl.png)
+
+Y hacemos la prueba del funcionamiento:
+
+![image](../images/orcl-psql/10-psql-orcl.png)
 
 ¡Gracias!
