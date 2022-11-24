@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-11-24T14:40:32.509Z</updated>
+  <updated>2022-11-24T15:46:49.604Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -18,7 +18,7 @@
     <title type="html">Interconexión Servidores</title>
     <id>https://github.com/oscarlucas22/guide/orcl-psql/</id>
     <link href="https://github.com/oscarlucas22/guide/orcl-psql/"/>
-    <updated>2022-11-22T18:51:20.000Z</updated>
+    <updated>2022-11-24T14:40:34.000Z</updated>
     <content type="html"><![CDATA[<h1 id="interconexion-servidores"> Interconexión Servidores</h1>
 <h2><i>Content not supported</i> Oracle - Oracle <i>Content not supported</i></h2>
 <p>Aquí vamos a interconectar dos servidores Oracle. Yo tendré dos máquinas las cuales son oracle1(192.168.122.179) y oracle2(192.168.122.144).</p>
@@ -320,12 +320,12 @@ set ODBCINI=/etc/odbc.ini
 </div><hr>
 <div><pre><code>lsnrctl start
 </code></pre>
-</div><p><img src="./../images/orcl-psql/7-orcl-psql.png" alt="image"></p>
+</div><p><img src="./../images/orcl-psql/6-orcl-psql.png" alt="image"></p>
 <p>Y una vez hecho esto accedemos a nuestro usuario oracle y crearemos un enlace para comprobar la configuración.</p>
 <p>Creamos el link:</p>
-<p><img src="./../images/orcl-psql/8-orcl-psql.png" alt="image"></p>
+<p><img src="./../images/orcl-psql/7-orcl-psql.png" alt="image"></p>
 <p>Y comprobamos el funcionamiento:</p>
-<p><img src="./../images/orcl-psql/9-orcl-psql.png" alt="image"></p>
+<p><img src="./../images/orcl-psql/8-orcl-psql.png" alt="image"></p>
 <h2><i>Content not supported</i> PostgreSQL - Oracle <i>Content not supported</i></h2>
 <p>Aquí vamos a interconectar una máquina PostgreSQL y una máquina Oracle, las cuales son las que creamos para las otras interconexiones. Yo tendré dos máquinas las cuales son postgres1(192.168.122.27) y oracle2(192.168.122.144).</p>
 <p><font color="#800080"><strong>Paso 1</strong></font> Instalamos la paquetería requerida.</p>
@@ -541,6 +541,122 @@ Y para conectarnos a nuestro usuario ejecutaremos el siguiente comando:</p>
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
   <entry>
+    <title type="html">MongoDB en Debian 11 Bullseye</title>
+    <id>https://github.com/oscarlucas22/guide/mongo/</id>
+    <link href="https://github.com/oscarlucas22/guide/mongo/"/>
+    <updated>2022-10-30T16:43:56.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
+<p><img src="./../images/ABD/mongodb.png" alt="image"></p>
+<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
+<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
+<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
+<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
+<div><pre><code>sudo apt-get update
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
+<div><pre><code>sudo apt install mongodb-org -y
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
+<div><pre><code>sudo systemctl enable mongod --now
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la versión</p>
+<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
+</code></pre>
+</div><p><img src="./../images/ABD/1-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
+<div><pre><code>sudo nano /etc/mongod.conf
+</code></pre>
+</div><hr>
+<div><pre><code>security:
+    authorization: enabled
+</code></pre>
+</div><p><img src="./../images/ABD/2-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
+<div><pre><code>sudo systemctl restart mongod
+</code></pre>
+</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
+<div><pre><code>use admin
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
+<div><pre><code>db.createUser(
+    {
+        user: &quot;lucas&quot;, 
+        pwd: &quot;admin&quot;, 
+        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
+    }
+)
+</code></pre>
+</div><p><img src="./../images/ABD/3-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
+<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
+</code></pre>
+</div><p>o también puedes probar con:</p>
+<div><pre><code>mongosh -u lucas
+</code></pre>
+</div><h2 id="creacion-de-base-de-datos"> Creación de base de datos</h2>
+<p><strong>Iniciar MongoDB</strong></p>
+<div><pre><code>mongo
+</code></pre>
+</div><p><strong>Crear y si ya esta creada usar base de datos</strong></p>
+<div><pre><code>use 'NOMBRE_BD'
+</code></pre>
+</div><p><strong>Listar base de datos</strong></p>
+<div><pre><code>show dbs
+</code></pre>
+</div><p><strong>Verificar la base de datos actual</strong></p>
+<div><pre><code>db
+</code></pre>
+</div><p><strong>Eliminar base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos</p>
+<div><pre><code>db.dropDatabase()
+</code></pre>
+</div><p><strong>Importar json en MongoDB</strong></p>
+<p>Hacerlo fuera de mongo</p>
+<div><pre><code>mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
+</code></pre>
+</div><p><strong>Eliminar json de la base de datos</strong></p>
+<p>Hacerlo dentro de la base de datos donde este el json</p>
+<div><pre><code>db.NAME_COLLECTION.drop()
+</code></pre>
+</div><p><strong>Mostrar la colección</strong></p>
+<div><pre><code>db.NAME_COLLECTION.find().pretty
+</code></pre>
+</div><h2 id="acceso-remoto"> Acceso remoto</h2>
+<p><font color="#800080"><strong>Paso 1</strong></font> Editaremos el fichero <code>mongod.conf</code></p>
+<div><pre><code>sudo /etc/mongod.conf
+</code></pre>
+</div><p>Ahí editaremos donde pone <code>bindIp</code> escribiremos la ip del servidor, asi como se muestra en la imagen:</p>
+<p><img src="./../images/ABD/4-mongo.png" alt="image"></p>
+<p><font color="#800080"><strong>Paso 2</strong></font> Reiniciamos el servicio para que los cambios se guarden</p>
+<div><pre><code>sudo service mongod restart
+</code></pre>
+</div><p><font color="#800080"><strong>Paso 3</strong></font> Nos iremos a la maquina cliente y nos conectaremos</p>
+<div><pre><code>mongosh -u nombre-user -p password ip-server
+</code></pre>
+</div><p><img src="./../images/ABD/5-mongo.png" alt="image"></p>
+<p>¡Gracias!</p>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <published>2022-10-24T18:41:09.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
     <title type="html">Oracle en Debian 11 Bullseye</title>
     <id>https://github.com/oscarlucas22/guide/oracle/</id>
     <link href="https://github.com/oscarlucas22/guide/oracle/"/>
@@ -710,122 +826,6 @@ export PATH=$ORACLE_HOME/bin:$PATH
 </code></pre>
 </div><p><img src="./../images/ABD/7-oracle.png" alt="image"></p>
 <p>!Gracias¡</p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
-    <published>2022-10-24T18:41:09.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">MongoDB en Debian 11 Bullseye</title>
-    <id>https://github.com/oscarlucas22/guide/mongo/</id>
-    <link href="https://github.com/oscarlucas22/guide/mongo/"/>
-    <updated>2022-10-30T16:43:56.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="mongodb-en-debian-11-bullseye"> MongoDB en Debian 11 Bullseye</h1>
-<p><img src="./../images/ABD/mongodb.png" alt="image"></p>
-<h2 id="instalacion-de-mongodb-en-debian-11-bullseye"> Instalación de MongoDB en Debian 11 Bullseye</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Instalar paquetes requeridos</p>
-<div><pre><code>sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Importar repositorio de MongoDB</p>
-<div><pre><code>sudo wget -O- https://www.mongodb.org/static/pgp/server-5.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Agregamos el repositorio</p>
-<div><pre><code>echo 'deb [signed-by=/usr/share/keyrings/mongodb.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main' | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 4</strong></font> Actualizamos</p>
-<div><pre><code>sudo apt-get update
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 5</strong></font> Instalar MongoDB 5.0</p>
-<div><pre><code>sudo apt install mongodb-org -y
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 6</strong></font> Activamos el servicio de mongodb</p>
-<div><pre><code>sudo systemctl enable mongod --now
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 7</strong></font> Verificamos la versión</p>
-<div><pre><code>mongo --eval 'db.runCommand({ connectionStatus: 1 })'
-</code></pre>
-</div><p><img src="./../images/ABD/1-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 8</strong></font> Configurar la seguridad de MongoDB</p>
-<div><pre><code>sudo nano /etc/mongod.conf
-</code></pre>
-</div><hr>
-<div><pre><code>security:
-    authorization: enabled
-</code></pre>
-</div><p><img src="./../images/ABD/2-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 9</strong></font> Reiniciamos servicio</p>
-<div><pre><code>sudo systemctl restart mongod
-</code></pre>
-</div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Crear usuario administrador en MongoDB</p>
-<div><pre><code>mongo
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 2</strong></font> Nos conectamos como administrador</p>
-<div><pre><code>use admin
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Creamos usuario</p>
-<div><pre><code>db.createUser(
-    {
-        user: &quot;lucas&quot;, 
-        pwd: &quot;admin&quot;, 
-        roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
-    }
-)
-</code></pre>
-</div><p><img src="./../images/ABD/3-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 4</strong></font> Nos conectamos</p>
-<div><pre><code>mongo --port 27017 --authenticationDatabase &quot;admin&quot; -u &quot;lucas&quot; -p
-</code></pre>
-</div><p>o también puedes probar con:</p>
-<div><pre><code>mongosh -u lucas
-</code></pre>
-</div><h2 id="creacion-de-base-de-datos"> Creación de base de datos</h2>
-<p><strong>Iniciar MongoDB</strong></p>
-<div><pre><code>mongo
-</code></pre>
-</div><p><strong>Crear y si ya esta creada usar base de datos</strong></p>
-<div><pre><code>use 'NOMBRE_BD'
-</code></pre>
-</div><p><strong>Listar base de datos</strong></p>
-<div><pre><code>show dbs
-</code></pre>
-</div><p><strong>Verificar la base de datos actual</strong></p>
-<div><pre><code>db
-</code></pre>
-</div><p><strong>Eliminar base de datos</strong></p>
-<p>Hacerlo dentro de la base de datos</p>
-<div><pre><code>db.dropDatabase()
-</code></pre>
-</div><p><strong>Importar json en MongoDB</strong></p>
-<p>Hacerlo fuera de mongo</p>
-<div><pre><code>mongoimport --db NAME_BD --collection NAME_YOUR_COLLECTION --file 'ruta del json'
-</code></pre>
-</div><p><strong>Eliminar json de la base de datos</strong></p>
-<p>Hacerlo dentro de la base de datos donde este el json</p>
-<div><pre><code>db.NAME_COLLECTION.drop()
-</code></pre>
-</div><p><strong>Mostrar la colección</strong></p>
-<div><pre><code>db.NAME_COLLECTION.find().pretty
-</code></pre>
-</div><h2 id="acceso-remoto"> Acceso remoto</h2>
-<p><font color="#800080"><strong>Paso 1</strong></font> Editaremos el fichero <code>mongod.conf</code></p>
-<div><pre><code>sudo /etc/mongod.conf
-</code></pre>
-</div><p>Ahí editaremos donde pone <code>bindIp</code> escribiremos la ip del servidor, asi como se muestra en la imagen:</p>
-<p><img src="./../images/ABD/4-mongo.png" alt="image"></p>
-<p><font color="#800080"><strong>Paso 2</strong></font> Reiniciamos el servicio para que los cambios se guarden</p>
-<div><pre><code>sudo service mongod restart
-</code></pre>
-</div><p><font color="#800080"><strong>Paso 3</strong></font> Nos iremos a la maquina cliente y nos conectaremos</p>
-<div><pre><code>mongosh -u nombre-user -p password ip-server
-</code></pre>
-</div><p><img src="./../images/ABD/5-mongo.png" alt="image"></p>
-<p>¡Gracias!</p>
 ]]></content>
     <author>
       <name>Óscar Lucas</name>
@@ -1132,7 +1132,7 @@ sudo make uninstall
     <title type="html">Guía</title>
     <id>https://github.com/oscarlucas22/guide/</id>
     <link href="https://github.com/oscarlucas22/guide/"/>
-    <updated>2022-11-22T18:51:20.000Z</updated>
+    <updated>2022-11-24T14:40:34.000Z</updated>
     <content type="html"><![CDATA[<h1 id="guia"> Guía</h1>
 <p><font color="#FFFF00"><strong>ASO</strong></font></p>
 <ul>

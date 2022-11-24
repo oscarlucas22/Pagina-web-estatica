@@ -359,17 +359,17 @@ Después de haber configurado estos dos ficheros reiniciamos el servicio.
 ---
     lsnrctl start
 
-![image](../images/orcl-psql/7-orcl-psql.png)
+![image](../images/orcl-psql/6-orcl-psql.png)
 
 Y una vez hecho esto accedemos a nuestro usuario oracle y crearemos un enlace para comprobar la configuración.
 
 Creamos el link:
 
-![image](../images/orcl-psql/8-orcl-psql.png)
+![image](../images/orcl-psql/7-orcl-psql.png)
 
 Y comprobamos el funcionamiento:
 
-![image](../images/orcl-psql/9-orcl-psql.png)
+![image](../images/orcl-psql/8-orcl-psql.png)
 
 <h2><img src="../images/orcl-psql/psql-img.png"  alt="" width="100"/> PostgreSQL - Oracle <img src="../images/orcl-psql/oracle-img.png"  alt="" width="100"/></h2>
 
