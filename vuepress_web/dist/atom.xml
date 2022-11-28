@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-11-28T18:13:10.384Z</updated>
+  <updated>2022-11-28T19:19:03.547Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -14,6 +14,178 @@
   <contributor>
     <name>Óscar Lucas</name>
   </contributor>
+  <entry>
+    <title type="html">Práctica: Escenario en OpenStack</title>
+    <id>https://github.com/oscarlucas22/guide/openstack/</id>
+    <link href="https://github.com/oscarlucas22/guide/openstack/"/>
+    <updated>2022-11-28T18:13:12.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="practica-escenario-en-openstack"> Práctica: Escenario en OpenStack</h1>
+<p>Aquí vamos ha hacer la siguiente <a href="https://fp.josedomingo.org/sri2223/4_iaas/practica.html" target="_blank" rel="noopener noreferrer">practica<i>Content not supported</i></a>.</p>
+<h3 id="instalacion-de-las-instancias-de-openstack"> Instalación de las instancias de OpenStack.</h3>
+<hr>
+<p><font color="#0000FF"><strong>1. Crea una red interna que se llame Red DMZ de tu_usuario, con las siguientes características:</strong></font></p>
+<div><pre><code>openstack network create Red-DMZ-de-olucas
+</code></pre>
+</div><hr>
+<div><pre><code>openstack subnet create --network Red-DMZ-de-olucas --subnet-range 172.16.0.0/16 subnet-DMZ --dhcp --dns-nameserver 192.168.202.2 --gateway 172.16.0.1
+</code></pre>
+</div><p><font color="#0000FF"><strong>2. Las dos instancias que vamos a crear se van a configurar con cloud-init de la siguiente manera:</strong></font></p>
+<div><pre><code>#cloud-config
+#Actualización de paquetes
+package_update: true
+package_upgrade: true
+#Configuración de hostname
+preserve_hostname: false
+fqdn: alfa.olucas.gonzalonazareno.org
+hostname: alfa
+# Crear usuarios con clave pública ssh
+users:
+- name: profesor
+sudo: ALL=(ALL) NOPASSWD:ALL
+shell: /bin/bash
+passwd: profesor
+ssh_authorized_keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmjoVIoZCx4QFXvljqozXGqxxlSvO7V2aizqyPgMfGqnyl0J9YXo6zrcWYwyWMnMdRdwYZgHqfiiFCUn2QDm6ZuzC4Lcx0K3ZwO2lgL4XaATykVLneHR1ib6RNroFcClN69cxWsdwQW6dpjpiBDXf8m6/qxVP3EHwUTsP8XaOV7WkcCAqfYAMvpWLISqYme6e+6ZGJUIPkDTxavu5JTagDLwY+py1WB53eoDWsG99gmvyit2O1Eo+jRWN+mgRHIxJTrFtLS6o4iWeshPZ6LvCZ/Pum12Oj4B4bjGSHzrKjHZgTwhVJ/LDq3v71/PP4zaI3gVB9ZalemSxqomgbTlnT jose@debian
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfk9mRtOHM3T1KpmGi0KiN2uAM6CDXM3WFcm1wkzKXx7RaLtf9pX+KCuVqHdy/N/9d9wtH7iSmLFX/4gQKQVG00jHiGf3ABufWeIpjmHtT1WaI0+vV47fofEIjDDfSZPlI3p5/c7tefHsIAK6GbQn31yepAcFYy9ZfqAh8H/Y5eLpf3egPZn9Czsvx+lm0I8Q+e/HSayRaiAPUukF57N2nnw7yhPZCHSZJqFbXyK3fVQ/UQVBeNS2ayp0my8X9sIBZnNkcYHFLIWBqJYdnu1ZFhnbu3yy94jmJdmELy3+54hqiwFEfjZAjUYSl8eGPixOfdTgc8ObbHbkHyIrQ91Kz rafa@eco
+- name: oscar
+shell: /bin/bash
+passwd: usuario
+ssh_authorized_keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTcmixc+3Zq1eSaRgb7Kvv5Efy0MZwx7wR6NWdHqi6+oLTPzNxr7IztKo9JvSMWsGzK5xR8mg8V/lPqdYO0GY5vrodpq6UdHojve0g2YaIeex7pcL2G8AEsFbysvUvwCXW4URdu1ZQAOylRPakPi0bIRsbVkRi3TjeeTcUUo/pxwI9VV6SHm94XpwZd/JUvLa8fH5USNTseN/isa4kIgHTxsIrUan2uuIr1BEYgLyrohZrvgVpmv5B/TDupxVo6lSdGQbJFwMp+/Krqrid4kvuBrDKPY5EnYyu5/XNFqRqfhoF4jk4W3Nzb8K/bF+DTelh8kZgouQQJP5RY9v1MRTqS8dq0751rVibD6KouFKBm9gxZ9BnTRFaN8hjZi60z3cyTjEl5bmD7KP5wT0i9E2dvn1xN83j7FM/ryLJ8I2GHIimNgvctQQdWddva0kVNjocteq32OtLOgh52qUzv9gw13WKVbedpoNV1cve/oFK7tH1WwG6nFf64V9Rnh1Inrs= oscar@debian
+chpasswd:
+list: |
+    root:root
+expire: False
+</code></pre>
+</div><p><font color="#0000FF"><strong>3. Creación de la máquina1 (alfa):</strong></font></p>
+<p><strong>Creamos volumen</strong></p>
+<div><pre><code>openstack volume create --bootable --size 30 --image &quot;Debian 11 Bullseye&quot; alfa_debian
+</code></pre>
+</div><p><strong>Creación maquina Alfa</strong></p>
+<div><pre><code>openstack server create --flavor vol.medium --volume alfa_debian --security-group default --key-name oscar_clave --network &quot;red de oscar.lucas&quot; --user-data &quot;cloud-init-alfa.yaml&quot; \alfa
+</code></pre>
+</div><p><strong>Le asignamos una Ip flotante.</strong></p>
+<div><pre><code>openstack floating ip create ext-net
+</code></pre>
+</div><hr>
+<div><pre><code>openstack server add floating ip alfa 172.22...
+</code></pre>
+</div><p><font color="#0000FF"><strong>4. Configuración de la máquina1 (alfa):</strong></font></p>
+<p><strong>Creamos puerto</strong></p>
+<div><pre><code>openstack port create --network Red-DMZ-de-olucas --fixed-ip ip-address=172.16.0.1 port_alfa
+</code></pre>
+</div><p><strong>Asociamos puerto</strong></p>
+<div><pre><code>openstack server add port alfa port_alfa
+</code></pre>
+</div><p><strong>Quitamos grupo de seguridad</strong></p>
+<div><pre><code>openstack port list --server alfa
+</code></pre>
+</div><hr>
+<div><pre><code>openstack server remove security group alfa default
+</code></pre>
+</div><hr>
+<div><pre><code>openstack port set --disable-port-security port_alfa
+</code></pre>
+</div><hr>
+<div><pre><code>openstack port set --disable-port-security `identificador id`
+</code></pre>
+</div><p><strong>Reglas SNAT en la maquina alfa</strong></p>
+<p>Entramos en la maquina alfa y entramos al siguiente fichero:</p>
+<div><pre><code>nano /etc/sysctl.conf
+</code></pre>
+</div><p>Y descomentamos la siguiente linea:</p>
+<div><pre><code>net.ipv4.ip_forward=1
+</code></pre>
+</div><p>Y guardamos los cambios:</p>
+<div><pre><code>sysctl -p
+</code></pre>
+</div><p>Miramos a ver si tenemos instalado iptables.</p>
+<div><pre><code>apt policy iptables
+</code></pre>
+</div><p>Si no es asi lo instalamos:</p>
+<div><pre><code>apt install iptables
+</code></pre>
+</div><p>Ponemos las reglas de iptables:</p>
+<div><pre><code>nano /etc/network/interfaces.d/50-cloud-init
+</code></pre>
+</div><hr>
+<div><pre><code>up iptables -t nat -A POSTROUTING -s 172.16.0.0/16 -o ens3 -j MASQUERADE
+down iptables -t nat -D POSTROUTING -s 172.16.0.0/16 -o ens3 -j MASQUERADE
+</code></pre>
+</div><p>Guardamos y reseteamos el servicio:</p>
+<div><pre><code>systemctl restart networking
+</code></pre>
+</div><p><font color="#0000FF"><strong>5. Creación de la máquina2 (bravo):</strong></font></p>
+<p><strong>Creamos puerto</strong></p>
+<div><pre><code>openstack port create --network Red-DMZ-de-olucas --fixed-ip ip-address=172.16.0.200 port_bravo
+</code></pre>
+</div><p><strong>Creamos el volumen</strong></p>
+<div><pre><code>openstack volume create --bootable --size 30 --image &quot;Rocky Linux 9&quot; bravo_rocky
+</code></pre>
+</div><p><strong>Creación maquina Bravo</strong></p>
+<div><pre><code>openstack server create --flavor vol.normal --volume bravo_rocky --security-group default --key-name oscar_clave --port &quot;port_bravo&quot; --user-data &quot;cloud-init-bravo.yaml&quot; \bravo
+</code></pre>
+</div><p><strong>Quitamos grupo de seguridad</strong></p>
+<div><pre><code>openstack port list --server bravo
+</code></pre>
+</div><hr>
+<div><pre><code>openstack server remove security group bravo default
+</code></pre>
+</div><hr>
+<div><pre><code>openstack port set --disable-port-security port_bravo
+</code></pre>
+</div><h3 id="instalacion-de-los-contenedores"> Instalación de los contenedores</h3>
+<hr>
+<p><font color="#0000FF"><strong>1. Crea en máquina1 (alfa) un linux bridge llamado br-intra y asigna una dirección IP estática 192.168.0.1. Esta será la IP de máquina1 (alfa) conectada a este switch virtual y será la puerta de enlace de los contenedores</strong></font></p>
+<p><strong>Instalamos los paquetes necesarios</strong></p>
+<div><pre><code>apt install qemu-system libvirt-clients libvirt-daemon-system
+</code></pre>
+</div><p><strong>Creamos el fichero br-intra.xml</strong></p>
+<div><pre><code>nano br-intra.xml
+</code></pre>
+</div><hr>
+<div><pre><code>&lt;network&gt;
+  &lt;name&gt;br-intra&lt;/name&gt;
+  &lt;bridge name='br-intra'/&gt;
+  &lt;forward/&gt;
+  &lt;ip address='192.168.0.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;
+</code></pre>
+</div><p><strong>Creamos la red</strong></p>
+<div><pre><code>virsh -c qemu:///system net-define br-intra.xml
+</code></pre>
+</div><hr>
+<div><pre><code>virsh -c qemu:///system net-start br-intra
+</code></pre>
+</div><hr>
+<div><pre><code>virsh -c qemu:///system net-autostart br-intra
+</code></pre>
+</div><p><font color="#0000FF"><strong>2. Instala LXC y crea dos contenedores con la distribución Ubuntu 20.04. Estos contenedores serán la máquina3 (charlie) y la máquina4 (delta).</strong></font></p>
+<p><strong>Instalamos lxc</strong></p>
+<div><pre><code>apt install lxc
+</code></pre>
+</div><p><strong>Creamos el contenedor</strong></p>
+<div><pre><code>lxc-create -n charlie -t ubuntu -- -r focal
+</code></pre>
+</div><hr>
+<div><pre><code>lxc-create -n delta -t ubuntu -- -r focal
+</code></pre>
+</div><p><font color="#0000FF"><strong>3. Configura de forma permanente la regla SNAT para que los contenedores tengan acceso a internet.</strong></font></p>
+<p><font color="#0000FF"><strong>4. Conecta los contenedores al bridge br-intra y configúralo de forma estática con las siguientes direcciones: máquina3 (charlie) la 192.168.0.2 y máquina4 (delta) la 192.168.0.3.</strong></font></p>
+<p><font color="#0000FF"><strong>5. Para que la red de OpenStack funcione de forma adecuada las imágenes que usamos tienen configurado la mtu (Unidad máxima de transferencia) a 1450 bytes. Tenemos que adecuar los contenedores a este tamaño de trama. Para ello introduce en la configuración de los contenedores la línea: lxc.net.0.mtu = 1450.</strong></font></p>
+<p><font color="#0000FF"><strong>6. Configura los contenedores para que se auto inicien al reiniciar la instancia.</strong></font></p>
+<p><font color="#0000FF"><strong>7. Los contenedores tendrán características parecidas a las instancias anteriormente:</strong></font></p>
+]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
+    <published>2022-11-28T18:13:12.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
   <entry>
     <title type="html">Interconexión Servidores</title>
     <id>https://github.com/oscarlucas22/guide/orcl-psql/</id>
@@ -1132,7 +1304,7 @@ sudo make uninstall
     <title type="html">Guía</title>
     <id>https://github.com/oscarlucas22/guide/</id>
     <link href="https://github.com/oscarlucas22/guide/"/>
-    <updated>2022-11-24T14:40:34.000Z</updated>
+    <updated>2022-11-28T18:13:12.000Z</updated>
     <content type="html"><![CDATA[<h1 id="guia"> Guía</h1>
 <p><font color="#FFFF00"><strong>ASO</strong></font></p>
 <ul>
@@ -1169,168 +1341,6 @@ sudo make uninstall
       <name>Óscar Lucas</name>
     </contributor>
     <published>2022-10-08T12:32:22.000Z</published>
-    <rights>Copyright by Óscar Lucas</rights>
-  </entry>
-  <entry>
-    <title type="html">Práctica: Escenario en OpenStack</title>
-    <id>https://github.com/oscarlucas22/guide/openstack/</id>
-    <link href="https://github.com/oscarlucas22/guide/openstack/"/>
-    <updated>2022-11-28T18:13:10.459Z</updated>
-    <content type="html"><![CDATA[<h1 id="practica-escenario-en-openstack"> Práctica: Escenario en OpenStack</h1>
-<p>Aquí vamos ha hacer la siguiente <a href="https://fp.josedomingo.org/sri2223/4_iaas/practica.html" target="_blank" rel="noopener noreferrer">practica<i>Content not supported</i></a>.</p>
-<h3 id="instalacion-de-las-instancias-de-openstack"> Instalación de las instancias de OpenStack.</h3>
-<hr>
-<p><font color="#0000FF"><strong>1. Crea una red interna que se llame Red DMZ de tu_usuario, con las siguientes características:</strong></font></p>
-<div><pre><code>openstack network create Red-DMZ-de-olucas
-</code></pre>
-</div><hr>
-<div><pre><code>openstack subnet create --network Red-DMZ-de-olucas --subnet-range 172.16.0.0/16 subnet-DMZ --dhcp --dns-nameserver 192.168.202.2 --gateway 172.16.0.1
-</code></pre>
-</div><p><font color="#0000FF"><strong>2. Las dos instancias que vamos a crear se van a configurar con cloud-init de la siguiente manera:</strong></font></p>
-<div><pre><code>#cloud-config
-#Actualización de paquetes
-package_update: true
-package_upgrade: true
-#Configuración de hostname
-preserve_hostname: false
-fqdn: alfa.olucas.gonzalonazareno.org
-hostname: alfa
-# Crear usuarios con clave pública ssh
-users:
-- name: profesor
-sudo: ALL=(ALL) NOPASSWD:ALL
-shell: /bin/bash
-passwd: profesor
-ssh_authorized_keys:
-    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmjoVIoZCx4QFXvljqozXGqxxlSvO7V2aizqyPgMfGqnyl0J9YXo6zrcWYwyWMnMdRdwYZgHqfiiFCUn2QDm6ZuzC4Lcx0K3ZwO2lgL4XaATykVLneHR1ib6RNroFcClN69cxWsdwQW6dpjpiBDXf8m6/qxVP3EHwUTsP8XaOV7WkcCAqfYAMvpWLISqYme6e+6ZGJUIPkDTxavu5JTagDLwY+py1WB53eoDWsG99gmvyit2O1Eo+jRWN+mgRHIxJTrFtLS6o4iWeshPZ6LvCZ/Pum12Oj4B4bjGSHzrKjHZgTwhVJ/LDq3v71/PP4zaI3gVB9ZalemSxqomgbTlnT jose@debian
-    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfk9mRtOHM3T1KpmGi0KiN2uAM6CDXM3WFcm1wkzKXx7RaLtf9pX+KCuVqHdy/N/9d9wtH7iSmLFX/4gQKQVG00jHiGf3ABufWeIpjmHtT1WaI0+vV47fofEIjDDfSZPlI3p5/c7tefHsIAK6GbQn31yepAcFYy9ZfqAh8H/Y5eLpf3egPZn9Czsvx+lm0I8Q+e/HSayRaiAPUukF57N2nnw7yhPZCHSZJqFbXyK3fVQ/UQVBeNS2ayp0my8X9sIBZnNkcYHFLIWBqJYdnu1ZFhnbu3yy94jmJdmELy3+54hqiwFEfjZAjUYSl8eGPixOfdTgc8ObbHbkHyIrQ91Kz rafa@eco
-- name: oscar
-shell: /bin/bash
-passwd: usuario
-ssh_authorized_keys:
-    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTcmixc+3Zq1eSaRgb7Kvv5Efy0MZwx7wR6NWdHqi6+oLTPzNxr7IztKo9JvSMWsGzK5xR8mg8V/lPqdYO0GY5vrodpq6UdHojve0g2YaIeex7pcL2G8AEsFbysvUvwCXW4URdu1ZQAOylRPakPi0bIRsbVkRi3TjeeTcUUo/pxwI9VV6SHm94XpwZd/JUvLa8fH5USNTseN/isa4kIgHTxsIrUan2uuIr1BEYgLyrohZrvgVpmv5B/TDupxVo6lSdGQbJFwMp+/Krqrid4kvuBrDKPY5EnYyu5/XNFqRqfhoF4jk4W3Nzb8K/bF+DTelh8kZgouQQJP5RY9v1MRTqS8dq0751rVibD6KouFKBm9gxZ9BnTRFaN8hjZi60z3cyTjEl5bmD7KP5wT0i9E2dvn1xN83j7FM/ryLJ8I2GHIimNgvctQQdWddva0kVNjocteq32OtLOgh52qUzv9gw13WKVbedpoNV1cve/oFK7tH1WwG6nFf64V9Rnh1Inrs= oscar@debian
-chpasswd:
-list: |
-    root:root
-expire: False
-</code></pre>
-</div><p><font color="#0000FF"><strong>3. Creación de la máquina1 (alfa):</strong></font></p>
-<p><strong>Creamos volumen</strong></p>
-<div><pre><code>openstack volume create --bootable --size 30 --image &quot;Debian 11 Bullseye&quot; alfa_debian
-</code></pre>
-</div><p><strong>Creación maquina Alfa</strong></p>
-<div><pre><code>openstack server create --flavor vol.medium --volume alfa_debian --security-group default --key-name oscar_clave --network &quot;red de oscar.lucas&quot; --user-data &quot;cloud-init-alfa.yaml&quot; \alfa
-</code></pre>
-</div><p><strong>Le asignamos una Ip flotante.</strong></p>
-<div><pre><code>openstack floating ip create ext-net
-</code></pre>
-</div><hr>
-<div><pre><code>openstack server add floating ip alfa 172.22...
-</code></pre>
-</div><p><font color="#0000FF"><strong>4. Configuración de la máquina1 (alfa):</strong></font></p>
-<p><strong>Creamos puerto</strong></p>
-<div><pre><code>openstack port create --network Red-DMZ-de-olucas --fixed-ip ip-address=172.16.0.1 port_alfa
-</code></pre>
-</div><p><strong>Asociamos puerto</strong></p>
-<div><pre><code>openstack server add port alfa port_alfa
-</code></pre>
-</div><p><strong>Quitamos grupo de seguridad</strong></p>
-<div><pre><code>openstack port list --server alfa
-</code></pre>
-</div><hr>
-<div><pre><code>openstack server remove security group alfa default
-</code></pre>
-</div><hr>
-<div><pre><code>openstack port set --disable-port-security port_alfa
-</code></pre>
-</div><hr>
-<div><pre><code>openstack port set --disable-port-security `identificador id`
-</code></pre>
-</div><p><strong>Reglas SNAT en la maquina alfa</strong></p>
-<p>Entramos en la maquina alfa y entramos al siguiente fichero:</p>
-<div><pre><code>nano /etc/sysctl.conf
-</code></pre>
-</div><p>Y descomentamos la siguiente linea:</p>
-<div><pre><code>net.ipv4.ip_forward=1
-</code></pre>
-</div><p>Y guardamos los cambios:</p>
-<div><pre><code>sysctl -p
-</code></pre>
-</div><p>Miramos a ver si tenemos instalado iptables.</p>
-<div><pre><code>apt policy iptables
-</code></pre>
-</div><p>Si no es asi lo instalamos:</p>
-<div><pre><code>apt install iptables
-</code></pre>
-</div><p>Ponemos las reglas de iptables:</p>
-<div><pre><code>nano /etc/network/interfaces.d/50-cloud-init
-</code></pre>
-</div><hr>
-<div><pre><code>up iptables -t nat -A POSTROUTING -s 172.16.0.0/16 -o ens3 -j MASQUERADE
-down iptables -t nat -D POSTROUTING -s 172.16.0.0/16 -o ens3 -j MASQUERADE
-</code></pre>
-</div><p>Guardamos y reseteamos el servicio:</p>
-<div><pre><code>systemctl restart systemctl restart networking
-</code></pre>
-</div><p><font color="#0000FF"><strong>5. Creación de la máquina2 (bravo):</strong></font></p>
-<p><strong>Creamos puerto</strong></p>
-<div><pre><code>openstack port create --network Red-DMZ-de-olucas --fixed-ip ip-address=172.16.0.200 port_bravo
-</code></pre>
-</div><p><strong>Creamos el volumen</strong></p>
-<div><pre><code>openstack volume create --bootable --size 30 --image &quot;Rocky Linux 9&quot; bravo_rocky
-</code></pre>
-</div><p><strong>Creación maquina Bravo</strong></p>
-<div><pre><code>openstack server create --flavor vol.normal --volume bravo_rocky --security-group default --key-name oscar_clave --port &quot;port_bravo&quot; --user-data &quot;cloud-init-bravo.yaml&quot; \bravo
-</code></pre>
-</div><p><strong>Quitamos grupo de seguridad</strong></p>
-<div><pre><code>openstack port list --server bravo
-</code></pre>
-</div><hr>
-<div><pre><code>openstack server remove security group bravo default
-</code></pre>
-</div><hr>
-<div><pre><code>openstack port set --disable-port-security port_bravo
-</code></pre>
-</div><h3 id="instalacion-de-los-contenedores"> Instalación de los contenedores</h3>
-<hr>
-<p><font color="#0000FF"><strong>1. Crea en máquina1 (alfa) un linux bridge llamado br-intra y asigna una dirección IP estática 192.168.0.1. Esta será la IP de máquina1 (alfa) conectada a este switch virtual y será la puerta de enlace de los contenedores</strong></font></p>
-<p><strong>Instalamos los paquetes necesarios</strong></p>
-<div><pre><code>apt install qemu-system libvirt-clients libvirt-daemon-system
-</code></pre>
-</div><p><strong>Creamos el fichero br-intra.xml</strong></p>
-<div><pre><code>nano br-intra.xml
-</code></pre>
-</div><hr>
-<div><pre><code>&lt;network&gt;
-  &lt;name&gt;br-intra&lt;/name&gt;
-  &lt;bridge name='br-intra'/&gt;
-  &lt;forward/&gt;
-  &lt;ip address='192.168.0.1' netmask='255.255.255.0'&gt;
-  &lt;/ip&gt;
-&lt;/network&gt;
-</code></pre>
-</div><p><strong>Creamos la red</strong></p>
-<div><pre><code>virsh -c qemu:///system net-define br-intra.xml
-</code></pre>
-</div><hr>
-<div><pre><code>virsh -c qemu:///system net-start br-intra
-</code></pre>
-</div><hr>
-<div><pre><code>virsh -c qemu:///system net-autostart br-intra
-</code></pre>
-</div><p><font color="#0000FF"><strong>2. Instala LXC y crea dos contenedores con la distribución Ubuntu 20.04. Estos contenedores serán la máquina3 (charlie) y la máquina4 (delta).</strong></font></p>
-<p><font color="#0000FF"><strong>3. Configura de forma permanente la regla SNAT para que los contenedores tengan acceso a internet.</strong></font></p>
-<p><font color="#0000FF"><strong>4. Conecta los contenedores al bridge br-intra y configúralo de forma estática con las siguientes direcciones: máquina3 (charlie) la 192.168.0.2 y máquina4 (delta) la 192.168.0.3.</strong></font></p>
-<p><font color="#0000FF"><strong>5. Para que la red de OpenStack funcione de forma adecuada las imágenes que usamos tienen configurado la mtu (Unidad máxima de transferencia) a 1450 bytes. Tenemos que adecuar los contenedores a este tamaño de trama. Para ello introduce en la configuración de los contenedores la línea: lxc.net.0.mtu = 1450.</strong></font></p>
-<p><font color="#0000FF"><strong>6. Configura los contenedores para que se auto inicien al reiniciar la instancia.</strong></font></p>
-<p><font color="#0000FF"><strong>7. Los contenedores tendrán características parecidas a las instancias anteriormente:</strong></font></p>
-]]></content>
-    <author>
-      <name>Óscar Lucas</name>
-    </author>
-    <contributor>
-      <name>Óscar Lucas</name>
-    </contributor>
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
 </feed>

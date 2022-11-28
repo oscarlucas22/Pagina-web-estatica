@@ -108,7 +108,7 @@ Ponemos las reglas de iptables:
 
 Guardamos y reseteamos el servicio:
 
-    systemctl restart systemctl restart networking
+    systemctl restart networking
 
 <font color="#0000FF">**5. Creación de la máquina2 (bravo):**</font>
 
@@ -164,6 +164,15 @@ Guardamos y reseteamos el servicio:
 
 <font color="#0000FF">**2. Instala LXC y crea dos contenedores con la distribución Ubuntu 20.04. Estos contenedores serán la máquina3 (charlie) y la máquina4 (delta).**</font>
 
+**Instalamos lxc**
+
+    apt install lxc
+
+**Creamos el contenedor**
+
+    lxc-create -n charlie -t ubuntu -- -r focal
+---
+    lxc-create -n delta -t ubuntu -- -r focal
 
 <font color="#0000FF">**3. Configura de forma permanente la regla SNAT para que los contenedores tengan acceso a internet.**</font>
 
