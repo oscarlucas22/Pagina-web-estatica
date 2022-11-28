@@ -20,3 +20,7 @@ category: Guia
 - [Herramientas de Seguridad (*SNORT *NESSUS *TRIPWIRE *RKHUNTER *HYDRA)](https://www.dropbox.com/s/84gl6ea0ls0xksy/Plantilla%20Trabajo%20Grupal%201.pdf?dl=0)
 
 - [Plan de Seguridad y de Contingencia](https://www.dropbox.com/s/th00q6nun0ekmam/Plan%20de%20Seguridad%20y%20de%20Contingencia%28Mar%C3%ADa-Iv%C3%A1n-%C3%93scar%29.pdf?dl=0)
+
+<font color="#0000FF">**SRI**</font>
+
+- [Práctica: Escenario en OpenStack](openstack.md)
