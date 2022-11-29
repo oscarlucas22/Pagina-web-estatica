@@ -6,8 +6,8 @@
     <link>https://github.com/oscarlucas22/</link>
     <description>Tu página de confianza</description>
     <language>en-US</language>
-    <pubDate>Mon, 28 Nov 2022 19:19:03 GMT</pubDate>
-    <lastBuildDate>Mon, 28 Nov 2022 19:19:03 GMT</lastBuildDate>
+    <pubDate>Tue, 29 Nov 2022 15:55:08 GMT</pubDate>
+    <lastBuildDate>Tue, 29 Nov 2022 15:55:08 GMT</lastBuildDate>
     <generator>@mr-hope/vuepress-plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Guia</category>
@@ -635,10 +635,10 @@ set ODBCINI=/etc/odbc.ini
 </code></pre>
 </div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
 <p>Los siguientes pasos que vas a ver se ejecutan dentro de MariaDB (cambia el usuario y la contraseña por los tuyos)</p>
-<div><pre><code>CREATE USER 'lucas' IDENTIFIED BY 'admin';
+<div><pre><code>create user lucas;
 </code></pre>
 </div><hr>
-<div><pre><code>GRANT ALL ON *.* TO 'lucas'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
+<div><pre><code>grant all privileges on *.* to 'lucas'@'%' identified by 'root' with grant option;
 </code></pre>
 </div><hr>
 <div><pre><code>FLUSH PRIVILEGES;

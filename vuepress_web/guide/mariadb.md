@@ -62,9 +62,9 @@ Y con esto ya tendriamos instalado MariaDB y para ejecutarlo, ejecutaremos el si
 
 Los siguientes pasos que vas a ver se ejecutan dentro de MariaDB (cambia el usuario y la contraseña por los tuyos)
 
-    CREATE USER 'lucas' IDENTIFIED BY 'admin';
+    create user lucas;
 ---
-    GRANT ALL ON *.* TO 'lucas'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
+    grant all privileges on *.* to 'lucas'@'%' identified by 'root' with grant option;
 ---
     FLUSH PRIVILEGES;
 

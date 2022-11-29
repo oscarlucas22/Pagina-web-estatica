@@ -6,7 +6,7 @@
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-11-28T19:19:03.547Z</updated>
+  <updated>2022-11-29T15:55:08.939Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -18,7 +18,7 @@
     <title type="html">Práctica: Escenario en OpenStack</title>
     <id>https://github.com/oscarlucas22/guide/openstack/</id>
     <link href="https://github.com/oscarlucas22/guide/openstack/"/>
-    <updated>2022-11-28T18:13:12.000Z</updated>
+    <updated>2022-11-28T19:19:05.000Z</updated>
     <content type="html"><![CDATA[<h1 id="practica-escenario-en-openstack"> Práctica: Escenario en OpenStack</h1>
 <p>Aquí vamos ha hacer la siguiente <a href="https://fp.josedomingo.org/sri2223/4_iaas/practica.html" target="_blank" rel="noopener noreferrer">practica<i>Content not supported</i></a>.</p>
 <h3 id="instalacion-de-las-instancias-de-openstack"> Instalación de las instancias de OpenStack.</h3>
@@ -651,10 +651,10 @@ set ODBCINI=/etc/odbc.ini
 </code></pre>
 </div><h2 id="creacion-de-usuario"> Creación de usuario</h2>
 <p>Los siguientes pasos que vas a ver se ejecutan dentro de MariaDB (cambia el usuario y la contraseña por los tuyos)</p>
-<div><pre><code>CREATE USER 'lucas' IDENTIFIED BY 'admin';
+<div><pre><code>create user lucas;
 </code></pre>
 </div><hr>
-<div><pre><code>GRANT ALL ON *.* TO 'lucas'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
+<div><pre><code>grant all privileges on *.* to 'lucas'@'%' identified by 'root' with grant option;
 </code></pre>
 </div><hr>
 <div><pre><code>FLUSH PRIVILEGES;
