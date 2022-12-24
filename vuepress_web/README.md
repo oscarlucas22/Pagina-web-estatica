@@ -4,8 +4,6 @@ home: true
 icon: home
 title: Blog Home
 heroImage: /rosquilla.png
-heroText: LucasBlog
-tagline: You can put your slogan here
 heroFullScreen: true
 project:
   - type: link

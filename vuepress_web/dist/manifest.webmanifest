@@ -1,1 +1,1 @@
-{"name":"LucasBlog","short_name":"LucasBlog","description":"Tu página de confianza","lang":"en-US","start_url":"/","scope":"/","display":"standalone","theme_color":"#46bd87","background_color":"#ffffff","orientation":"portrait-primary","prefer_related_applications":false}
+{"name":"LucasBlog","short_name":"LucasBlog","description":"A site built with vuepress","lang":"en-US","start_url":"/","scope":"/","display":"standalone","theme_color":"#46bd87","background_color":"#ffffff","orientation":"portrait-primary","prefer_related_applications":false}

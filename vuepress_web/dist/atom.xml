@@ -2,11 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
   <id>https://github.com/oscarlucas22/</id>
   <title>LucasBlog</title>
-  <subtitle>Tu página de confianza</subtitle>
   <author>
     <name>Óscar Lucas</name>
   </author>
-  <updated>2022-11-29T15:55:08.939Z</updated>
+  <updated>2022-12-24T09:51:54.859Z</updated>
   <generator>@mr-hope/vuepress-plugin-feed</generator>
   <link rel="self" href="https://github.com/oscarlucas22/atom.xml"/>
   <link rel="alternate" href="https://github.com/oscarlucas22/"/>
@@ -607,7 +606,7 @@ set ODBCINI=/etc/odbc.ini
     <title type="html">MariaDB en Debian 11 Bullseye</title>
     <id>https://github.com/oscarlucas22/guide/mariadb/</id>
     <link href="https://github.com/oscarlucas22/guide/mariadb/"/>
-    <updated>2022-10-31T07:59:36.000Z</updated>
+    <updated>2022-11-29T15:55:18.000Z</updated>
     <content type="html"><![CDATA[<h1 id="mariadb-en-debian-11-bullseye"> MariaDB en Debian 11 Bullseye</h1>
 <p><img src="./../images/ABD/mariadb.png" alt="image"></p>
 <p>Para conseguir una instalación correcta debemos cumplir los siguientes requisitos:</p>
@@ -1308,7 +1307,12 @@ sudo make uninstall
     <content type="html"><![CDATA[<h1 id="guia"> Guía</h1>
 <p><font color="#FFFF00"><strong>ASO</strong></font></p>
 <ul>
-<li><a href="./makefile.html">Compilación de un programa en C utilizando un Makefile</a></li>
+<li>
+<p><a href="./makefile.html">Compilación de un programa en C utilizando un Makefile</a></p>
+</li>
+<li>
+<p><a href="./migracionrocky.html">Migración de CentOS Stream 8 a Rocky Linux</a></p>
+</li>
 </ul>
 <p><font color="#800080"><strong>ABD</strong></font></p>
 <ul>
@@ -1330,7 +1334,7 @@ sudo make uninstall
 </ul>
 <p><font color="#0000FF"><strong>SRI</strong></font></p>
 <ul>
-<li><a href="./openstack.html">Práctica: Escenario en OpenStack</a></li>
+<li><a href="">Práctica: Escenario en OpenStack</a></li>
 </ul>
 ]]></content>
     <author>
@@ -1341,6 +1345,60 @@ sudo make uninstall
       <name>Óscar Lucas</name>
     </contributor>
     <published>2022-10-08T12:32:22.000Z</published>
+    <rights>Copyright by Óscar Lucas</rights>
+  </entry>
+  <entry>
+    <title type="html">Migrar Centos 8 a Rocky Linux 8</title>
+    <id>https://github.com/oscarlucas22/guide/migracionrocky/</id>
+    <link href="https://github.com/oscarlucas22/guide/migracionrocky/"/>
+    <updated>2022-12-24T09:51:54.900Z</updated>
+    <content type="html"><![CDATA[<h1 id="migrar-centos-8-a-rocky-linux-8"> Migrar Centos 8 a Rocky Linux 8</h1>
+<p><img src="./../images/ASO/rocky.png" alt="image"></p>
+<p>Para conseguir este fin se nos ofrece un script llamado <strong>migrate2rocky.sh</strong>. Este script se encargará de cambiar los repositorios del sistemas por los de Rocky Linux. Los paquetes se instalarán y actualizarán, para finalmente cambiar todo el sistema operativo.</p>
+<p><font color="#FFFF00"><strong>Paso 1</strong></font> Actualizamos el sistema.</p>
+<div><pre><code>sudo dnf -y upgrade
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 2</strong></font> Reiniciamos.</p>
+<div><pre><code>sudo reboot 
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 3</strong></font> Actualizar el sistema.</p>
+<div><pre><code>dnf update
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 4</strong></font> Descargar repositorio.</p>
+<p>Una vez hecho esto nos iremos al repositorio donde se encuentra dicho script, en este caso en Github.
+Podemos descargar los paquetes del repositorio con programas como wget.</p>
+<div><pre><code>wget https://github.com/rocky-linux/rocky-tools/archive/refs/heads/main.zip
+</code></pre>
+</div><p>O bien, si solo deseamos descargar el script:</p>
+<div><pre><code>wget https://raw.githubusercontent.com/rocky-linux/rocky-tools/main/migrate2rocky/migrate2rocky.sh
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 5</strong></font> Le asignamos permisos de ejecución.</p>
+<div><pre><code>chmod +x migrate2rocky.sh
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 6</strong></font> Lo ejecutamos.</p>
+<p>Con el parámetro <strong>-r</strong> indicamos que siga adelante e instale todo.</p>
+<div><pre><code>./migrate2rocky.sh -r
+</code></pre>
+</div><p>El proceso puede tardar un rato, según la capacidad del equipo y la conexión a Internet.</p>
+<p>Después:</p>
+<div><pre><code>sudo dnf distro-sync -y
+</code></pre>
+</div><hr>
+<div><pre><code>sudo reboot
+</code></pre>
+</div><p><font color="#FFFF00"><strong>Paso 7</strong></font> Comprobación.</p>
+<div><pre><code>cat /etc/os-release
+</code></pre>
+</div><p>Podemos consultar ficheros como <strong>/etc/os-release</strong> o bien <strong>/etc/redhat-release</strong>, o lanzar el comando <strong>hostnamectl</strong></p>
+<div><pre><code>cat /etc/redhat-release
+</code></pre>
+</div>]]></content>
+    <author>
+      <name>Óscar Lucas</name>
+    </author>
+    <contributor>
+      <name>Óscar Lucas</name>
+    </contributor>
     <rights>Copyright by Óscar Lucas</rights>
   </entry>
 </feed>

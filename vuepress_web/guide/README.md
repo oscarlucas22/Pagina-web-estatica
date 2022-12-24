@@ -9,6 +9,8 @@ category: Guia
 
 - [Compilación de un programa en C utilizando un Makefile](makefile.md)
 
+- [Migración de CentOS Stream 8 a Rocky Linux](migracionrocky.md)
+
 <font color="#800080">**ABD**</font>
 
 - [Servidores y Clientes de Base de Datos (*MariaDB *PostgreSQL *Oracle *MongoDB)](ABD.md)
@@ -23,4 +25,4 @@ category: Guia
 
 <font color="#0000FF">**SRI**</font>
 
-- [Práctica: Escenario en OpenStack](openstack.md)
+- [Práctica: Escenario en OpenStack]()
