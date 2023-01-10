@@ -26,3 +26,7 @@ category: Guia
 <font color="#0000FF">**SRI**</font>
 
 - [Práctica: Escenario en OpenStack]()
+
+<font color="#FFA500">**IAW**</font>
+
+- [Despliegue de aplicaciones python](django.md)
