@@ -11,6 +11,8 @@ category: Guia
 
 - [Migración de CentOS Stream 8 a Rocky Linux](migracionrocky.md)
 
+- [Recolección centralizada de logs de sistema, mediante journald.](logs.md)
+
 <font color="#800080">**ABD**</font>
 
 - [Servidores y Clientes de Base de Datos (*MariaDB *PostgreSQL *Oracle *MongoDB)](ABD.md)

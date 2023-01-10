@@ -17,11 +17,11 @@ Como https no lo utilizare para la comunicacion, desactivare dicha la opcion en 
 
 Para ello editare el fichero y cambiare el `https` por `http`:
 
-![image](1-logs.png)
+![image](../images/ASO/1-logs.png)
 
-![image](2-logs.png)
+![image](../images/ASO/2-logs.png)
 
-![image](3-logs.png)
+![image](../images/ASO/3-logs.png)
 
 Le asignamos el propietario correspondiente:
 
@@ -49,11 +49,11 @@ Tras crear los usuarios, modificaremos la configuraciondel fichero `/etc/systemd
 
     sudo sed -i 's/# URL=/URL=http:\/\/alfa.olucas.gonzalonazareno.org:19532/g' /etc/systemd/journal-upload.conf 
 
-![image](4-logs.png)
+![image](../images/ASO/4-logs.png)
 
-![image](5-logs.png)
+![image](../images/ASO/5-logs.png)
 
-![image](6-logs.png)
+![image](../images/ASO/6-logs.png)
 
 Una vez hecho esto reiniciaremos el servicio `systemd-journal-upload` en cada cliente:
 
@@ -67,19 +67,19 @@ Si ahora comprobamos el directorio `/var/log/journal/remote` en Alfa, podremos v
 
 **Nota**: Si aparecen solo dos (normalmente es Charlie el que no aparece), hay que añadir en el fichero "/etc/hosts" '192.168.0.1 alfa.olucas.gonzalonazareno.org alfa'
 
-![image](7-logs.png)
+![image](../images/ASO/7-logs.png)
 
 Para comprobar que los logs se estan enviando correctamente, usare el comando "journalctl"  para ver los de cada cliente
 
     sudo journalctl --file /var/log/journal/remote-IpCliente.journal
 
 **Bravo**
-![image](8-logs.png)
+![image](../images/ASO/8-logs.png)
 
 **Charlie**
-![image](9-logs.png)
+![image](../images/ASO/9-logs.png)
 
 **Delta**
-![image](10-logs.png)
+![image](../images/ASO/10-logs.png)
 
 Se puede observar que los logs estan llegando correctamente a Alfa por lo que el sistema de recoleccion de logs esta funcionando perfectamente.
